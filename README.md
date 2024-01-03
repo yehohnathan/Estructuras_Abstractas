@@ -18,4 +18,4 @@
 
 * **PersonalPractices:** ubiación de las prácticas personales, aparte al material del curso, sacadas de otros medios.
 
-* **TrabajosPrevios:** contiene las prácticas que se pueden observar en las seciones previamente grabadas por el profesor del curso. 
+* **Laboratorios:** contiene las prácticas que se pueden observar en las seciones previamente grabadas por el profesor del curso. 
