@@ -20,4 +20,6 @@
 
 * **TrabajosPrevios:** contiene las prácticas que se pueden observar en las seciones previamente grabadas por el profesor del curso. 
 
-* **Tareas:** contiene las tareas asignadas por el profesor del curso. 
+* **Tareas:** contiene las tareas asignadas por el profesor del curso.
+
+* **Laboratorios:** contiene los laboratorios (prácticas/quices) realizadas en clases.
