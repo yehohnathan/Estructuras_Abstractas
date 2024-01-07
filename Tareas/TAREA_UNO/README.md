@@ -159,6 +159,7 @@ int main() {
 ```
 
 22. ¿Qué es un puntero nullptr?
+
 Un puntero `nullptr` en C++ es un literal de puntero nulo que representa un valor de puntero que no apunta a ningún objeto o función. El puntero `nullptr` tiene un tipo especial llamado `std::nullptr_t`, que se puede convertir a cualquier tipo de puntero sin formato. El puntero `nullptr` se usa para indicar que un puntero no tiene una dirección válida, o para inicializar punteros que no se asignan todavía [13].
 
 23. ¿Cuál es la diferencia entre un arreglo y una lista en C++?
@@ -166,9 +167,11 @@ Un puntero `nullptr` en C++ es un literal de puntero nulo que representa un valo
 Un arreglo es una colección ordenada de variables del mismo tipo que tiene un tamaño fijo y se almacena de forma contigua en la memoria, mientras que una lista es una colección secuelcial de elementos del mismo tipo que tienen diferentes tamaños y se almacena de forma dispersa en la memoria [14].
 
 24. ¿Qué es una función prototipo?
+
 Una función prototipo es una declaración de una función que especifica el nombre, el tipo de retorno y los parámetros de la función antes de su definición. Los prototipos de función se usan para permitir al compilador realizar una verificación de tipos más robusta, para evitar errores de coincidencia entre los argumentos y los parámetros, y para declarar funciones que se definen en otros archivos [15].
 
 25. ¿Investigue qué es un memory leak?
+
 Un memory leak en C++ es un error que ocurre cuando se reserva memoria dinámica usando `new` o `malloc` y se olvida de liberarla usando `delete` o `free`. Esto hace que la memoria reservada no esté disponible para otros usos y que el programa consuma más memoria de la necesaria. Un memory leak puede causar problemas de rendimiento, errores de memoria insuficiente o incluso el bloqueo del programa.
 
 
@@ -177,17 +180,63 @@ Un memory leak en C++ es un error que ocurre cuando se reserva memoria dinámica
 
 1. ¿Qué suelen contener las variables CC, CFLAGS, CXXFLAGS y LDFLAGS en un Makefile?
 
+Las variables **CC**, **CFLAGS**, **CXXFLAGS** y **LDFLAGS** suelen contener lo siguiente en un Makefile [17]:
+
+- **CC**: el nombre del compilador de C o C++ que se va a usar. Por ejemplo, `CC = gcc` o `CC = g++`.
+
+- **CFLAGS**: las opciones o banderas que se pasan al compilador de C cuando se compilan los archivos fuente. Por ejemplo, `CFLAGS = -Wall -g` para habilitar todos los avisos y la depuración.
+
+- **CXXFLAGS**: las opciones o banderas que se pasan al compilador de C++ cuando se compilan los archivos fuente. Por ejemplo, `CXXFLAGS = -std=c++11 -O2` para usar el estándar C++11 y optimizar el código.
+
+- **LDFLAGS**: las opciones o banderas que se pasan al enlazador cuando se genera el ejecutable. Por ejemplo, `LDFLAGS = -lm -lncurses` para enlazar las bibliotecas matemática y de interfaz de usuario.
+
 2. ¿De qué se compone una regla en un Makefile?
+
+Una regla en un Makefile se compone de tres partes: un **target**, sus **prerequisites** y una **recipe**. La sintaxis general es la siguiente [18]:
+
+    ```
+    target: prerequisites
+        recipe
+    ```
+
+- El **target** es el nombre del archivo o acción que se quiere generar o ejecutar. Por ejemplo, `all`, `clean`, `main.o`, `main.exe`, etc.
+
+- Los **prerequisites** son los archivos o targets de los que depende el target actual. Por ejemplo, si el target es `main.exe`, los prerequisites pueden ser `main.o` y `func.o`, que son los archivos objeto que se necesitan para enlazar el ejecutable.
+
+- La **recipe** es el conjunto de comandos que se ejecutan para generar el target. Por ejemplo, `$(CC) $(CFLAGS) -c main.c -o main.o` es un comando para compilar el archivo fuente `main.c` y generar el archivo objeto `main.o`.
 
 3. Defina qué es un target y cómo se relaciona con sus prerequisitos.
 
+Un **target** es el nombre del archivo o acción que se quiere generar o ejecutar en un Makefile. Se relaciona con sus **prerequisites** de la siguiente manera: si alguno de los prerequisites ha cambiado desde la última vez que se generó el target, se ejecuta la recipe correspondiente para actualizar el target. De lo contrario, se salta la recipe y se asume que el target está actualizado. Esto permite ahorrar tiempo y recursos al evitar compilar o enlazar archivos que no han cambiado [17].
+
 4. ¿Para qué se utiliza la bandera -I, -c y -o del compilador gcc?
+
+La bandera **-I**, **-c** y **-o** del compilador gcc se utiliza para lo siguiente [19]:
+
+- **-I**: especifica el directorio donde se buscan los archivos de cabecera que se incluyen con `#include`. Por ejemplo, `gcc -I/usr/include -c main.c` busca los archivos de cabecera en el directorio `/usr/include`.
+- **-c**: indica que solo se quiere compilar el archivo fuente y generar el archivo objeto, sin enlazarlo. Por ejemplo, `gcc -c main.c` genera el archivo `main.o` sin crear el ejecutable.
+- **-o**: permite darle un nombre al archivo de salida que se genera. Por ejemplo, `gcc main.c -o main.exe` crea el ejecutable `main.exe` a partir del archivo fuente `main.c`.
+
 
 5. ¿Cómo se definen y se utilizan las variables en un Makefile? ¿Qué utilidad tienen?
 
+Las variables en un Makefile se definen y se utilizan de la siguiente manera [20]:
+
+- Para definir una variable, se usa el signo `=` seguido del valor que se le quiere asignar. Por ejemplo, `CC = gcc` define la variable `CC` con el valor `gcc`.
+- Para utilizar una variable, se usa el signo `$` seguido del nombre de la variable entre paréntesis o llaves. Por ejemplo, `$(CC)` o `${CC}` se sustituyen por el valor de la variable `CC`.
+- La utilidad de las variables es que permiten parametrizar y simplificar el Makefile, evitando repetir valores que se usan en varias partes y facilitando el cambio de opciones o configuraciones.
+
 6. ¿Qué utilidad tiene un @ en un Makefile?
 
+El símbolo `@` en un Makefile tiene la utilidad de suprimir la impresión del comando que se ejecuta en la recipe. Por defecto, make imprime cada comando antes de ejecutarlo, lo que puede ser útil para depurar o ver el progreso, pero también puede generar mucho ruido o confusión. Al poner un `@` al principio del comando, se evita que se imprima y solo se muestra la salida del comando. Por ejemplo, `@echo "Compilando..."` solo imprime `Compilando...` y no el comando `echo`.
+
 7. ¿Para qué se utiliza .PHONY en un Makefile?
+
+El target `.PHONY` en un Makefile se utiliza para indicar que los targets que se listan a continuación no son archivos reales, sino acciones o comandos que se quieren ejecutar. Esto evita que make confunda el nombre del target con el nombre de un archivo y salte la recipe si el archivo existe. Por ejemplo, `clean` es un target típico que se usa para borrar los archivos generados por la compilación, pero si hay un archivo llamado `clean` en el directorio, make no ejecutará la recipe a menos que se declare como `.PHONY`. La sintaxis es la siguiente:
+
+```
+    .PHONY: target1 target2 target3 ...
+```
 
 ### Conocimientos importantes
 
@@ -229,3 +278,14 @@ Un memory leak en C++ es un error que ocurre cuando se reserva memoria dinámica
 [15] Microsoft, "Prototipos de función (C)", Microsoft Learn, 2021. [En línea]. Disponible en: https://learn.microsoft.com/es-es/cpp/c-language/function-prototypes?view=msvc-170. [Consultado: 7 ene. 2024].
 
 [16] A. K. Singh, "Memory leak in C++ and How to avoid it?", GeeksforGeeks, 16 jul. 2019. [En línea]. Disponible en: https://www.geeksforgeeks.org/memory-leak-in-c-and-how-to-avoid-it/. [Consultado: 7 ene. 2024].
+
+[17] J. Pérez, “Cómo usar un Makefile en C”, 1 de enero de 2024. [En línea]. Disponible: https://spa.myservername.com/c-makefile-tutorial [Consultado: 7 ene. 2024].
+
+
+[18] “¿Cuál es el papel de un target en un Makefile?”, 5 de julio de 2012. [En línea]. Disponible: https://stackoverflow.com/questions/11288669/what-the-role-of-a-target-in-a-makefile#:~:text=A%20make%20target%20is%20basically%20a%20file%20that,build%20the%20first%20target%20listed%20in%20the%20makefile. [Consultado: 7 ene. 2024].
+
+[19] “Cómo usar un Makefile en C” [En línea]. Disponible: https://es.linux-console.net/?p=19678 [Consultado: 7 ene. 2024].
+
+[20] Free Software Foundation, “GNU Make”, 2022. [En línea]. Disponible: https://runebook.dev/es/docs/gnu_make/using-variables#:~:text=C%C3%B3mo%20utilizar%20variables%20Una%20variable%20es%20un%20nombre,previos%2C%20recetas%20y%20otras%20partes%20del%20archivo%20MAKE [Consultado: 8 ene. 2024]. 
+
+[21] J. Vandehey. “What is the purpose of .PHONY in a makefile?”. [En línea]. Disponible: https://stackoverflow.com/questions/2145590/what-is-the-purpose-of-phony-in-a-makefile [Consultado: 8 ene. 2024]. 
