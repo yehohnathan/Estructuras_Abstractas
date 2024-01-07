@@ -242,7 +242,25 @@ El target `.PHONY` en un Makefile se utiliza para indicar que los targets que se
 
 1. Investigue qué es Doxygen y cómo se utiliza. Utilice lo aprendido al documentar su código, incluyendo agregar un encabezado a cada archivo con una licencia definida.
 
+Doxygen es una herramienta para crear documentación a partir de código fuente anotado en C++ y otros lenguajes de programación, esta se debe descargar. Doxygen puede generar documentación en línea (en HTML) o fuera de línea (en PDF, RTF, etc.), extraer la estructura y las relaciones del código¹, y visualizarlas mediante gráficos de dependencia, diagramas de herencia y de colaboración. Para utilizar Doxygen, se debe escribir comentarios especiales en el código fuente que sigan un formato específico. Estos comentarios pueden incluir etiquetas, comandos y referencias cruzadas. Doxygen también permite especificar un archivo de configuración con opciones para personalizar la generación de la documentación. Para documentar su código con Doxygen, se recomienda que sea dentro de los archivos header, debe agregar un encabezado a cada archivo con una licencia definida y una breve descripción del propósito del archivo [22].
+
+
+
 2. Investigue cuál es la convención mayormente utilizada en C++ para nombrar variables, clases, funciones, atributos, etc. (CamelCase, snake case, etc.) y utilícela en el desarrollo de su programa.
+
+Existen varias convenciones para nombrar variables, clases, funciones, atributos, etc. en C++, pero una de las más utilizadas es la guía de estilo de Google [23]. Según esta guía, se deben seguir las siguientes reglas:
+
+- El nombre de una clase debe ser un sustantivo y usar mayúsculas como separadores de palabras, y minúsculas para el resto de la palabra. El primer carácter del nombre de la clase debe estar en mayúscula. No se permiten guiones bajos ('_') en el nombre de la clase. Este tipo de convención se llama **PascalCase**. Por ejemplo, `ReverseString`, y `Multiply2Numbers`.
+- El nombre de un método o función debe comenzar con un verbo y usar mayúsculas como separadores de palabras, y minúsculas para el resto de la palabra. El primer carácter del nombre del método o función debe estar en minúscula. Este tipo de convención se llama **camelCase**. Por ejemplo, `reverseString`, y `multiply2Numbers`.
+- El nombre de un atributo privado en una clase debe ir precedido por el carácter 'm'. Después de preceder 'm', se seguirán las mismas reglas que para el nombre de la clase. El carácter 'm' también precede a otros modificadores de nombre, como 'p' para punteros. Por ejemplo, `m_reverseString`, y `m_pMultiply2Numbers`.
+- El nombre de una variable debe comenzar con un alfabeto. Se pueden usar dígitos en el nombre de la variable, pero solo después del alfabeto. No se pueden usar símbolos especiales en los nombres de las variables, excepto el guión bajo ('_'). No se pueden usar palabras reservadas para los nombres de las variables. Por ejemplo, `var1`, `var2`, y `product`.
+- El nombre de una variable puntero debe ir precedido por 'p' y colocar el asterisco '*' cerca del nombre de la variable en lugar del tipo de puntero. Por ejemplo, `p_var1`, y `p_var2`.
+- El nombre de una variable referencia debe ir precedido por 'r'. Por ejemplo, `r_var1`, y `r_var2`.
+- El nombre de una variable estática debe ir precedido por 's'. Por ejemplo, `s_var1`, y `s_var2`.
+- El nombre de una constante global debe estar todo en mayúsculas separadas con '_'. Por ejemplo, `PI`, y `MAX_VALUE`.
+
+Espero que esto te sea útil. 😊
+
 
 
 ## Bibliografía
@@ -289,3 +307,7 @@ El target `.PHONY` en un Makefile se utiliza para indicar que los targets que se
 [20] Free Software Foundation, “GNU Make”, 2022. [En línea]. Disponible: https://runebook.dev/es/docs/gnu_make/using-variables#:~:text=C%C3%B3mo%20utilizar%20variables%20Una%20variable%20es%20un%20nombre,previos%2C%20recetas%20y%20otras%20partes%20del%20archivo%20MAKE [Consultado: 8 ene. 2024]. 
 
 [21] J. Vandehey. “What is the purpose of .PHONY in a makefile?”. [En línea]. Disponible: https://stackoverflow.com/questions/2145590/what-is-the-purpose-of-phony-in-a-makefile [Consultado: 8 ene. 2024]. 
+
+[22] D. van Heesch. “Doxygen My Project: Overview”. [En línea]. Disponible: https://www.doxygen.nl/manual/index.html [Consultado: 8 ene. 2024]. 
+
+[23] Google. “Google C++ Style Guide”. [En línea]. Disponible: https://google.github.io/styleguide/cppguide.html [Consultado: 8 ene. 2024]. 
