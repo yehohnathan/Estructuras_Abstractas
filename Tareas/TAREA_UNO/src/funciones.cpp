@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -32,6 +33,7 @@ void opcionDificultad(ValorObtenido& valores){
 
     case 2:
         cout << "\n---------------------------------------- MODO DIFICIL -----------------------------------------" << endl;
+        dificultadDificil(valores);
         break;
     
     default:
@@ -82,11 +84,62 @@ void dificultadNormal(ValorObtenido valores){
         cout << "\nLo siento mucho pero haz perdido :<" << endl;
         cout << "Valor deseado: " << valores.valorDeseado <<endl;
     }
-    
+
 }
 
-void dificultadDificil(ValorObtenido& valores){
+void dificultadDificil(ValorObtenido valores){
+    // Ingresa el intervalo, obtiene el valor deseado y número de intentos
     intervaloValores(valores);
+    // Se instancia la variable que contiene el intento del usuario
+    int intento;
+
+    // While que se repite hazta que el usuario gane o pierda (n_intentos = 0)
+    while (valores.n_intentos != 0)
+    {
+        // Al inicio de cada ciclo while se le pide al usuario que adivide un número,
+        // su intento será colocado en la variable intento.
+        cout << "\nAdivina el valor deseado: ";
+        cin >> intento;
+
+        if (intento == valores.valorDeseado)    // Adivino el número
+        {
+            cout << "\nFelicidades, encontraste adivinaste el numero buscado!!!" << endl;
+            break;  // Realiza un break para salir del ciclo while
+        }
+        else if (abs(intento - valores.valorDeseado) >= 15){
+            // Si la resta en valor absoluto es mayor a 20, significa que intento
+            // esta muy lejos de ser el valor deseado.
+            cout << "CONGELADO! Muy lejos del numero buscado." << endl;
+            valores.n_intentos--;   // Se le resta 1 a n_intentos
+        }
+        else if (abs(intento - valores.valorDeseado) >= 10){
+            // Si la resta en valor absoluto es mayor a 15, significa que intento
+            // esta lejos de ser el valor deseado.
+            cout << "FRIO! Lejos del numero buscado." << endl;
+            valores.n_intentos--;   // Se le resta 1 a n_intentos
+        }
+        else if (abs(intento - valores.valorDeseado) >= 5){
+            // Si la resta en valor absoluto es mayor a 10, significa que intento
+            // esta cerca de ser el valor deseado.
+            cout << "CALIENTE! Un poco cerca del numero buscado." << endl;
+            valores.n_intentos--;   // Se le resta 1 a n_intentos
+        }
+        else{
+            // Si se llega a este punto, significa que el intento es menor a 10, por
+            // lo que se esta muy cerca del valor deseado.
+            cout << "HIERVIENDO! Cerca del numero buscado." << endl;
+            valores.n_intentos--;   // Se le resta 1 a n_intentos
+        }
+    }
+
+    // Terminado el ciclo while, con n_interos = 0, significa que si intento es diferente
+    // a valor deseado, entonces no se encontró el valor deseado.
+    if (intento != valores.valorDeseado)
+    {
+        // Le muestra al usuario el mensaje de pérdida y el valor deseado.
+        cout << "\nLo siento mucho pero haz perdido :<" << endl;
+        cout << "Valor deseado: " << valores.valorDeseado <<endl;
+    }
 }
 
 void intervaloValores(ValorObtenido& valores){
