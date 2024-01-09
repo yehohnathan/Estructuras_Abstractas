@@ -42,36 +42,45 @@ void opcionDificultad(ValorObtenido& valores){
     cout << "\n-------------------------------------- FIN DEL PROGRAMA ---------------------------------------" << endl;       
 }
 
-void dificultadNormal(ValorObtenido& valores){
+void dificultadNormal(ValorObtenido valores){
+    // Ingresa el intervalo, obtiene el valor deseado y número de intentos
     intervaloValores(valores);
-    cout << valores.valorDeseado << endl;
 
+    // Se instancia la variable que contiene el intento del usuario
     int intento;
+
+    // While que se repite hazta que el usuario gane o pierda (n_intentos = 0)
     while (valores.n_intentos != 0)
     {
-        cout << "Adivina el valor deseado: ";
+        // Al inicio de cada ciclo while se le pide al usuario que adivide un número,
+        // su intento será colocado en la variable intento.
+        cout << "\nAdivina el valor deseado: ";
         cin >> intento;
 
-        if (intento == valores.valorDeseado)
+        if (intento == valores.valorDeseado)    // Adivino el número
         {
             cout << "\nFelicidades, encontraste adivinaste el numero buscado!!!" << endl;
-            break;
+            break;  // Realiza un break para salir del ciclo while
         }
-        else if (intento > valores.valorDeseado)
-        {
+        else if (intento > valores.valorDeseado) 
+        {   // Se le pide al usuario que intente con un número menor
             cout << "El numero buscado es menor" << endl;
-            valores.n_intentos--;
+            valores.n_intentos--;   // Se le resta 1 a n_intentos
         }
         else
-        {
+        {   // Se le pide al usuario que intente con un número mayor
             cout << "El numero buscado es mayor" << endl;
-            valores.n_intentos--;
+            valores.n_intentos--;   // Se le resta 1 a n_intentos
         }
     }
 
+    // Terminado el ciclo while, con n_interos = 0, significa que si intento es diferente
+    // a valor deseado, entonces no se encontró el valor deseado.
     if (intento != valores.valorDeseado)
     {
+        // Le muestra al usuario el mensaje de pérdida y el valor deseado.
         cout << "\nLo siento mucho pero haz perdido :<" << endl;
+        cout << "Valor deseado: " << valores.valorDeseado <<endl;
     }
     
 }
