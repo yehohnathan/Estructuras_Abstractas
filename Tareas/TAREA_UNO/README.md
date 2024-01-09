@@ -1,10 +1,41 @@
 # TAREA 1: Teoría, juego y makefiles.
 
-## Instrucciones del juego: Adivina el entero
+## Adivina el entero
+### Instrucciones de ejecución:
+Para iniciar la ejecución del programa, simplemente escribe el comando `make` en la ubicación donde hayas descargado este repositorio. A continuación, se muestra un ejemplo de cómo ejecutarlo en la terminal:
 
+```
+PS D:\UCR\S8\EstructurasAbstractas\ie0217\Tareas\TAREA_UNO> make
+```
+
+### Reutilizar el código fuente:
+Si el lector desea utilizar el código fuente para disfrutar de este juego, solo será necesario contar con los archivos `funciones.cpp` y `funciones.hpp`, ya que contienen toda la lógica necesaria para su funcionamiento. Para ejecutar el juego en otro `archivo.cpp`, bastará con incluir la siguiente porción de código:
+
+```cpp
+#include "funciones.hpp"
+
+int main() {
+    // Definición de la estructura para almacenar el valor deseado y la cantidad de intentos
+    ValorObtenido valores;
+
+    // Mostrar el menú del juego
+    menuJuego();
+
+    // Seleccionar la dificultad y configurar los parámetros del juego
+    opcionDificultad(valores);
+}
+```
+
+En este fragmento de código:
+- `ValorObtenido valores`: representa una estructura que almacena el valor buscado y la cantidad de intentos disponibles para el usuario.
+  
+- `menuJuego()`: se encarga exclusivamente de mostrar las dos dificultades disponibles en el juego "Adivina el entero".
+
+- `opcionDificultad(valores)`: elige la dificultad y, dentro de cada una, establece el intervalo, el valor deseado, y la lógica para determinar si el usuario ha ganado o perdido.
 
 ## Parte Teórica:
 ### Aprendamos más sobre C++
+
 
 1. **¿Cuál es la principal diferencia entre C y C++?**
 
@@ -131,7 +162,8 @@ El puntero `this` en C++ es un puntero que está disponible solo dentro de las f
 
 
 Un ejemplo sencillo:
-```
+
+```cpp
 #include <iostream>
 
 class Ejemplo {
@@ -259,10 +291,6 @@ Existen varias convenciones para nombrar variables, clases, funciones, atributos
 - El nombre de una variable referencia debe ir precedido por 'r'. Por ejemplo, `r_var1`, y `r_var2`.
 - El nombre de una variable estática debe ir precedido por 's'. Por ejemplo, `s_var1`, y `s_var2`.
 - El nombre de una constante global debe estar todo en mayúsculas separadas con '_'. Por ejemplo, `PI`, y `MAX_VALUE`.
-
-Espero que esto te sea útil. 😊
-
-
 
 ## Bibliografía
 [1] SoftZone, "Diferencias entre C y C++: ¿qué lenguaje de programación es mejor?", SoftZone, 28 oct. 2020. [En línea]. Disponible en: https://www.softzone.es/noticias/general/diferencias-c-c-plus-plus/. [Consultado: 7 ene. 2024].
