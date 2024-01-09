@@ -13,10 +13,19 @@
 #ifndef FUNCIONES_HPP
 #define FUNCIONES_HPP
 
+struct ValorObtenido {
+    int valorDeseado;
+    int n_intentos;
+
+    // Constructor:
+    ValorObtenido() : valorDeseado(0), n_intentos(0) {} 
+
+};
+
 void menuJuego();
-void dificultad();
-
-
+void opcionDificultad(ValorObtenido& valores);
+void intervaloValores(ValorObtenido& valores);
+int valorDeseado(int num1, int num2);
 
 
 #endif

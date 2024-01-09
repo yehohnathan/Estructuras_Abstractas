@@ -1,6 +1,10 @@
 #include "funciones.hpp"
+#include <iostream>
+using namespace std;
 
 int main(){
-        menuJuego();
-        dificultad();
+    ValorObtenido valores;
+
+    menuJuego();
+    opcionDificultad(valores);
 }
