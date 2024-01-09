@@ -9,7 +9,6 @@
  * 
  */
 
-
 #ifndef FUNCIONES_HPP
 #define FUNCIONES_HPP
 
@@ -17,7 +16,7 @@ struct ValorObtenido {
     int valorDeseado;
     int n_intentos;
 
-    // Constructor:
+    // Constructor: Se encarga de inicializar sus valores como cero
     ValorObtenido() : valorDeseado(0), n_intentos(0) {} 
 
 };

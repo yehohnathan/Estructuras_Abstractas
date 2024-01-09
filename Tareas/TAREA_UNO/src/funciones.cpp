@@ -74,6 +74,9 @@ void dificultadNormal(ValorObtenido valores){
             cout << "El numero buscado es mayor" << endl;
             valores.n_intentos--;   // Se le resta 1 a n_intentos
         }
+
+        // Se le pide al usuario que intente con un número mayor
+        cout << "Numero de intentos disponible " << valores.n_intentos << endl;
     }
 
     // Terminado el ciclo while, con n_interos = 0, significa que si intento es diferente
@@ -130,6 +133,9 @@ void dificultadDificil(ValorObtenido valores){
             cout << "HIERVIENDO! Cerca del numero buscado." << endl;
             valores.n_intentos--;   // Se le resta 1 a n_intentos
         }
+
+        // Se le pide al usuario que intente con un número mayor
+        cout << "Numero de intentos disponible: " << valores.n_intentos << endl;
     }
 
     // Terminado el ciclo while, con n_interos = 0, significa que si intento es diferente
