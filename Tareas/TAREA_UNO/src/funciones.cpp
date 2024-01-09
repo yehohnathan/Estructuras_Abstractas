@@ -6,11 +6,13 @@
 
 using namespace std;
 
+/**
+ * @brief Muestra el menú principal del juego.
+ */
 void menuJuego(){
     cout << "\n----------------------------------- MENU: Adivina el entero -----------------------------------" << endl;
     cout << "El numero indica la dificultad: " << endl;
     cout << "1. Dificultad Normal: Si no logras adivinar el numero entero en el primer intento," << endl;
-
     cout << "   recibiras indicaciones sobre si el numero ingresado es menor o mayor al esperado.\n" << endl;
 
     cout << "2. Dificultad Dificil: Si no logras adivinar el numero entero en el primer intento," << endl;
@@ -19,6 +21,10 @@ void menuJuego(){
     cout << "   e HIRVIENDO si el valor ingresado esta muy cerca del esperado.\n" << endl;
 }
 
+/**
+ * @brief Permite al usuario seleccionar la dificultad del juego.
+ * @param valores Estructura que almacena el valor deseado y el número de intentos.
+ */
 void opcionDificultad(ValorObtenido& valores){
     int opcion;
     cout << "Selecciona la dificultad ingresas 1 o 2: ";
@@ -44,6 +50,10 @@ void opcionDificultad(ValorObtenido& valores){
     cout << "\n-------------------------------------- FIN DEL PROGRAMA ---------------------------------------" << endl;       
 }
 
+/**
+ * @brief Implementa la dificultad normal del juego.
+ * @param valores Estructura que almacena el valor deseado y el número de intentos.
+ */
 void dificultadNormal(ValorObtenido valores){
     // Ingresa el intervalo, obtiene el valor deseado y número de intentos
     intervaloValores(valores);
@@ -89,6 +99,11 @@ void dificultadNormal(ValorObtenido valores){
     }
 
 }
+
+/**
+ * @brief Implementa la dificultad difícil del juego.
+ * @param valores Estructura que almacena el valor deseado y el número de intentos.
+ */
 
 void dificultadDificil(ValorObtenido valores){
     // Ingresa el intervalo, obtiene el valor deseado y número de intentos
@@ -148,6 +163,10 @@ void dificultadDificil(ValorObtenido valores){
     }
 }
 
+/**
+ * @brief Permite al usuario ingresar el intervalo de valores para el juego.
+ * @param valores Estructura que almacena el valor deseado y el número de intentos.
+ */
 void intervaloValores(ValorObtenido& valores){
     // Se pide al usuario el intervalo de valores deseado para los números enteros
     int valor1, valor2;
@@ -171,6 +190,12 @@ void intervaloValores(ValorObtenido& valores){
     valores.n_intentos = (valor2 - valor1 + 1)/3;
 }
 
+/**
+ * @brief Genera un valor deseado aleatorio dentro del intervalo especificado.
+ * @param num1 Extremo inferior del intervalo.
+ * @param num2 Extremo superior del intervalo.
+ * @return Valor deseado aleatorio.
+ */
 int valorDeseado(int num1, int num2){
     // Número de posibles valores para valorDeseado
     int rango = num2 - num1 + 1;
