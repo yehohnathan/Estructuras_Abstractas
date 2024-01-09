@@ -24,6 +24,9 @@ struct ValorObtenido {
 
 void menuJuego();
 void opcionDificultad(ValorObtenido& valores);
+void dificultadNormal(ValorObtenido& valores);
+void dificultadDificil(ValorObtenido& valores);
+void opcionDificultad(ValorObtenido& valores);
 void intervaloValores(ValorObtenido& valores);
 int valorDeseado(int num1, int num2);
 

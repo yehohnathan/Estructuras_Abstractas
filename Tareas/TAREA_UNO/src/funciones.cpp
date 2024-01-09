@@ -27,7 +27,7 @@ void opcionDificultad(ValorObtenido& valores){
     {
     case 1:
         cout << "\n----------------------------------------- MODO NORMAL -----------------------------------------" << endl;
-        intervaloValores(valores);
+        dificultadNormal(valores);
         break;
 
     case 2:
@@ -35,9 +35,49 @@ void opcionDificultad(ValorObtenido& valores){
         break;
     
     default:
-        cout << "Malo";
+        cout << "No ingresaste un valor valido" << endl;
         break;
     }
+
+    cout << "\n-------------------------------------- FIN DEL PROGRAMA ---------------------------------------" << endl;       
+}
+
+void dificultadNormal(ValorObtenido& valores){
+    intervaloValores(valores);
+    cout << valores.valorDeseado << endl;
+
+    int intento;
+    while (valores.n_intentos != 0)
+    {
+        cout << "Adivina el valor deseado: ";
+        cin >> intento;
+
+        if (intento == valores.valorDeseado)
+        {
+            cout << "\nFelicidades, encontraste adivinaste el numero buscado!!!" << endl;
+            break;
+        }
+        else if (intento > valores.valorDeseado)
+        {
+            cout << "El numero buscado es menor" << endl;
+            valores.n_intentos--;
+        }
+        else
+        {
+            cout << "El numero buscado es mayor" << endl;
+            valores.n_intentos--;
+        }
+    }
+
+    if (intento != valores.valorDeseado)
+    {
+        cout << "\nLo siento mucho pero haz perdido :<" << endl;
+    }
+    
+}
+
+void dificultadDificil(ValorObtenido& valores){
+    intervaloValores(valores);
 }
 
 void intervaloValores(ValorObtenido& valores){
