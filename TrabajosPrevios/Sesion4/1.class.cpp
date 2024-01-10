@@ -13,6 +13,9 @@ class Molde{
         double ancho;
         double altura;
 
+        // Contructor:
+        Molde(double largo_p, double ancho_p, double alto_p): largo(largo_p), ancho(ancho_p), altura(alto_p) {}
+
         Molde(){
             cout << "Esto se ejecuta en cada instanciacion" << endl;
             cout << "Iniciando un objeto de la clase Molde" << endl;
@@ -32,7 +35,7 @@ class Molde{
 };
 
 int main(){
-    Molde pared;    // Instancia del objeto "pared" basado en la clase Molde
+    Molde pared(10.0, 20.0, 30.0);    // Instancia del objeto "pared" basado en la clase Molde
 
     // Asignación de valores al objeto pared
     pared.largo = 400.5;  
