@@ -11,7 +11,7 @@
 using namespace std;
 
 // Instancia del Bubble Sort: utiliza un ciclo for para recorrer la misma cantidad
-// de pasoso que el tamaño del array (size)
+// de pasos que el tamaño del array (size)
 void bubbleSort(int array[], int size) {    // Recibe un array de tamaño variable y el tamaño
 
     // Ciclo para acceder a cada elemento del array
