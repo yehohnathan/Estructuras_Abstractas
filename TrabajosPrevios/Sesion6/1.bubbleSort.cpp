@@ -44,7 +44,7 @@ void printArray(int array[], int size) {
 int main() {
     int data[] = {-2, 45, 0, 11, -1};
 
-    // find array's length
+    // Encuentra el tamaño del arreglo
     int size = sizeof(data) / sizeof(data[0]);
 
     bubbleSort(data, size);
