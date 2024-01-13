@@ -4,16 +4,18 @@
 #include <vector>
 #include "libro.hpp"
 
+// Se crea una clase llama Biblioteca
 class Biblioteca {
-public:
-    void agregarLibro(
-        const std::string& titulo,
-        const std::string& autor
-    );
-    void mostrarCatalogo();
+    public:     // Se instancias los miembros publicos, se pueden heredar.
+        void agregarLibro(      // Función miembro
+            const std::string& titulo,  // Valor con referencia a un string 
+            const std::string& autor    // Valor con referencia a un string 
 
-private:
-    std::vector<Libro> catalogo;
-};
+        );
+        void mostrarCatalogo(); // Función miembro
+
+    private:    // Instancia del unico miembro privado, no heredable.
+        std::vector<Libro> catalogo;
+    };
 
 #endif

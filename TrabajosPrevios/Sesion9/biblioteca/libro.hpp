@@ -3,14 +3,16 @@
 
 #include <string>
 
+// Creación de la clase Libro
 class Libro {
-public:
-    Libro(const std::string& titulo, const std::string& autor);
-    void mostrarInfo() const;
+    public:
+        // Contructor:
+        Libro(const std::string& titulo, const std::string& autor);
+        void mostrarInfo() const;
 
-private:
-    std::string titulo;
-    std::string autor;
+    private:    // Valores privados, no heredables
+        std::string titulo;
+        std::string autor;
 };
 
 #endif
