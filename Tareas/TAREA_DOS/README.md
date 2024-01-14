@@ -735,32 +735,291 @@ Los templates son útiles en situaciones en las que se quiere escribir código q
 
 - La implementación de clases o funciones que realizan operaciones de entrada/salida con valores de cualquier tipo.
 
-
 11. **Memoria Dinámica:** ¿Qué es la memoria dinámica en C++ y cuándo se utiliza comúnmente?
 
-La memoria dinámica en C++ es una forma de gestionar la memoria que permite reservar y liberar espacio en tiempo de ejecución, es decir, durante la ejecución del programa. La memoria dinámica se utiliza cuando no se conoce de antemano el tamaño o el número de los datos que se van a manejar, o cuando se quiere optimizar el uso de la memoria, evitando desperdiciar o faltar espacio.
-
-La memoria dinámica se reserva en una zona especial de la memoria llamada heap o montículo, que se diferencia de la pila o stack, donde se almacenan las variables estáticas, es decir, las que se declaran en el programa y tienen un tamaño fijo.
+La memoria dinámica en C++ es una forma de gestionar la memoria que permite reservar y liberar espacio en tiempo de ejecución, es decir, durante la ejecución del programa. La memoria dinámica se utiliza cuando no se conoce de antemano el tamaño o el número de los datos que se van a manejar, o cuando se quiere optimizar el uso de la memoria, evitando desperdiciar o faltar espacio. Las variables que se utilizan en la memoria dinámica se reserva en una zona especial de la memoria llamada heap o montículo, que se diferencia de la pila o stack, donde se almacenan las variables estáticas, es decir, las que se declaran en el programa y tienen un tamaño fijo.
 
 Para reservar memoria dinámica en C++, se usa el operador `new`, que devuelve un puntero al espacio asignado. Para liberar la memoria dinámica, se usa el operador delete, que recibe el puntero al espacio a liberar. Es importante liberar la memoria dinámica que ya no se usa, para evitar fugas de memoria o memory leaks, que pueden causar problemas de rendimiento o errores en el programa.
 
 12. **Diferencia entre `new` y `malloc` en C++:** ¿Cuándo debería utilizar uno sobre el otro?
 
+La diferencia entre `new` y `malloc` en C++ es que `new` es un operador que solo se puede usar en C++, mientras que `malloc` es una función estándar de C que se puede usar tanto en C como en C++ [9]. Ambos sirven para reservar memoria dinámica pero tienen algunas diferencias importantes [9]:
+
+- `new` llama al constructor del objeto que se crea, y `delete` llama al destructor del objeto que se destruye, mientras que `malloc` y `free` solo asignan y liberan la memoria, sin ejecutar ningún código del objeto.
+
+- `new` devuelve un puntero al tipo de dato que se solicita, mientras que `malloc` devuelve un puntero a `void`, que debe ser convertido al tipo adecuado.
+
+- `new` lanza una excepción de tipo `bad_alloc` si no hay suficiente memoria disponible, mientras que `malloc` devuelve un puntero nulo.
+
+- `new` permite sobrecargar su comportamiento mediante el operador de sobrecarga, mientras que `malloc` no lo permite legalmente.
+
+En general, se recomienda usar `new` y `delete` en C++, ya que son más seguros, más flexibles y más eficientes que `malloc` y `free`. Solo se debería usar `malloc` y `free` en C++, cuando haya alguna razón específica para hacerlo, como por ejemplo, cuando se trabaja con código heredado de C, o cuando se necesita una compatibilidad con archivos de cabecera de C [9].
+
 13. **Fuga de Memoria (Memory Leak):** ¿Qué es una fuga de memoria y cómo puede evitarse en programas en C++?
+
+Una fuga de memoria es una situación en la que se reserva memoria dinámica, es decir, memoria que se asigna y se libera en tiempo de ejecución, y no se libera cuando ya no se necesita [10]. Esto provoca que la memoria se desperdicie y que el programa consuma más recursos de los necesarios, lo que puede afectar al rendimiento, la estabilidad y la seguridad del programa.
+
+Para evitar las fugas de memoria en programas en C++, se deben seguir algunas buenas prácticas, como:
+
+- Usar el operador `delete` o `delete []` para liberar la memoria asignada con el operador `new` o `new []`, respectivamente.
+
+- Usar punteros inteligentes, como `unique_ptr`, `shared_ptr` o `weak_ptr`, que gestionan automáticamente la memoria asignada y la liberan cuando el puntero sale de su ámbito o deja de ser referenciado.
+
+- Usar la técnica RAII (Resource Acquisition Is Initialization), que consiste en encapsular la adquisición y liberación de recursos, incluida la memoria, dentro de objetos cuyo tiempo de vida está determinado por el ámbito. Un copcepto parecido al destructor presente en las clases.
+
+- Usar contenedores de la biblioteca estándar, como `vector`, `list` o `map`, que gestionan la memoria de forma interna y evitan la asignación manual de memoria.
+
 
 14. **Punteros Inteligentes (Smart Pointers):** Explica el concepto de punteros inteligentes y proporciona ejemplos de su uso.
 
+Los punteros inteligentes son una característica de C++ que permite gestionar la memoria dinámica de forma automática y segura, evitando problemas como fugas de memoria, punteros colgantes o accesos inválidos. Los punteros inteligentes son clases que envuelven a un puntero sin formato y se encargan de asignar y liberar la memoria cuando el puntero inteligente se crea o se destruye [11].
+
+Los punteros inteligentes se pueden clasificar en tres tipos principales, según su semántica de propiedad [11]:
+
+- `unique_ptr`: Permite exactamente un único propietario del puntero subyacente. No se puede copiar, solo se puede mover. Se usa para expresar la propiedad exclusiva de un recurso.
+
+- `shared_ptr`: Permite varios propietarios del puntero subyacente. Se puede copiar y mover. Usa un contador de referencias para saber cuántos propietarios hay. Se usa para expresar la propiedad compartida de un recurso.
+
+- `weak_ptr`: Permite acceder al puntero subyacente sin ser propietario. No se puede desreferenciar directamente, solo se puede convertir a un `shared_ptr`. No incrementa el contador de referencias. Se usa para romper ciclos de referencias entre `shared_ptr`.
+
+Un ejemplo de uso de punteros inteligentes en C++ sería el siguiente, haciendo uso de copilot debido a su complejidad:
+
+```cpp
+#include <iostream>
+#include <memory>       // Para usar los punteros inteligentes
+using namespace std;
+
+// Definimos una clase llamada Persona, que tiene un nombre y una edad
+class Persona {
+  private:
+    string nombre;
+    int edad;
+
+  public:
+    // Constructor de la clase Persona, que recibe el nombre y la edad como parámetros
+    Persona(string n, int e) {
+      nombre = n;
+      edad = e;
+      cout << "\nSe ha creado la persona " << nombre << endl;
+    }
+
+    // Destructor de la clase Persona
+    ~Persona() {
+      cout << "\nSe ha destruido la persona " << nombre << endl;
+    }
+
+    // Método para mostrar los datos de la persona
+    void mostrar() {
+      cout << "Nombre: " << nombre << endl;
+      cout << "Edad: " << edad << endl;
+    }
+};
+
+int main() {
+  // Creamos un puntero inteligente de tipo unique_ptr que apunta a una persona
+  unique_ptr<Persona> p1(new Persona("Juan", 25));
+
+  // Llamamos al método mostrar del objeto apuntado por el puntero inteligente
+  p1->mostrar();
+
+  // Creamos otro puntero inteligente de tipo unique_ptr que apunta a otra persona
+  unique_ptr<Persona> p2(new Persona("Ana", 23));
+
+  // Llamamos al método mostrar del objeto apuntado por el puntero inteligente
+  p2->mostrar();
+
+  // No podemos copiar un unique_ptr, pero podemos transferir su propiedad usando move
+  // p1 = p2; daría un error de compilación
+  p1 = move(p2); // Esto transfiere la propiedad de p2 a p1, y p2 queda vacío
+
+  // Creamos un puntero inteligente de tipo shared_ptr que apunta a una persona
+  shared_ptr<Persona> p3(new Persona("Luis", 27));
+
+  // Llamamos al método mostrar del objeto apuntado por el puntero inteligente
+  p3->mostrar();
+
+  // Creamos otro puntero inteligente de tipo shared_ptr que apunta al mismo objeto que p3
+  shared_ptr<Persona> p4 = p3; // Esto incrementa el contador de referencias de p3
+  
+  // Llamamos al método mostrar del objeto apuntado por el puntero inteligente
+  p4->mostrar();
+  
+  // Creamos un puntero inteligente de tipo weak_ptr que apunta al mismo objeto que p3 y p4
+  weak_ptr<Persona> p5 = p3; // Esto no incrementa el contador de referencias de p3
+  
+  // No podemos llamar al método mostrar directamente desde el weak_ptr, tenemos que convertirlo a un shared_ptr
+  // p5->mostrar(); daría un error de compilación
+  shared_ptr<Persona> p6 = p5.lock(); // Esto crea un shared_ptr a partir del weak_ptr
+  
+  // Llamamos al método mostrar del objeto apuntado por el puntero inteligente
+  p6->mostrar();
+
+  return 0;
+}
+```
+
+El resultado de ejecutar este código sería:
+
+```
+Se ha creado la persona Juan
+Nombre: Juan
+Edad: 25
+
+Se ha creado la persona Ana
+Nombre: Ana
+Edad: 23
+
+Se ha destruido la persona Juan
+
+Se ha creado la persona Luis
+Nombre: Luis
+Edad: 27
+Nombre: Luis
+Edad: 27
+Nombre: Luis
+Edad: 27
+
+Se ha destruido la persona Ana
+
+Se ha destruido la persona Luis
+```
+
+Como se puede observar, los punteros inteligentes se encargan de llamar al destructor de la persona cuando ya no hay ningún propietario del puntero subyacente, lo que evita tener que usar `delete` manualmente.
+
+
 15. **Diferencia entre `delete` y `delete[]` en C++:** ¿En qué contexto se utilizaría cada uno?
+
+La diferencia entre `delete` y `delete[]` en C++ es que `delete` se usa para liberar la memoria asignada con `new` para un solo objeto, mientras que `delete[]` se usa para liberar la memoria asignada con `new[]` para un array de objetos. Por ejemplo:
+
+```cpp
+int main() {
+    // Creamos un puntero a un entero y le asignamos memoria dinámica con new
+    int* p = new int;
+
+    // Hacemos algo con el puntero
+    *p = 10;
+
+    // Se imprime el contenido del puntero en la terminal
+    cout << *p << endl;
+
+    // Liberamos la memoria con delete
+    delete p;
+
+    // Creamos un puntero a un array de enteros y le asignamos memoria dinámica con new[],
+    // en donde guardaría teóricamente 5 espacios de 4 bytes por ser enteros.
+    int* q = new int[5];
+
+    // Hacemos algo con el puntero
+    for (int i = 0; i < 5; i++) {
+      q[i] = i + 1;
+
+      // Se imprime el contenido del puntero
+      cout << q[i] << " ";
+    }
+    cout << endl;
+
+    // Liberamos la memoria con delete[]
+    delete[] q;
+
+    return 0;
+}
+```
 
 16. **Algoritmos de Ordenamiento:** ¿Qué es un algoritmo de ordenamiento y por qué son importantes en programación?
 
+Un algoritmo de ordenamiento es un conjunto de instrucciones que toma un arreglo o una lista como entrada y organiza los elementos en un orden particular, como numérico o alfabético, ascendente o descendente. Son importantes en programación porque permiten optimizar la búsqueda y el acceso a la información almacenada en bases de datos, listas o matrices, así como facilitar la extensión de otras operaciones a más tipos de datos. 
+
+Algunos ejemplos de algoritmos de ordenamiento son la ordenación por selección (SelectSort), la ordenación por burbuja (BubbleSort), la ordenación por inserción, la ordenación por combinación, la ordenación rápida (QuickSort) y la ordenación por montículo.
+
+
 17. **Bubble Sort:** Explica el funcionamiento del algoritmo de ordenamiento "Bubble Sort". ¿Cuál es su complejidad temporal en el peor caso?
+
+El algoritmo de ordenamiento Bubble Sort es un método simple que consiste en comparar cada elemento de una lista con el siguiente, e intercambiarlos de posición si están en el orden incorrecto. Este proceso se repite varias veces hasta que no se requieren más intercambios, lo que significa que la lista está ordenada.
+
+La complejidad temporal del algoritmo en el peor caso es de O(n^2), lo que significa que el tiempo de ejecución aumenta cuadráticamente con el tamaño de la lista. Esto ocurre cuando la lista está ordenada de forma inversa, y se requieren el máximo número de comparaciones e intercambios.
+
+![Uso del Bubble Sort](https://www.w3resource.com/w3r_images/bubble-short.png)
 
 18. **QuickSort:** Describe el algoritmo de ordenamiento "QuickSort". ¿Cuál es su ventaja principal sobre otros algoritmos de ordenamiento?
 
+El algoritmo de ordenamiento "QuickSort" es un método basado en la técnica de "divide y vencerás", que consiste en lo siguiente:
+
+- Elegir un elemento de la lista al que llamaremos pivote.
+
+- Particionar la lista en dos sublistas, una con los elementos menores o iguales que el pivote, y otra con los elementos mayores o iguales que el pivote.
+
+- Ordenar recursivamente cada sublista, aplicando el mismo proceso.
+
+- Unir las sublistas ordenadas para obtener la lista final ordenada.
+
+La ventaja principal de QuickSort sobre otros algoritmos de ordenamiento es que es muy rápido y eficiente en el caso promedio, ya que tiene una complejidad temporal de O(n log n) en el mejor de los casos y una complejidad temporal de O(n^2), donde n es el número de elementos de la lista.
+
+![Uso del Quick Sort](https://favtutor.com/resources/images/uploads/mceu_46432632011643441346270.png)
+
 19. **Diferencia entre Ordenamiento Estable e Inestable:** ¿Cuál es la diferencia entre un algoritmo de ordenamiento estable y uno inestable? Proporciona ejemplos de cada uno.
 
+La diferencia entre un algoritmo de ordenamiento estable y uno inestable es que un algoritmo de ordenamiento estable mantiene el orden relativo de los elementos que son iguales según el criterio de ordenación, mientras que un algoritmo de ordenamiento inestable puede alterar ese orden [12]. A continuación se obtiene un ejemplo obtenido con Copilot:
+
+Supongamos que tenemos una lista de personas con su nombre y su edad, y queremos ordenarla por edad de menor a mayor. La lista original sería:
+
+```
+Juan, 25
+Ana, 23
+Luis, 27
+Pedro, 25
+```
+
+- Si usamos un algoritmo de ordenamiento estable, como la ordenación por inserción, el resultado sería:
+
+```
+Ana, 23
+Juan, 25
+Pedro, 25
+Luis, 27
+```
+
+Como se puede observar, el orden relativo de Juan y Pedro se ha mantenido, ya que ambos tienen la misma edad y Juan estaba antes que Pedro en la lista original.
+
+- Si usamos un algoritmo de ordenamiento inestable, como la ordenación rápida, el resultado podría ser:
+
+```
+Ana, 23
+Pedro, 25
+Juan, 25
+Luis, 27
+```
+
+Como se puede observar, el orden relativo de Juan y Pedro se ha alterado, ya que Pedro ha quedado antes que Juan, a pesar de que tenían la misma edad y Juan estaba antes que Pedro en la lista original.
+
+La importancia de la estabilidad de un algoritmo de ordenamiento depende de la aplicación que se le dé. En algunos casos, puede ser irrelevante, pero en otros, puede ser crucial. Por ejemplo, si se quiere ordenar una lista de registros por varios criterios, se debe usar un algoritmo de ordenamiento estable para preservar el orden de los criterios anteriores [12].
+
 20. **Merge Sort:** Habla sobre el algoritmo de ordenamiento "Merge Sort". ¿Cuál es su complejidad temporal y en qué situaciones es preferible su uso?
+
+El algoritmo de ordenamiento "Merge Sort" es un método basado en la técnica de "divide y vencerás", que consiste en lo siguiente [13]:
+
+- Elegir un elemento de la lista al que llamaremos pivote.
+
+- Particionar la lista en dos sublistas, una con los elementos menores o iguales que el pivote, y otra con los elementos mayores que el pivote.
+
+- Ordenar recursivamente cada sublista, aplicando el mismo proceso.
+
+- Unir las sublistas ordenadas para obtener la lista final ordenada.
+
+La complejidad temporal del algoritmo en el caso promedio y en el peor caso es de O(n log n), donde n es el número de elementos de la lista. Esto significa que el tiempo de ejecución aumenta proporcionalmente al producto del número de elementos y el logaritmo del número de elementos [13].
+
+El algoritmo de Merge Sort tiene algunas ventajas sobre otros algoritmos de ordenamiento, como:
+
+- Es un algoritmo estable, es decir, que mantiene el orden relativo de los elementos que son iguales según el criterio de ordenación.
+
+- Es un algoritmo de ordenamiento externo, es decir, que puede ordenar datos que no caben en la memoria principal, usando archivos auxiliares.
+
+- Es un algoritmo fácilmente paralelizable, es decir, que se puede ejecutar en varios procesadores o hilos simultáneamente, aprovechando la división y la unión de las sublistas.
+
+A pesar de poder sonar igual al algoritmo Quick Sort, la diferencia radica en que el merge sort es un algoritmo estable, es decir, que respeta el orden original de los elementos iguales, mientras que el quick sort es un algoritmo inestable, es decir, que puede alterar ese orden. El merge sort requiere más memoria adicional que el quick sort, ya que necesita crear una lista auxiliar para la fusión. El quick sort es más adecuado para ordenar listas pequeñas o casi ordenadas, mientras que el merge sort es más eficiente para ordenar listas grandes o desordenadas [14].
+
+Otra diferencia entre el quick sort y el merge sort es que el quick sort es un algoritmo de ordenamiento que usa un elemento pivote para dividir la lista en dos partes y ordenarlas recursivamente, mientras que el merge sort es un algoritmo de ordenamiento que divide la lista en dos mitades, las ordena por separado y las fusiona [14].
+
+![Uso del Merge Sort](https://th.bing.com/th/id/OIP.0UPWjRHiyYmwJh9N2pDTDQAAAA?rs=1&pid=ImgDetMain)
 
 ## Bibliografía:
 
@@ -779,3 +1038,15 @@ Para reservar memoria dinámica en C++, se usa el operador `new`, que devuelve u
 [7] Microsoft, “Sobrecarga de operadores,” Microsoft Learn, 12 oct. 2023. [En línea]. Disponible: https://learn.microsoft.com/es-es/cpp/cpp/operator-overloading?view=msvc-170. [Accedido: 14-Ene-2024].
 
 [8] Microsoft, “Plantillas (C++),” Microsoft Learn, 02 abr. 2023. [En línea]. Disponible: https://learn.microsoft.com/es-es/cpp/cpp/templates-cpp?view=msvc-170. [Accedido: 14-Ene-2024].
+
+[9] S. Bhandari, “Diferencia entre Malloc y New,” 11 jun. 2023. [En línea]. Disponible: https://askanydifference.com/es/difference-between-malloc-and-new-with-table/. [Accedido: 14-Ene-2024].
+
+[10] J. Córdova, “¿Cómo puedo detectar fugas de memoria en mi programa en C utilizando DEV C++?” Stack Overflow en español, 28 mar. 2017. [En línea]. Disponible: https://es.stackoverflow.com/questions/58659/cómo-puedo-detectar-fugas-de-memoria-en-mi-programa-en-c-utilizando-dev-c. [Accedido: 14-Ene-2024].
+
+[11] Microsoft, “Punteros inteligentes (C++ moderno)” Microsoft Learn, 16 jun. 2023. [En línea]. Disponible: https://learn.microsoft.com/es-es/cpp/cpp/smart-pointers-modern-cpp?view=msvc-170. [Accedido: 14-Ene-2024].
+
+[12] “Diferencias entre un algoritmo de ordenación y una red neuronal,” 07 jul. 2017. [En línea]. Disponible: https://dsentidades.blogspot.com/2017/07/diferencias-entre-un-algoritmo-de.html. [Accedido: 14-Ene-2024].
+
+[13] DelftStack, “Merge Sort,” [En línea]. Disponible: https://www.delftstack.com/es/tutorial/algorithm/merge-sort/. [Accedido: 14-Ene-2024].
+
+[14] B. Matos, “Merge y Quick Sort: conozca cuál es el mejor algoritmo,” Alura Cursos Online, 24 jun. 2022. [En línea]. Disponible: https://www.aluracursos.com/blog/merge-y-quick-sort-conozca-cual-es-el-mejor-algoritmo. [Accedido: 14-Ene-2024].
