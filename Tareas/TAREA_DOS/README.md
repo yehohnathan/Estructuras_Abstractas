@@ -8,28 +8,28 @@
 
 1. **Conceptos Fundamentales:** Define qué es la programación orientada a objetos y explica sus principios fundamentales.
 
-    La programación orientada a objetos (POO) es un paradigma de programación que se basa en la organización de datos y comportamientos en estructuras llamadas "objetos". Estos objetos representan entidades o conceptos del mundo real, y tienen características (atributos) y comportamientos (métodos) que los definen y diferencian. La POO permite crear software más organizado, reutilizable y fácil de entender, al alinear más estrechamente el código con cómo vemos y categorizamos el mundo real [1].
+La programación orientada a objetos (POO) es un paradigma de programación que se basa en la organización de datos y comportamientos en estructuras llamadas "objetos". Estos objetos representan entidades o conceptos del mundo real, y tienen características (atributos) y comportamientos (métodos) que los definen y diferencian. La POO permite crear software más organizado, reutilizable y fácil de entender, al alinear más estrechamente el código con cómo vemos y categorizamos el mundo real [1].
 
-    Los principios fundamentales de la POO son [1]:
+Los principios fundamentales de la POO son [1]:
 
-    - **Abstracción:** Consiste en simplificar la realidad, seleccionando solo las propiedades y comportamientos esenciales de cada objeto, e ignorando los detalles irrelevantes. La abstracción facilita el diseño del software, al reducir la complejidad y mantener el enfoque en la funcionalidad clave.
+- **Abstracción:** Consiste en simplificar la realidad, seleccionando solo las propiedades y comportamientos esenciales de cada objeto, e ignorando los detalles irrelevantes. La abstracción facilita el diseño del software, al reducir la complejidad y mantener el enfoque en la funcionalidad clave.
 
-    - **Encapsulamiento:** Consiste en ocultar los detalles de implementación de cada objeto, y exponer solo una interfaz pública que defina cómo interactuar con él. El encapsulamiento protege la integridad de los datos, al evitar el acceso o la modificación no autorizada de los atributos internos. También favorece la modularidad y el bajo acoplamiento, al permitir cambiar el funcionamiento interno de un objeto sin afectar al resto del sistema. Se suele separar en miembros: `private`, `public` y `protected`.
+- **Encapsulamiento:** Consiste en ocultar los detalles de implementación de cada objeto, y exponer solo una interfaz pública que defina cómo interactuar con él. El encapsulamiento protege la integridad de los datos, al evitar el acceso o la modificación no autorizada de los atributos internos. También favorece la modularidad y el bajo acoplamiento, al permitir cambiar el funcionamiento interno de un objeto sin afectar al resto del sistema. Se suele separar en miembros: `private`, `public` y `protected`.
 
-    - **Herencia:** Consiste en establecer una relación jerárquica entre clases, de forma que una clase hija herede las propiedades y métodos de una clase padre, y pueda añadir o modificar los suyos propios. La herencia permite reutilizar el código existente, al evitar la repetición de atributos y métodos comunes. También facilita la especialización y la generalización, al permitir definir clases más específicas a partir de clases más generales.
+- **Herencia:** Consiste en establecer una relación jerárquica entre clases, de forma que una clase hija herede las propiedades y métodos de una clase padre, y pueda añadir o modificar los suyos propios. La herencia permite reutilizar el código existente, al evitar la repetición de atributos y métodos comunes. También facilita la especialización y la generalización, al permitir definir clases más específicas a partir de clases más generales.
 
-    - **Polimorfismo:** Consiste en la capacidad de un objeto de comportarse de diferentes formas según el contexto, manteniendo la misma interfaz. El polimorfismo permite aprovechar la herencia, al permitir que un objeto de una clase hija pueda ser tratado como un objeto de una clase padre, y ejecutar el método adecuado según su tipo real. También mejora la flexibilidad y la extensibilidad, al permitir añadir nuevas clases sin modificar el código existente.
+- **Polimorfismo:** Consiste en la capacidad de un objeto de comportarse de diferentes formas según el contexto, manteniendo la misma interfaz. El polimorfismo permite aprovechar la herencia, al permitir que un objeto de una clase hija pueda ser tratado como un objeto de una clase padre, y ejecutar el método adecuado según su tipo real. También mejora la flexibilidad y la extensibilidad, al permitir añadir nuevas clases sin modificar el código existente.
 
 
 2. **Herencia:** Explica el concepto de herencia en programación orientada a objetos y proporciona un ejemplo práctico.
 
-    La herencia, como se explicó anteriormente, es uno de los principios fundamentales de la programación orientada a objetos, que permite definir nuevas clases a partir de otras ya existentes, reutilizando su código y añadiendo nuevas funcionalidades. La herencia establece una relación jerárquica entre clases, de forma que una clase hija hereda las propiedades y métodos de una clase madre, y puede modificarlos o ampliarlos según sus necesidades [1].
+La herencia, como se explicó anteriormente, es uno de los principios fundamentales de la programación orientada a objetos, que permite definir nuevas clases a partir de otras ya existentes, reutilizando su código y añadiendo nuevas funcionalidades. La herencia establece una relación jerárquica entre clases, de forma que una clase hija hereda las propiedades y métodos de una clase madre, y puede modificarlos o ampliarlos según sus necesidades [1].
 
-    Un ejemplo práctico de herencia en la vida real sería el siguiente:
+Un ejemplo práctico de herencia en la vida real sería el siguiente:
 
-    Cuando se entra a una universidad nos registramos con los datos que el estado tiene de nosotros, como lo es nuestro nombre y edad, en este caso omitiendo el genero y lugar de nacimiento. Cuando entramos a la universidad no es necesario ingresar los datos mencionados, ya el estado los tiene, pero si es importante incluir otro nuevos que utilizará para identificarnos como el carnet y la carrera que estamos cursando; estos datos no apareceran en el estado ya que no son necesarios.
+Cuando se entra a una universidad nos registramos con los datos que el estado tiene de nosotros, como lo es nuestro nombre y edad, en este caso omitiendo el genero y lugar de nacimiento. Cuando entramos a la universidad no es necesario ingresar los datos mencionados, ya el estado los tiene, pero si es importante incluir otro nuevos que utilizará para identificarnos como el carnet y la carrera que estamos cursando; estos datos no apareceran en el estado ya que no son necesarios.
 
-    Interpretando el ejemplo como un código de C++:
+Interpretando el ejemplo como un código de C++:
 
 ```cpp
 // Definimos una clase base llamada Persona, que tiene dos atributos: nombre y edad
@@ -87,7 +87,7 @@ p1.mostrar();
 e1.mostrar();
 ```
 
-    El resultado de ejecutar este código sería:
+El resultado de ejecutar este código sería:
 
 ```
 Nombre: Leidy
@@ -98,30 +98,35 @@ Carrera: Ing. Electrica
 Carnet: C04879
 ```
 
-    Como se puede observar, la clase Estudiante hereda los atributos nombre y edad, y el método mostrar de la clase Persona, y además define su propio atributo carrera y modifica el método mostrar para incluirlo. De esta forma, se aprovecha el código existente y se evita la repetición innecesaria. 
+Como se puede observar, la clase Estudiante hereda los atributos nombre y edad, y el método mostrar de la clase Persona, y además define su propio atributo carrera y modifica el método mostrar para incluirlo. De esta forma, se aprovecha el código existente y se evita la repetición innecesaria. 
 
 3. **Encapsulamiento:** ¿Qué es el encapsulamiento en OOP y por qué es importante? Proporciona ejemplos de cómo se implementa en C++.
 
-    El encapsulamiento es otro de los principios fundamentales de la programación orientada a objetos, que consiste en ocultar los detalles de implementación de cada objeto, y exponer solo una interfaz pública que defina cómo interactuar con él. El encapsulamiento permite [2]:
+El encapsulamiento es otro de los principios fundamentales de la programación orientada a objetos, que consiste en ocultar los detalles de implementación de cada objeto, y exponer solo una interfaz pública que defina cómo interactuar con él. El encapsulamiento permite [2]:
 
-    - Proteger los datos de manipulaciones no autorizadas.
-    - Facilitar el mantenimiento del código al aislar cambios internos.
-    - Promover la modularidad y la reutilización del código.
-    - Permitir implementar lógica de validación y control de acceso.
+- Proteger los datos de manipulaciones no autorizadas.
 
-    En C++, el encapsulamiento se implementa mediante el uso de modificadores de acceso, que son palabras clave que indican el nivel de visibilidad de los atributos y métodos de una clase. Los modificadores de acceso más comunes son [2]:
+- Facilitar el mantenimiento del código al aislar cambios internos.
 
-    - **public:** Los atributos y métodos públicos se pueden acceder desde cualquier parte del código, incluso desde fuera de la clase. Este es el nivel más bajo de encapsulamiento, y se usa para definir la interfaz pública de la clase.
-    - **private:** Los atributos y métodos privados solo se pueden acceder desde dentro de la misma clase. Este es el nivel más alto de encapsulamiento, y se usa para ocultar los detalles internos de la clase.
-    - **protected:** Los atributos y métodos protegidos se pueden acceder desde dentro de la misma clase o desde sus clases derivadas. Este es un nivel intermedio de encapsulamiento, y se usa para permitir la herencia entre clases.
+- Promover la modularidad y la reutilización del código.
 
-    Un ejemplo de cómo se implementa el encapsulamiento en la vida real:
+- Permitir implementar lógica de validación y control de acceso.
 
-    En el caso que se desea sacar una tarjeta de crédito el banco nos registra dentro de su sistema web con los datos del titular de la cuenta, nosotros, el saldo actual de la cuenta y los intereses que va a ir generando la tarjeta de crédito conforme la usamos; estos 3 datos deben ser privados solo podrán ser modificados por el banco con una posible autorización del titular. 
+En C++, el encapsulamiento se implementa mediante el uso de modificadores de acceso, que son palabras clave que indican el nivel de visibilidad de los atributos y métodos de una clase. Los modificadores de acceso más comunes son [2]:
+
+- **public:** Los atributos y métodos públicos se pueden acceder desde cualquier parte del código, incluso desde fuera de la clase. Este es el nivel más bajo de encapsulamiento, y se usa para definir la interfaz pública de la clase.
+
+- **private:** Los atributos y métodos privados solo se pueden acceder desde dentro de la misma clase. Este es el nivel más alto de encapsulamiento, y se usa para ocultar los detalles internos de la clase.
+
+- **protected:** Los atributos y métodos protegidos se pueden acceder desde dentro de la misma clase o desde sus clases derivadas. Este es un nivel intermedio de encapsulamiento, y se usa para permitir la herencia entre clases.
+
+Un ejemplo de cómo se implementa el encapsulamiento en la vida real:
+
+En el caso que se desea sacar una tarjeta de crédito el banco nos registra dentro de su sistema web con los datos del titular de la cuenta, nosotros, el saldo actual de la cuenta y los intereses que va a ir generando la tarjeta de crédito conforme la usamos; estos 3 datos deben ser privados solo podrán ser modificados por el banco con una posible autorización del titular. 
     
-    Cuando vamos a un cajero y queremos ver el estado de nuestra cuenta o depositar dinero, lo podemos hacer sin problemas pero nunca vamos a poder cambiar el nombre del titular, los intereses o modificar el saldo a no ser que se haga un deposito o se sustraiga dinero de una compra. También hay una carga de intereses, supongamos del 10%, de no pagar la tarjeta a tiempo, esto no puede ser modificado por el titular de ninguna forma de no pagar.
+Cuando vamos a un cajero y queremos ver el estado de nuestra cuenta o depositar dinero, lo podemos hacer sin problemas pero nunca vamos a poder cambiar el nombre del titular, los intereses o modificar el saldo a no ser que se haga un deposito o se sustraiga dinero de una compra. También hay una carga de intereses, supongamos del 10%, de no pagar la tarjeta a tiempo, esto no puede ser modificado por el titular de ninguna forma de no pagar.
 
-    Interpretando el ejemplo como un código de C++:  
+Interpretando el ejemplo como un código de C++:  
 
 ```cpp
 // Definimos una clase llamada CuentaBancaria, que tiene tres atributos y tres métodos
@@ -188,17 +193,148 @@ c1.depositar(10);
 c1.retirar(20);
 ```
 
-El resultado de ejecutar este código sería:
-
 ```
 El saldo de la cuenta de Yehohnathan es de 5 pesetas
 Se ha depositado 10 pesetas en la cuenta de Yehohnathan
 La cantidad debe ser positiva y no superar el saldo
 ```
 
-    Como se puede observar, los atributos titular, saldo e interes son privados, por lo que no se pueden acceder directamente desde fuera de la clase. Solo se pueden modificar o consultar mediante los métodos públicos consultarSaldo, depositar y retirar, que implementan la lógica necesaria para validar y actualizar los datos.
+Como se puede observar, los atributos titular, saldo e interes son privados, por lo que no se pueden acceder directamente desde fuera de la clase. Solo se pueden modificar o consultar mediante los métodos públicos consultarSaldo, depositar y retirar, que implementan la lógica necesaria para validar y actualizar los datos.
 
 4. **Polimorfismo:** Describe el polimorfismo y proporciona ejemplos de polimorfismo de tipo y polimorfismo de operador en C++.
+
+    El polimorfismo es una característica de la programación orientada a objetos que permite que un mismo nombre o símbolo pueda representar diferentes comportamientos según el contexto, somo lo puede ser la sobreescritura de funciones. El polimorfismo facilita la abstracción, la reutilización y la extensibilidad del código, al permitir que un mismo código pueda funcionar con diferentes tipos de datos [3].
+
+    Existen dos tipos principales de polimorfismo en C++: el polimorfismo en tiempo de compilación y el polimorfismo en tiempo de ejecución [3].
+
+- El polimorfismo en tiempo de compilación se resuelve en la fase de compilación, y se basa en la sobrecarga de funciones u operadores. La sobrecarga consiste en definir varias funciones u operadores con el mismo nombre, pero con diferentes parámetros o tipos de retorno. El compilador elige la versión adecuada según los argumentos que se le pasan [3]. Por ejemplo, se tiene el código extraido con ayuda de Copilot:
+
+```cpp
+// Sobrecarga de función
+// Definimos dos funciones con el mismo nombre, pero con diferentes parámetros
+int suma(int a, int b) {
+  return a + b;
+}
+
+double suma(double a, double b) {
+  return a + b;
+}
+
+// Llamamos a la función suma con diferentes argumentos
+int x = suma(2, 3); // Se llama a la versión que recibe enteros
+double y = suma(2.5, 3.5); // Se llama a la versión que recibe reales
+
+// Sobrecarga de operador
+// Definimos una clase llamada Vector, que representa un vector matemático
+class Vector {
+
+  private:
+    double x; // La coordenada x del vector
+    double y; // La coordenada y del vector
+
+  public:
+    // Constructor de la clase Vector, que recibe las coordenadas como parámetros
+    Vector(double x, double y) {
+      this->x = x;
+      this->y = y;
+    }
+
+    // Sobrecargamos el operador + para sumar dos vectores
+    Vector operator+(const Vector& v) {
+      // Devolvemos un nuevo vector con la suma de las coordenadas
+      return Vector(x + v.x, y + v.y);
+    }
+};
+
+// Creamos dos objetos de la clase Vector
+Vector v1(1, 2);
+Vector v2(3, 4);
+
+// Sumamos los dos vectores usando el operador +
+Vector v3 = v1 + v2; // Se llama al método operator+ de la clase Vector
+```
+
+- El polimorfismo en tiempo de ejecución se resuelve en la fase de ejecución, y se basa en la herencia y el enlace dinámico. La herencia consiste en definir nuevas clases a partir de otras ya existentes, reutilizando su código y añadiendo nuevas funcionalidades. El enlace dinámico consiste en que el comportamiento de un objeto depende de su tipo real, y no del tipo de la variable que lo referencia. Para lograr esto, se usa la palabra clave virtual, que indica que el método puede ser redefinido por las clases derivadas [3]. Por ejemplo, se tiene el código extraido con ayuda de Copilot:
+
+```cpp
+// Definimos una clase base llamada Figura, que representa una figura geométrica
+class Figura {
+
+  protected: // Los atributos protegidos se pueden acceder desde las clases derivadas
+    double area; // El área de la figura
+
+  public:
+    // Constructor de la clase Figura, que recibe el área como parámetro
+    Figura(double a) {
+      area = a;
+    }
+
+    // Método virtual para mostrar el área de la figura
+    // Al ser virtual, puede ser redefinido por las clases derivadas
+    virtual void mostrarArea() {
+      cout << "El área de la figura es " << area << endl;
+    }
+};
+
+// Definimos una clase derivada llamada Circulo, que hereda de la clase Figura
+class Circulo : public Figura { // Usamos la palabra clave public para indicar que hereda de Figura
+
+  private: // Los atributos privados solo se pueden acceder desde la misma clase
+    double radio; // El radio del círculo
+
+  public:
+    // Constructor de la clase Circulo, que recibe el radio como parámetro
+    // y llama al constructor de la clase Figura con el área calculada
+    Circulo(double r) : Figura(3.14 * r * r) {
+      radio = r;
+    }
+
+    // Método para mostrar el área del círculo, que redefine el método de la clase Figura
+    void mostrarArea() {
+      cout << "El área del círculo de radio " << radio << " es " << area << endl;
+    }
+};
+
+// Definimos una clase derivada llamada Cuadrado, que hereda de la clase Figura
+class Cuadrado : public Figura { // Usamos la palabra clave public para indicar que hereda de Figura
+
+  private: // Los atributos privados solo se pueden acceder desde la misma clase
+    double lado; // El lado del cuadrado
+
+  public:
+    // Constructor de la clase Cuadrado, que recibe el lado como parámetro
+    // y llama al constructor de la clase Figura con el área calculada
+    Cuadrado(double l) : Figura(l * l) {
+      lado = l;
+    }
+
+    // Método para mostrar el área del cuadrado, que redefine el método de la clase Figura
+    void mostrarArea() {
+      cout << "El área del cuadrado de lado " << lado << " es " << area << endl;
+    }
+};
+
+// Creamos un objeto de la clase Circulo
+Circulo c(2);
+
+// Creamos un objeto de la clase Cuadrado
+Cuadrado q(3);
+
+// Creamos un puntero de la clase Figura
+Figura* f;
+
+// Apuntamos el puntero a un objeto de la clase Circulo
+f = &c;
+
+// Llamamos al método mostrarArea usando el puntero
+f->mostrarArea(); // Se llama al método de la clase Circulo
+
+// Apuntamos el puntero a un objeto de la clase Cuadrado
+f = &q;
+
+// Llamamos al método mostrarArea usando el puntero
+f->mostrarArea(); // Se llama al método de la clase Cuadrado
+```
 
 5. **Abstracción:** ¿Cómo se relaciona la abstracción con la programación orientada a objetos? Proporciona ejemplos de cómo aplicar la abstracción en un contexto de programación.
 
@@ -237,3 +373,5 @@ La cantidad debe ser positiva y no superar el saldo
 [1] L. Jiménez, “Principios de la Programación Orientada a Objetos Explicados,” [En línea]. Disponible: https://leojimzdev.com/principios-de-la-programacion-orientada-a-objetos-explicados/. [Accedido: 14-Ene-2024].
 
 [2] D. Lara, “Encapsulamiento en la programación orientada a objetos,” Styde.net, 07 jul. 2015. [En línea]. Disponible: https://styde.net/encapsulamiento-en-la-programacion-orientada-a-objetos/. [Accedido: 14-Ene-2024].
+
+[3] Barcelona Geeks, “Polimorfismo en C#,” [En línea]. Disponible: https://barcelonageeks.com/polimorfismo-en-c/. [Accedido: 14-Ene-2024].
