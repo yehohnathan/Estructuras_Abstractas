@@ -22,7 +22,7 @@ class Pelicula : public MaterialAudiovisual
         void ponerInfoAdicional(string infoAdicional);
 
         /* El siguiente método le dirá al usuario si la Pelicula comprada es corta, mediana o larga
-        depediendo de la cantidad de hojas */
+        depediendo del valor de duration */
         void durationPelicula();
 
         /* Método que muestra información de todo el objeto Pelicula creado */

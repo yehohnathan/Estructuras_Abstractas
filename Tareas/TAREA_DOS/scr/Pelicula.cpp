@@ -1,4 +1,4 @@
-/* Se instancia el header que contiene la clase Noticia*/
+/* Se instancia el header que contiene la clase Pelicula*/
 #include "Pelicula.hpp"
 
 /* Se define el contructor */
@@ -28,7 +28,7 @@ void Pelicula::durationPelicula(){
 };
 
 void Pelicula :: mostrarInfo() {
-    /* Muestra la información de los atributos de la clase MaterialLectura*/
+    /* Muestra la información de los atributos de la clase MaterialAudiovisual*/
     MaterialAudiovisual::mostrarInfo();
     cout << "Informacion Adicional: " << infoAdicional << endl; 
 }
