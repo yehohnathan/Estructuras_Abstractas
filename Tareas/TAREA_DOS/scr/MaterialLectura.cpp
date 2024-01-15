@@ -20,7 +20,7 @@ MaterialLectura :: MaterialLectura(string titulo,  string grupo, string tipoMate
 }
 
 /* Se definen los métodos públicos creados en el header: */
-void MaterialLectura :: ponerTitulo(std::string titulo) {
+void MaterialLectura :: ponerTitulo(string titulo) {
   /* Asignar el valor del parámetro al atributo titulo */
   this->titulo = titulo;
 }
@@ -80,7 +80,6 @@ void MaterialLectura :: mostrarInfo() {
   cout << "Estado: " << estado << endl;
   cout << "Cantidad de hojas: " << cantidadHojas << endl;
   cout << "Precio: " << precio << endl;
-  cout << endl;
 }
 
 /* Destructor: si hubiera datos se liberarían acá*/

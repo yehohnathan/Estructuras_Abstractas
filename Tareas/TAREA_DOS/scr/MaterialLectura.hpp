@@ -18,9 +18,12 @@ class MaterialLectura
         string editorial;       /* Nombre de la editorial del libro o noticia*/
         string genero;          /* Genero de la libro o noticia*/
         string estado;          /* Para poder estado: disponible, prestado o reservado*/
-        int cantidadHojas;      /* Número entero de cantidad de hojas del libro o noticia*/
         double precio;          /* Valor del precio, también acepta decimales*/
 
+    protected:  /* Los atributos protected solo se pueden acceder desde la misma clase o 
+    clases derivadas*/
+        int cantidadHojas;      /* Número entero de cantidad de hojas del libro o noticia*/
+        
     public:     /* Los métodos públicos se pueden acceder desde cualquier parte */   
 
         /* Contructor: el usuario puede ingresar todos los datos del objeto si desea*/
