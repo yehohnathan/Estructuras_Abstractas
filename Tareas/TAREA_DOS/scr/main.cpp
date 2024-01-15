@@ -11,6 +11,8 @@ int main() {
 
     ptr_libro->mostrarInfo();
 
+    ptr_libro->sizeLibro();
+
     /* Libera espacio de la memoria*/
     delete ptr_libro;
 }

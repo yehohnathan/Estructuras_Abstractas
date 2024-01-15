@@ -16,10 +16,10 @@ void Libro::ponerInfoAdicional(string infoAdicional){
 }
 
 void Libro::sizeLibro(){
-    if(cantidadHojas >= 0 && cantidadHojas < 5) {
+    if(cantidadHojas >= 0 && cantidadHojas < 100) {
         cout << "El libro es corto, unicamente tiene " << cantidadHojas << " paginas."  << endl;
     }
-    else if(cantidadHojas >= 5 && cantidadHojas < 10) {
+    else if(cantidadHojas >= 100 && cantidadHojas < 200) {
         cout << "El libro es mediano, tiene " << cantidadHojas << " paginas."  << endl;
     }
     else {
@@ -30,7 +30,7 @@ void Libro::sizeLibro(){
 void Libro :: mostrarInfo() {
     /* Muestra la información de los atributos de la clase MaterialLectura*/
     MaterialLectura::mostrarInfo();
-    cout << "Informacion Adicional: " << infoAdicional << endl; 
+    cout << "\nInformacion Adicional: " << infoAdicional << endl; 
 }
 
 /* Destructor: si hubiera datos se liberarían acá*/
