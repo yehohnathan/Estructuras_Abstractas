@@ -3,8 +3,8 @@
 #include "MaterialAudiovisual.hpp"
 
 /* Se define el contructor */
-MaterialAudiovisual :: MaterialAudiovisual(string titulo,  string grupo, string tipoMaterial, 
-                                           string autor,string duracion,  string genero, 
+MaterialAudiovisual :: MaterialAudiovisual(string titulo, string grupo, string autor, 
+                                           string tipoMaterial, string genero, int duracion, 
                                            string estado, double precio) {
 
     /* Se asignan los valores de parámetros a los atributos con el puntero this, el cual
@@ -20,7 +20,7 @@ MaterialAudiovisual :: MaterialAudiovisual(string titulo,  string grupo, string 
 }
 
 /* Se definen los métodos públicos creados en el header: */
-void MaterialAudiovisual :: ponerTitulo(std::string titulo) {
+void MaterialAudiovisual :: ponerTitulo(string titulo) {
     /* Asignar el valor del parámetro al atributo titulo */
     this->titulo = titulo;
 }
@@ -41,7 +41,7 @@ void MaterialAudiovisual :: ponerAutor(string autor) {
 }
 
 
-void MaterialAudiovisual :: ponerDuracion(string duracion) {
+void MaterialAudiovisual :: ponerDuracion(int duracion) {
     /* Asignar el valor del parámetro al atributo duracion */
     this->duracion = duracion;
 }
@@ -70,7 +70,7 @@ void MaterialAudiovisual :: mostrarInfo() {
     cout << "Grupo: " << grupo << endl;
     cout << "Tipo de material: " << tipoMaterial << endl;
     cout << "Autor: " << autor << endl;
-    cout << "Duracion: " << duracion << endl;
+    cout << "Duracion: " << duracion << " minutos"<< endl;
     cout << "Genero: " << genero << endl;
     cout << "Estado: " << estado << endl;
     cout << "Precio: " << precio << endl;

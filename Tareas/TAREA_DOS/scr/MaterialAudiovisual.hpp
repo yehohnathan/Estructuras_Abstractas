@@ -15,24 +15,27 @@ class MaterialAudiovisual
         string autor;           /* Escribir el nombre del autor de pelicula o podcast*/
         string tipoMaterial;    /* Para asignar el tipo de material (pelicula o podcast)*/
         string genero;          /* Genero de la libro o noticia*/
-        string duracion;        /* Duracción en "XX:YY" de la pelicula o podcast*/
         string estado;          /* Para poder estado: disponible, prestado o reservado*/
         double precio;          /* Valor del precio, también acepta decimales*/
+    
+    protected:  /* Los atributos protected solo se pueden acceder desde la misma clase o 
+    clases derivadas*/
+        int duracion;        /* Duracción en minutos de la pelicula o podcast*/
 
     public:     /* Los métodos públicos se pueden acceder desde cualquier parte */   
 
         /* Contructor: el usuario puede ingresar todos los datos del objeto si desea*/
-        MaterialAudiovisual(string titulo, string grupo, string tipoMaterial, string autor, string duracion, 
-                        string genero, string estado, double precio);
+        MaterialAudiovisual(string titulo, string grupo, string autor, string tipoMaterial, 
+                            string genero, int duracion, string estado, double precio);
         
-        /* Si hubo algun error, el usuario puede cambiar el contenido de un atributo
+        /* Si hubo algun error, el usuario p uede cambiar el contenido de un atributo
         manualmente con los siguientes métodos: */
         void ponerTitulo(string titulo);
         void ponerGrupo(string grupo);
         void ponerAutor(string autor);
         void ponerTipoMaterial(string tipoMaterial);
         void ponerGenero(string genero);
-        void ponerDuracion(string duracion);
+        void ponerDuracion(int duracion);
         void ponerEstado(string estado);
         void ponerPrecio(double precio);
 
