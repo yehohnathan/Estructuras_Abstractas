@@ -70,17 +70,17 @@ void MaterialLectura :: ponerPrecio(double precio) {
 }
 
 void MaterialLectura :: mostrarInfo() {
-  /* Asignar el valor del parámetro al atributo precio */
+  /* Muestra la información de los atributos de la clase MaterialLectura*/
   cout << "\nTitulo: " << titulo << endl;
-    cout << "Grupo: " << grupo << endl;
-    cout << "Tipo de material: " << tipoMaterial << endl;
-    cout << "Autor: " << autor << endl;
-    cout << "Editorial: " << editorial << endl;
-    cout << "Genero: " << genero << endl;
-    cout << "Estado: " << estado << endl;
-    cout << "Cantidad de hojas: " << cantidadHojas << endl;
-    cout << "Precio: " << precio << endl;
-    cout << endl;
+  cout << "Grupo: " << grupo << endl;
+  cout << "Tipo de material: " << tipoMaterial << endl;
+  cout << "Autor: " << autor << endl;
+  cout << "Editorial: " << editorial << endl;
+  cout << "Genero: " << genero << endl;
+  cout << "Estado: " << estado << endl;
+  cout << "Cantidad de hojas: " << cantidadHojas << endl;
+  cout << "Precio: " << precio << endl;
+  cout << endl;
 }
 
 /* Destructor: si hubiera datos se liberarían acá*/

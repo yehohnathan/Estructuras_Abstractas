@@ -19,7 +19,7 @@ class MaterialLectura
         string genero;          /* Genero de la libro o noticia*/
         string estado;          /* Para poder estado: disponible, prestado o reservado*/
         int cantidadHojas;      /* Número entero de cantidad de hojas del libro o noticia*/
-        double precio;          /* Valor del precio, también hacerpta decimales*/
+        double precio;          /* Valor del precio, también acepta decimales*/
 
     public:     /* Los métodos públicos se pueden acceder desde cualquier parte */   
 
