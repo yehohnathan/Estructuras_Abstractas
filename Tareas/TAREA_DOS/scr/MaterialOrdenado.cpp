@@ -5,12 +5,12 @@
 MaterialOrdenado::MaterialOrdenado() {}
 
 /* Método para agregar los punteros referente a los objetos de MaterialLectura (Libro o Noticia)*/
-void MaterialOrdenado::agregarMaterialLectura(MaterialLectura* material) {
+void MaterialOrdenado::agregarMaterial(MaterialLectura* material) {
     materialesLectura.push_back(material);  /* Se agrega el objeto al final del vector */
 }
 
 /* Método para agregar los punteros referente a los objetos de MaterialAudiovisual (Pelicula o Podcast)*/
-void MaterialOrdenado::agregarMaterialAudiovisual(MaterialAudiovisual* material) {
+void MaterialOrdenado::agregarMaterial(MaterialAudiovisual* material) {
     materialesAudiovisuales.push_back(material); /* Se agrega el objeto al final del vector */
 }
 
@@ -18,7 +18,7 @@ void MaterialOrdenado::agregarMaterialAudiovisual(MaterialAudiovisual* material)
 un puntero del objeto MaterialLectura. Este caso unicamente se elimina material con poner
 el titulo, debido a que poner el tipo de material significaría borrar todo lo referente a este
 y no tendría mucho sentido*/
-void MaterialOrdenado::eliminarMaterialLectura(const string& titulo) {
+void MaterialOrdenado::eliminarMaterial(const string& titulo) {
     /* Se realiza un ciclo en donde se recorré todo el vector hasta encontrar el objeto
     de MaterialLectura que coincide con el titulo ingresado para eliminar*/
     for (size_t i = 0; i < materialesLectura.size(); ++i) { 
@@ -33,11 +33,7 @@ void MaterialOrdenado::eliminarMaterialLectura(const string& titulo) {
             return;
         }
     }
-}
 
-/* Método para eliminar el espacio en memoria perteneciente a la información que tiene
-un puntero del objeto MaterialAudiovisual*/
-void MaterialOrdenado::eliminarMaterialAudiovisual(const string& titulo) {
     /* Se realiza un ciclo en donde se recorré todo el vector hasta encontrar el objeto
     de MaterialAudiovisual que coincide con el titulo ingresado para eliminar*/
     for (size_t i = 0; i < materialesAudiovisuales.size(); ++i) {

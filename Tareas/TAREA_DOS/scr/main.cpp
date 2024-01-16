@@ -33,10 +33,10 @@ int main() {
     MaterialOrdenado tienda;
 
     /* Se agregan los materiales a al objeto tienda*/
-    tienda.agregarMaterialLectura(ptr_libro);
-    tienda.agregarMaterialLectura(ptr_noticia);
-    tienda.agregarMaterialAudiovisual(ptr_pelicula);
-    tienda.agregarMaterialAudiovisual(ptr_podcast);
+    tienda.agregarMaterial(ptr_libro);
+    tienda.agregarMaterial(ptr_noticia);
+    tienda.agregarMaterial(ptr_pelicula);
+    tienda.agregarMaterial(ptr_podcast);
 
     /* Se realizan operaciones pertenecientes a MaterialOrdenado con el objeto tienda*/
     /* Se muestran los objetos almacenados por el tipo de material */
@@ -48,7 +48,7 @@ int main() {
     tienda.buscarMaterialPorTitulo("Choque de dos vehiculos");
 
     /* Ahora se prueba con eliminar el Libro y volviendolo a llamar*/
-    tienda.eliminarMaterialLectura("Orgullo y prejuicio (Spanish Edition)");
+    tienda.eliminarMaterial("Orgullo y prejuicio (Spanish Edition)");
     tienda.buscarMaterialPorTipo("Libro");  /* No aparece porque se eliminó*/
 
     /* Libera espacio de la memoria*/
