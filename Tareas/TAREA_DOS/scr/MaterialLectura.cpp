@@ -82,5 +82,14 @@ void MaterialLectura :: mostrarInfo() {
   cout << "Precio: " << precio << endl;
 }
 
+
+string MaterialLectura :: mostrarTitulo() {
+  return titulo;
+}
+
+string MaterialLectura :: mostrarTipoMaterial() {
+  return tipoMaterial;
+}
+
 /* Destructor: si hubiera datos se liberarían acá*/
 MaterialLectura :: ~MaterialLectura() {}

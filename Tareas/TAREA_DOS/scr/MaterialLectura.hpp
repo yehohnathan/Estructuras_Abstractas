@@ -42,6 +42,11 @@ class MaterialLectura
         void ponerCantidadHojas(int cantidadHojas);
         void ponerPrecio(double precio);
 
+        /* Para poder seleccionar con base al titulo y tipoMaterial es necesario crear funciones
+        string que simplemente regresen lo ingresado por el usuario: */
+        string mostrarTitulo();
+        string mostrarTipoMaterial();
+
         /* Método que muestra información de todo el objeto creado */
         void mostrarInfo();
 

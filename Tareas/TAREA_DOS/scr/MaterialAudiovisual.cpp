@@ -77,5 +77,13 @@ void MaterialAudiovisual :: mostrarInfo() {
     cout << endl;
 }
 
+string MaterialAudiovisual :: mostrarTitulo() {
+    return titulo;
+}
+
+string MaterialAudiovisual :: mostrarTipoMaterial() {
+    return tipoMaterial;
+}
+
 /* Destructor: si hubiera datos se liberarían acá*/
 MaterialAudiovisual :: ~MaterialAudiovisual() {}

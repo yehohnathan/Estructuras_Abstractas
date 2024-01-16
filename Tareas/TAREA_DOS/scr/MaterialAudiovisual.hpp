@@ -42,6 +42,11 @@ class MaterialAudiovisual
         /* Método que muestra información de todo el objeto creado */
         void mostrarInfo();
 
+        /* Para poder seleccionar con base al titulo y tipoMaterial es necesario crear funciones
+        string que simplemente regresen lo ingresado por el usuario: */
+        string mostrarTitulo();
+        string mostrarTipoMaterial();
+
         /* Destructor: este realmente no se llega a utilizar porque no se
         usa memoria dinámica en la asignación de parámetros a los atributos*/
         ~MaterialAudiovisual();
