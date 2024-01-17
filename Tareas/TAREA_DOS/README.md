@@ -1,7 +1,109 @@
 # Tarea2: Teoría y aplicación en código de POO
 
 ## Código para tienda especializada en materiales de entretenimiento
+### Intrucciones de uso:
+
+Se han creado varias clases para la tienda, incluyendo tanto clases madre como clases derivadas. Así, el usuario puede instanciarlas mediante el código utilizando #include "clase.hpp". En el siguiente ejemplo de código, se utilizarán cuatro clases derivadas y dos clases madre para ilustrar la ejecución de un programa teórico:
+
+Se instancian las clases a utilizar:
+- **Clase derivadas de MaterialLectura**: Libro y Noticia.
+- **Clase derivadas de MaterialAudiovisual**: Pelicula y Podcast.
+- **Clase madre**: MaterialOrdenado y MaterialPrecio.
+
+```cpp
+#include "Libro.hpp"
+#include "Noticia.hpp"
+#include "Pelicula.hpp"
+#include "Podcast.hpp"
+#include "MaterialOrdenado.hpp"
+#include "MaterialPrecio.hpp"
+```
+
+Luego el usuario puede agregar librerías adicionales al código, por ejemplo:
+
+```cpp
+#include <iostream> """ Para el uso de cout """
+#include <vector>   """ Para creación de un posible vector para almacenar memoria"""
+```
+
+Ahora se realizan las creaciones de los objetos para Libro, Noticia, Pelicula y Podcast:
+
+```cpp
+/* Se cera un objeto utilizando memoria dinámica de la clase derivada Libro*/
+Libro* ptr_libro =  new Libro("Orgullo y prejuicio (Spanish Edition)", "1", "Libro", "Jane Austen", "Portal Libros", "Romance", "Disponible", 354, 11.99, " Aqui va toda la informacion adicional del libro");
+
+/* Se cera un objeto utilizando memoria dinámica de la clase derivada Noticia*/
+Noticia* ptr_noticia =  new Noticia("Choque de dos vehiculos", "2", "Noticia", "Patricio Estrella", "Canal 11", "Ultima Hora", "Reservado", 2, 6.00, " Aqui va toda la informacion adicional de la noticia");
+
+/* Se cera un objeto utilizando memoria dinámica de la clase derivada Pelicula*/
+Pelicula* ptr_pelicula =  new Pelicula("La guerra de los mundos", "3", "Steven Spielberg", "Pelicula", "Ficcion", 120, "Prestado", 5.99 , "Informacion adicional de la pelicula");
+
+/* Se cera un objeto utilizando memoria dinámica de la clase derivada Podcast*/
+Podcast* ptr_podcast =  new Podcast("Alex al habla", "4", "Alexelcapo", "Podcast", "Just Chating", 50, "Disponible", 0.0 , "Informacion adicional de la podcast");
+```
+
+En el código mostrado arriba, se crearon objetos mediante el uso de punteros y el `new`, por lo que al final del código hay que segurarse de hacer un `delete` a cada objeto creado.  Se aclara que cada vez que se vaya a crear un objeto de la clase Libro, Noticia, Pelicula o Podcast se necesita poner la información solicitada por la tarea y en orden. 
+
+Para crear un objeto de la clase **Libro y Noticia** hay que poner la información en el siguiente orden *titulo, grupo, tipo de material, autor, editorial, genero, estado, cantidad de hojas, precio e información adicional*. De forma análogola, para **Pelicula y Podcast** hay que poner información en la siguiente orden *titulo, grupo, tipo de material, autor, genero, duracion, estado, precio e información adicional*.
+
+Luego si se desea utilizar la clase **MaterialOrdenado**, significa que quieres ingresar a un objeto de esta clase la información objetida por otros objetos:
+
+```cpp
+MaterialOrdenado tienda;
+
+/* Con el método agregarMeterial se guarda la información en el objeto tienda */
+tienda.agregarMaterial(ptr_libro);
+tienda.agregarMaterial(ptr_noticia);
+tienda.agregarMaterial(ptr_pelicula);
+tienda.agregarMaterial(ptr_podcast);
+
+/* El siguiente método sirve para mostrar la información relacionada según el titulo */
+tienda.buscarMaterialPorTipo("Pelicula"); /* Corresponde a ptr_pelicula */
+tienda.buscarMaterialPorTipo("Libro");    /* Corresponde a ptr_libro */
+
+/* El siguiente método sirve para mostrar la información relacionada según el tipo de materiales */
+tienda.buscarMaterialPorTitulo("Alex al habla");            /* Corresponde a ptr_podcast*/
+tienda.buscarMaterialPorTitulo("Choque de dos vehiculos");  /* Corresponde a ptr_noticia*/
+
+/* Este método sirve para eliminar la información de un objeto ingresado anteriormente*/
+tienda.eliminarMaterial("Orgullo y prejuicio (Spanish Edition)"); /* Corresponde a ptr_libro */
+tienda.buscarMaterialPorTipo("Libro");  /* No aparece su información porque se eliminó*/
+```
+
+Por ultimo, si se desea utilizar la clase madre **MaterialPrecio** se debe crear objetos de esta clase que contengas la información del *titulo, tipo de material y precio* de las clases derivadas; se hace de esta forma porque no se encontró un código que pudiera juntos en un solo vector toda la información de las 4 clases derivadas.
+
+```cpp
+/* Se crea un objeto llamado ordenado, que tendra parte de la información de los objetos creados de las clases derivadas*/
+MaterialPrecio* ordenado = new MaterialPrecio("Orgullo y prejuicio","Libro", 11.99);
+MaterialPrecio* noticia_ordenado = new MaterialPrecio("Choque de dos vehiculos", "Noticia", 20.00);
+MaterialPrecio* pelicula_ordenado = new MaterialPrecio("La guerra de los mundos", "Pelicula", 5.99);
+MaterialPrecio* podcast_ordenado = new MaterialPrecio("Alex al habla", "Podcast", 0.00);                    
+
+/* Se ingresan objetos de la clase MaterialPrecio a un unico objeto MaterialPrecio dominante, mediante el uso del método "agregarMaterial"*/
+ordenado->agregarMaterial(ordenado);
+ordenado->agregarMaterial(noticia_ordenado);
+ordenado->agregarMaterial(pelicula_ordenado);
+ordenado->agregarMaterial(podcast_ordenado);
+
+/* Con el siguiente método "mostrarInfor" se muestra la información los datos agregados*/
+ordenado->mostrarInfo();
+
+/* Luego con el método "ordenarAscendente" se puede ordenar los datos según el precio de menor a mayor. Luego se muestra la información. */
+ordenado->ordenarAscendente();
+ordenado->mostrarInfo();
+
+/* Luego con el método "ordenarDescendente" se puede ordenar los datos según el precio de menor a mayor. Luego se muestra la información.*/
+ordenado->ordenarDescendente();
+ordenado->mostrarInfo();
+```
+
 ### Intrucciones de ejecución:
+
+Para ejecutar el código basta con escribir `make` en la terminal, estando claramente en la carpeta que contiene el MakeFile:
+
+```
+PS C:\ie0217\Tareas\TAREA_DOS make
+```
 
 ## Parte teórica:
 ### Conceptos de programación orientada a objetos:
