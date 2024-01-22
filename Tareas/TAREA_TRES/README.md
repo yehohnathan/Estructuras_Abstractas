@@ -434,14 +434,82 @@ std::for_each(v.begin(), v.end(),  {
 12. Definición de Expresiones Regulares:
 Defina qué son las expresiones regulares y proporcione un ejemplo simple.
 
+Las expresiones regulares son secuencias de caracteres que forman patrones de búsqueda o coincidencia. Se pueden usar para encontrar, reemplazar o validar cadenas de texto que siguen ciertas reglas o formatos [10]. 
+
+Por ejemplo, la expresión regular `^\w+@\w+\.\w+$` se puede usar para validar una dirección de correo electrónico, ya que verifica que tenga una o más letras o números antes y después de un signo `@`, seguido de un punto y una o más letras o números al final.
+
+
 13. Caracteres Especiales:
 Enumere al menos tres caracteres especiales comúnmente utilizados en expresiones regulares y describa sus funciones.
+
+Los caracteres especiales son símbolos que tienen un significado especial en las expresiones regulares y que se pueden usar para crear patrones más complejos o flexibles. Algunos caracteres especiales comúnmente utilizados en expresiones regulares son [11]:
+
+- `.`: representa cualquier carácter individual, excepto el de nueva línea. Se puede usar para hacer coincidir un carácter sin importar su valor. Por ejemplo, la expresión regular `c.t` coincide con las cadenas `cat`, `cot`, `cut`, etc.
+
+- `?`: representa cero o una repetición del elemento anterior. Se puede usar para hacer coincidir un carácter opcional. Por ejemplo, la expresión regular `ab?c` coincide con las cadenas `ac` y `abc`, pero no con `abbc`.
+
+- `[]`: representa un conjunto de caracteres que se pueden hacer coincidir. Se puede usar para especificar los caracteres que se quieren o no se quieren en una posición. Por ejemplo, la expresión regular `[aeiou]` coincide con cualquier vocal, y la expresión regular `[^aeiou]` coincide con cualquier consonante.
+
+
 
 14. Uso de Expresiones Regulares en C++:
 ¿Cómo se utilizan las expresiones regulares en C++? Proporcione un ejemplo.
 
+Las expresiones regulares en C++ se pueden utilizar con la biblioteca estándar de C++11 o posterior, que proporciona una serie de clases y funciones para crear, manipular y aplicar expresiones regulares a cadenas de texto [12]. Algunas de las clases y funciones más importantes son:
+
+- `regex`: es una clase que representa una expresión regular, que se puede construir a partir de una cadena de texto o de otro objeto `regex`. También se puede especificar una sintaxis o unas opciones para la expresión regular, como si es sensible a mayúsculas y minúsculas, si admite subexpresiones, etc.
+
+- `smatch`: es una clase que almacena los resultados de una operación de coincidencia o búsqueda de una expresión regular sobre una cadena de texto. Contiene información sobre la cadena completa, el prefijo, el sufijo y las subexpresiones capturadas por la expresión regular.
+
+- `regex_match`: es una función que comprueba si una cadena de texto coincide completamente con una expresión regular, y opcionalmente almacena los resultados en un objeto `smatch`.
+
+- `regex_search`: es una función que busca la primera subcadena de una cadena de texto que coincide con una expresión regular, y opcionalmente almacena los resultados en un objeto `smatch`.
+
+- `regex_replace`: es una función que reemplaza las subcadenas de una cadena de texto que coinciden con una expresión regular por otra cadena de texto, que puede contener referencias a las subexpresiones capturadas por la expresión regular.
+
+Un ejemplo de uso de las expresiones regulares en C++ es el siguiente:
+
+```c++
+#include <iostream>    
+#include <regex>    // Se incluye la librería de expresiones regulares
+int main()
+{
+    /* Declarar e inicializar una cadena de texto que contiene una dirección de correo electrónico */
+    std::string email = "estudianteElectrica@gmail.com";
+
+    /* Declarar e inicializar una expresión regular que valida el formato de una dirección de correo electrónico */
+    std::regex re(R"(^\w+@\w+\.\w+$)");
+
+    /* Declarar un objeto para almacenar los resultados de la operación de coincidencia */
+    std::smatch sm;
+
+    /* Comprobar si la cadena de texto coincide con la expresión regular y almacenar los resultados en el objeto sm */
+    bool match = std::regex_match(email, sm, re);
+
+    /* Mostrar el resultado de la comprobación */
+    if (match) {
+        std::cout << "La cadena de texto " << sm.str() << " es una dirección de correo electrónico válida" << std::endl;
+    } else {
+        std::cout << "La cadena de texto " << email << " no es una dirección de correo electrónico válida" << std::endl;
+    }
+
+    return 0;
+}
+```
+
+Muestra en la terminal:
+
+```
+La cadena de texto estudianteElectrica@gmail.com es una dirección de correo electrónico válida
+```
+
+La función `std::regex_match` se usa para comprobar si una cadena de texto tiene el formato de una dirección de correo electrónico, usando una expresión regular que verifica que tenga una o más letras o números antes y después de un signo `@`, seguido de un punto y una o más letras o números al final.
+
+
 15. Validación de Patrones:
 ¿Por qué las expresiones regulares son útiles para la validación de patrones en cadenas de texto?
+
+Las expresiones regulares son útiles para la validación de patrones en cadenas de texto porque permiten definir las reglas o formatos que debe cumplir una cadena de texto para ser considerada válida. Por ejemplo, se usan expresiones regulares para verificar si el texto ingresado es un correo electrónico válido. Las expresiones regulares también permiten extraer, reemplazar o modificar partes de una cadena de texto que coinciden con un patrón determinado; como cuando se muestran sugerencias cuando estamos ingresando nuestro correo y ya nos da un formato conocido como gmail, outlook, etc.
 
 ## Bibliografía:
 
@@ -462,3 +530,9 @@ Enumere al menos tres caracteres especiales comúnmente utilizados en expresione
 [8] “Iterators in C++ STL - GeeksforGeeks,” GeeksforGeeks. [En línea]. Disponible: https://www.geeksforgeeks.org/iterators-c-stl/. [Accedido: 22-Ene-2024].
 
 [9] “Algorithms library - cppreference.com,” cppreference.com, 2023. [En línea]. Disponible: https://en.cppreference.com/w/cpp/algorithm. [Accedido: 22-Ene-2024].
+
+[10] “Expresiones regulares: qué son y cómo se usan (con ejemplos) - Platzi,” Platzi, 2024. [En línea]. Disponible: https://platzi.com/blog/como-funcionan-expresiones-regulares/. [Accedido: 22-Ene-2024].
+
+[11] “Expresiones Regulares - JavaScript | MDN,” Mozilla Developer Network, 15-Jul-2017. [En línea]. Disponible: https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions. [Accedido: 22-Ene-2024].
+
+[12] “Expresiones regulares (C++) | Microsoft Learn,” Microsoft, 16-Jun-2023. [En línea]. Disponible: https://learn.microsoft.com/es-es/cpp/standard-library/regular-expressions-cpp?view=msvc-170. [Accedido: 22-Ene-2024].
