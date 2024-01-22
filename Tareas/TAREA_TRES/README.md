@@ -125,19 +125,110 @@ Lo que se muestra en la terminal es lo siguiente:
 Se ingreso un dato con el valor de 5.13
 Se ingreso un dato con el valor de Hola mundo
 ```
+
 ### Excepciones:
 
 4. Manejo de Excepciones:
 Describa los bloques try, catch y throw y cómo se utilizan para el manejo de excepciones en C++.
 
+El manejo de excepciones es un mecanismo que permite detectar y resolver los errores que pueden ocurrir durante la ejecución de un programa.
+
+Un bloque `try` es una sección de código que puede lanzar una excepción, es decir, una situación anormal o errónea que requiere una acción especial. Por ejemplo, una división por cero, una lectura de un archivo inexistente o una asignación de memoria fallida son posibles excepciones [4].
+
+Un bloque `catch` es una sección de código que se ejecuta cuando se ejecuta una excepción del bloque `try` correspondiente. Un bloque `catch` especifica el tipo de excepción que puede manejar y recibe un objeto que contiene información sobre la excepción. Un bloque `catch` puede realizar acciones como mostrar un mensaje de error, liberar recursos o terminar el programa. Un bloque `try`  puede tener varios bloques `catch` asociados, cada uno para un tipo diferente de excepción [4].
+
+Un bloque `throw` es una expresión que se usa para lanzar una excepción. Un bloque `throw` puede especificar cualquier objeto como argumento, pero se recomienda usar la clase std::exception o una de sus clases derivadas definidas en la biblioteca estándar de C++. Un bloque `throw` transfiere el control al primer bloque `catch` que coincida con el tipo de la excepción lanzada.
+
+A continuación se muestra un código utilizando una división de valores ingresados por el usuario:
+
+```cpp
+/* Se debe instanciar la librería para el uso de excepciones */
+#include <stdexcept>
+
+/* Se crea el código que va dentro del main*/
+try {   /* Bloque en donde se puede lanzar la excepción */
+
+    // Variables para almacenar los números a dividir
+    double numerador, denominador;
+
+    // Solicitar al usuario que ingrese el numerador
+    std::cout << "Ingrese el numerador: ";
+    std::cin >> numerador;
+
+    // Solicitar al usuario que ingrese el denominador
+    std::cout << "Ingrese el denominador: ";
+    std::cin >> denominador;
+
+    // Verificar si el denominador es cero
+    if (denominador == 0) {
+        /* Se utiliza la expresión para lanzar una excepción */
+        throw std::runtime_error("Error: No se puede dividir por cero.");
+    }
+    
+    // Realizar la división si el denominador no es cero
+    double resultado = numerador / denominador;
+
+    // Mostrar el resultado
+    std::cout << "Resultado de la división: " << resultado << std::endl;
+    
+}   catch (const std::exception& e) {   /* Expresión estandar de catch */
+    // Capturar y manejar la excepción, en este caso e.what sería lo lanzado por "throw"
+    std::cerr << "Excepción: " << e.what() << std::endl;
+}
+```
+
 5. Excepciones Estándar:
 Nombre al menos tres excepciones estándar proporcionadas por C++ y proporcione ejemplos de situaciones en las que podrían ser útiles.
+
+- `std::bad_alloc`: Esta excepción se lanza cuando una operación de asignación de memoria dinámica falla, por ejemplo, al usar el operador `new`. Esta excepción puede ser útil para detectar errores de memoria y liberar recursos antes de terminar el programa, por ejemplo cuando no se utiliza el operador `del` para cada reservación de memoria para un puntero [5].
+
+- `std::out_of_range`: Esta excepción se lanza cuando se intenta acceder a un elemento fuera del rango válido de un contenedor o una cadena. Esta excepción puede ser útil para evitar accesos ilegales a la memoria y manejar los casos de error adecuadamente, en este caso cuando se tiene un `vector` que almacena 5 números y se desea buscar un número en la "sexta posición" que no existe [5].
+
+- `std::invalid_argument`: Esta excepción se lanza cuando se pasa un argumento inválido a una función, por ejemplo, una cadena que no se puede convertir a un número. Esta excepción puede ser útil para validar los parámetros de entrada y proporcionar mensajes de error informativos, como cuando se desea pasar un dato double a una función que solo admite enteros [5].
 
 6. Política de Manejo de Excepciones:
 ¿Qué es una política de manejo de excepciones y por qué es importante considerarla al diseñar software?
 
+Una política de manejo de excepciones es un conjunto de reglas o principios que definen cómo se deben tratar los errores que ocurren durante la ejecución de un programa. Una política de manejo de excepciones puede especificar, por ejemplo, qué tipos de excepciones se deben lanzar, cómo se deben capturar, qué acciones se deben realizar para recuperarse o informar al usuario, y cómo se deben documentar o registrar los errores [6].
+
+Es importante considerar una política de manejo de excepciones al diseñar software porque ayuda a mejorar la calidad, la seguridad y la usabilidad del programa. Una buena política de manejo de excepciones puede evitar que el programa se cuelgue o se comporte de forma inesperada, que se pierdan o corrompan datos, que se vulneren la seguridad o la privacidad, o que se confunda o frustre al usuario [6]. 
+
 7. Noexcept:
 Explica el propósito de la palabra clave noexcept y cómo se utiliza en C++.
+
+La palabra clave noexcept se utiliza para declarar que una función no lanza ninguna excepción en C++11 y posteriores. Esto permite al compilador optimizar el código y evitar el manejo innecesario de excepciones.
+
+La palabra clave noexcept se puede usar de dos formas:
+
+- **Especificador de excepción:** se coloca después de la lista de parámetros de la función y antes del cuerpo {} de la misma. Indica que la función no lanza ninguna excepción y que si lo hace, se invoca std::terminate (es una función que se llama cuando ocurre una excepción no gestionada). 
+
+```cpp
+/* Se instancia la función */
+void mostrarInfo() noexcept {   /* Esta función no muestra ninguna excepción*/
+    // Aquí iría el código
+}  
+```
+
+- **Operador:** se aplica a una expresión y devuelve un valor booleano que indica si la expresión es no lanzadora o no. Se puede usar dentro de un especificador de excepción para hacerlo condicional al tipo de los argumentos de la función.
+
+
+```cpp
+/* Se instancia la función */
+void mostrarCon sinExcepcionesInfo() { 
+    // Aquí iría el código
+}  
+
+/* Se instancia la función */
+void mostrarCon excepcionesInfo() noexcept {   /* Esta función no muestra ninguna excepción*/
+    // Aquí iría el código
+}  
+```
+
+```cpp
+/* Usar el operador noexcept para comprobar si una función es no lanzadora de excepciones o no */
+bool var1 = noexcept(sinExcepcionesInfo())  // var1 es false
+bool var2 = noexcept(excepcionesInfo())     // var2 es true
+```
 
 ### STL (Standard Template Library):
 
@@ -174,3 +265,9 @@ Enumere al menos tres caracteres especiales comúnmente utilizados en expresione
 [2] “C++ Función de sobrecarga de plantillas - learntutorials.net,” learntutorials.net, 2024. [En línea]. Disponible: https://learntutorials.net/es/cplusplus/topic/4164/funcion-de-sobrecarga-de-plantillas. [Accedido: 22-Ene-2024].
 
 [3] “Plantillas de clase | Microsoft Learn,” Microsoft, 02-Abr-2023. [En línea]. Disponible: https://learn.microsoft.com/es-es/cpp/cpp/class-templates?view=msvc-170. [Accedido: 22-Ene-2024].
+
+[4] “Instrucciones try, throw y catch (C++)”, Microsoft Docs, 2021. [En línea]. Disponible en: https://learn.microsoft.com/es-es/cpp/cpp/try-throw-and-catch-statements-cpp?view=msvc-170. [Accedido: 22-ene-2024].
+
+[5] “Excepciones (C++/CX) | Microsoft Learn,” Microsoft, 02-Abr-2023. [En línea]. Disponible: https://learn.microsoft.com/es-es/cpp/cppcx/exceptions-c-cx?view=msvc-170. [Accedido: 22-Ene-2024].
+
+[6] “Manejo de excepciones en las politicas generales de seguridad informática - 1Library.Co,” 1Library.Co, 2024. [En línea]. Disponible: https://1library.co/article/manejo-de-excepciones-en-las-pol%C3%ADticas-generales.yj7wmpky. [Accedido: 22-Ene-2024].
