@@ -25,18 +25,15 @@ void Matriz<T>::sizeMatriz() {
             if (cin.fail()) {
                 /* Limpia el estado de error*/
                 cin.clear();
-                throw invalid_argument("\nError: No se ingreso un numero.");
+                throw invalid_argument("Error: No se ingreso un numero.");
             }
             /* Si no se puede realizar una conversión explícita que lance un error y termine el programa*/
             else if (static_cast<int>(filas) <= 0) {
-                throw invalid_argument("\nError: Debiste ingresar un numero, valido mayor que 0.");
+                throw invalid_argument("Error: Debiste ingresar un numero, valido mayor que 0.");
             } 
 
             /* Se asegura que el valor ingresado sea un entero */
             filas = static_cast<int>(filas);
-        
-            /* Se inserta un salto de linea para darle paso a las columnas */
-            cout << "\n";
         }
         catch(const exception& e)
         {
@@ -58,11 +55,11 @@ void Matriz<T>::sizeMatriz() {
             if (cin.fail()) {
                 /* Limpia el estado de error*/
                 cin.clear();
-                throw invalid_argument("\nError: No se ingreso un numero.");
+                throw invalid_argument("Error: No se ingreso un numero.");
             }
             /* Si no se puede realizar una conversión explícita que lance un error y termine el programa*/
             else if (static_cast<int>(columnas) <= 0) {
-                throw invalid_argument("\nError: Debiste ingresar un numero, valido mayor que 0.");
+                throw invalid_argument("Error: Debiste ingresar un numero, valido mayor que 0.");
             } 
 
             /* Se asegura que el valor ingresado sea un entero */
@@ -270,7 +267,7 @@ void Matriz<T>::menuMatriz() {
                 throw invalid_argument("\nError: No se ingreso un numero.");
             }
             else if (dato == 1) {   
-                cout << "\nSelecciona el tamayo de la matriz:\n" ;
+                cout << "Selecciona el tamayo de la matriz:\n" ;
                 sizeMatriz();
             }
             else if (dato == 2) {   
@@ -280,7 +277,7 @@ void Matriz<T>::menuMatriz() {
                     throw invalid_argument("Error: La matriz carece de tamayo, ingresa la opcion 1 antes");
                 }
 
-                cout << "\nIngrese los datos de la matriz:\n" ;
+                cout << "Ingrese los datos de la matriz:\n" ;
 
                 if (complejo == true){
                     ingresarDatosComplejos();
