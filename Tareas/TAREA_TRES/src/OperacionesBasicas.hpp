@@ -16,9 +16,15 @@ class OperacionesBasicas
         vector<Matriz<T>> matriz1;
         vector<Matriz<T>> matriz2;
 
+        /* Se instancia un vector que contiene los resultados de las operaciones */
+        vector<T> resultado; 
+
         /* Se crea una bandera para asegurar que las matrices ingresadas cumplas
         con los requisitos solicitados */
         bool validar = false;
+
+        /* Se cre*/
+        T resultadoDato;
         
         /* Creo un método para comprar si el tamaño de matriz 1 es igual al tamaño de
         matriz 1*/
@@ -34,6 +40,15 @@ class OperacionesBasicas
         /* Método para validar para saber si se ingresaron dos matrices, si estas dos matrices
         tienen las mismas dimensiones y si son del mismo tipo. */
         void validarMatrices();
+
+        /* Sobrecarga de operador de suma (+) */
+        void suma(const Matriz<T>& matriz1, const Matriz<T>& matriz2);
+
+        /* Sobrecarga de operador de resta (-) */
+        void resta(const Matriz<T>& matriz1, const Matriz<T>& matriz2);
+
+        /* Sobrecarga de operador de multiplicación (*) */
+        void multiplicacion(const Matriz<T>& matriz1, const Matriz<T>& matriz2);
 };
 
 #include "OperacionesBasicas.cpp"

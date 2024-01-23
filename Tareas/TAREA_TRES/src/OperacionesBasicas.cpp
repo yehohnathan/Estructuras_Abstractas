@@ -51,7 +51,7 @@ void OperacionesBasicas<T>::validarMatrices(){
         }
         else{
             /* Como las matrices no estan vacias me pregunto por su tamaño */
-            if (sonIguales(matriz1[0],matriz2[0]) == false) {
+            if (sonIguales(matriz1[0], matriz2[0]) == false) {
                 throw runtime_error("\nError: Las matrices no son del mismo tamayo o son complejas.");
             } else {
                 /* Significa que las matrices son validas */
@@ -63,6 +63,10 @@ void OperacionesBasicas<T>::validarMatrices(){
     catch(const exception& e) {
         cerr << e.what() << '\n';
     }
+
+    suma(matriz1[0], matriz2[0]);
+    resta(matriz1[0], matriz2[0]);
+    multiplicacion(matriz1[0], matriz2[0]);
 }
 
 /* Creo un método para comprar si el tamaño de matriz 1 es igual al tamaño de matriz 2. Además de
@@ -72,4 +76,92 @@ bool OperacionesBasicas<T>::sonIguales(const Matriz<T>& matriz1, const Matriz<T>
     return ((matriz1.getFilas() == matriz2.getFilas()) && 
             (matriz1.getColumnas() == matriz2.getColumnas())
             && (matriz1.getComplejo() == false && matriz2.getComplejo() == false));
+}
+
+/* Sobrecarga de operador de suma (+) */
+template <typename T>
+void OperacionesBasicas<T>::suma(const Matriz<T>& matriz1, const Matriz<T>& matriz2) {
+    /* Limpiamos lo que hace en el vector resultado */
+    resultado.clear();
+
+    /* Se valida si las matrices son válidas con el atributo bool */
+    if (validar == false) {
+        return;
+    }
+
+    /* Se crea un ciclo for anidado para sumar los datos en el vector resultado */
+    for (int i = 0; i < matriz1.getFilas(); i++) {
+        for (int j = 0; j < matriz1.getColumnas(); j++) {
+            /* Se obtienen los datos directamente de las matrices y se suman */
+            T resultadoDato = matriz1.get(i, j) + matriz2.get(i, j);
+
+            /* Esto hay que mejorarlo */
+            cout << resultadoDato << "  ";
+
+            resultado.push_back(resultadoDato);
+        }
+
+        /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
+        cout << endl;
+    }
+}
+
+/* Sobrecarga de operador de resta (-) */
+template <typename T>
+void OperacionesBasicas<T>::resta(const Matriz<T>& matriz1, const Matriz<T>& matriz2) {
+    /* Limpiamos lo que hace en el vector resultado */
+    resultado.clear();
+
+    /* Se valida si las matrices son válidas con el atributo bool */
+    if (validar == false) {
+        return;
+    }
+
+    /* Se crea un ciclo for anidado para restar los datos en el vector resultado */
+    for (int i = 0; i < matriz1.getFilas(); i++) {
+        for (int j = 0; j < matriz1.getColumnas(); j++) {
+            /* Se obtienen los datos directamente de las matrices y se restan */
+            T resultadoDato = matriz1.get(i, j) - matriz2.get(i, j);
+
+            /* Esto hay que mejorarlo */
+            cout << resultadoDato << "  ";
+
+            resultado.push_back(resultadoDato);
+        }
+
+        /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
+        cout << endl;
+    }
+}
+
+/* Sobrecarga de operador de multiplicación (*) */
+template <typename T>
+void OperacionesBasicas<T>::multiplicacion(const Matriz<T>& matriz1, const Matriz<T>& matriz2) {
+    /* Limpiamos lo que hace en el vector resultado */
+    resultado.clear();
+
+    /* Se valida si las matrices son válidas con el atributo bool */
+    if (validar == false) {
+        return;
+    }
+
+    /* Se crea un ciclo for anidado para multiplicar los datos en el vector resultado */
+    for (int i = 0; i < matriz1.getFilas(); i++) {
+        for (int j = 0; j < matriz2.getColumnas(); j++) {
+            T resultadoDato = 0;
+
+            /* Se realiza la multiplicación de cada elemento y se acumula el resultado */
+            for (int k = 0; k < matriz1.getColumnas(); k++) {
+                resultadoDato += matriz1.get(i, k) * matriz2.get(k, j);
+            }
+
+            /* Esto hay que mejorarlo */
+            cout << resultadoDato << "  ";
+
+            resultado.push_back(resultadoDato);
+        }
+
+        /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
+        cout << endl;
+    }
 }
