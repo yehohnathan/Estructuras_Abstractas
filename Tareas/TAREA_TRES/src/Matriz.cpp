@@ -4,10 +4,11 @@
 /* Se crea un método que le solicite al usuario el tamaño de la matriz */
 template <typename T>
 void Matriz<T>::sizeMatriz() {
-    /* Se inicializan los atributos */
+    /* Se inicializan los atributos cada vez se ingresa a este método*/
     this->filas = 0;
     this->columnas = 0;
 
+    /* Se repite el ciclo while hasta que se ingrese un valor válido */
     while (this->filas <= 0) {
         /* Se crea un bloque de excepción para asegurar que los datos ingresados por el usuario puedan
         ser convertidos a un valor entero */
@@ -46,6 +47,7 @@ void Matriz<T>::sizeMatriz() {
         }     
     }
     
+    /* Se repite el ciclo while hasta que se ingrese un valor válido */
     while (this->columnas <= 0) {
         /* Se crea un bloque de excepción para asegurar que los datos ingresados por el usuario puedan
         ser convertidos a un valor entero */
@@ -85,96 +87,68 @@ void Matriz<T>::sizeMatriz() {
 /* Se crea un método que utiliza el vector para ingresar valores al vector */
 template <typename T>
 void Matriz<T>::ingresarDatosMatriz() {
-    /* Se crea un bloque de excepción para asegurar que los datos ingresados por el usuario puedan
-    ser agregados a una matriz */
-    try {
-        /* Se encarga de convertir los atributos en enteros. Y si no es un entero válido le asigna un cero
-        por lo que la matriz no existiría */
-        this->filas = static_cast<int>(this->filas);
-        this->columnas = static_cast<int>(this->columnas);
+    /* Se inicializa la matriz limpiandola: */
+    datosMatriz.clear();
 
-        /* Comprueba que el valor de los atributos sea mayor a cero para que tenga sentido la matriz */
-        if (this->filas <= 0 || this->columnas <= 0)
-        {
-            throw invalid_argument("Error: Valor de filas o columnas no válido para crear una matriz.");
-        }
-
-        /* Se crea un ciclo for anidado para ingresar los datos en el vector datosMatriz */
-        for (int i = 0; i < this->filas; i++)
-        {
-            for (int j = 0; j < this->columnas; j++)
-            {   
+    /* Se crea un ciclo for anidado para ingresar los datos en el vector datosMatriz */
+    for (int i = 0; i < this->filas; i++) {
+        for (int j = 0; j < this->columnas; j++) {  
+            /* Bloque de excepción para asegurar que se ingresen los datos correctamente */
+            try {
                 /* Se le solicita al usuario que ingrese un dato para la matriz. Adicionalmente se le va
-                indicando en qué posición de la matriz ingresa el dato*/
+                indicando en qué posición de la matriz ingresa el dato */
                 cout << "Ingrese el dato para la fila " << i + 1 << " columna " << j + 1 << ": ";
                 cin >> this->dato;
 
-                /* Si el dato ingresado es incorrecto se vuelve a solicitar el inggreso */
+                /* Si el dato ingresado es incorrecto se vuelve a solicitar el ingreso */
                 if (cin.fail()) {
-                    cout << "\nEl numero es de un tipo de dato no esperado, intentalo de nuevo.\n";
-                    datosMatriz.clear();    /* Limpiar el contenido de la matriz */
-                    return;
+                    /* Limpia el estado de error*/
+                    cin.clear();
+                    /* Descarta caracteres no deseados de cin */
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido*/
+                    j--;
+                    throw invalid_argument("\nError: No se ingreso un numero.\n");
+                } 
+                else {  /* Se ingresa el dato, el cual es valido */
+                    /* Ingresa el dato a la "matriz" */
+                    datosMatriz.push_back(this->dato);
                 }
-
-                /* Ingresa el dato a la "matriz" */
-                datosMatriz.push_back(this->dato);
+                /* Descarta caracteres no deseados de cin */
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                
+            }
+            catch(const exception& e) {
+                cerr << e.what() << '\n';
             }
         }
     } 
-    catch (const exception& e) 
-    {
-        cerr << e.what() << endl;
-    }
 }
 
 /* Método para mostrar el contenido de la matriz siempre y cuando sea válida*/
 template <typename T>
-void Matriz<T>::mostrarMatriz() {
-    try {
-        /* Se encarga de convertir los atributos en enteros. Y si no es un entero válido le asigna un cero
-        por lo que la matriz no existiría */
-        this->filas = static_cast<int>(this->filas);
-        this->columnas = static_cast<int>(this->columnas);
+void Matriz<T>::mostrarMatriz() const{
+    /* Se instancia un iterador para manipular el contenido del vector */
+    typename vector<T>::const_iterator it = this->datosMatriz.begin();
 
+    /* Mensaje de lo que se va a imprimir */
+    cout << "A continuacion se imprime el contenido de la Matriz " 
+         << this->filas << "x" << this->columnas << ":" << endl << endl;
 
-        if (this->filas <= 0 || this->columnas <= 0)
-        {
-            throw invalid_argument("\nError: Valor de filas o columnas no valido para crear una matriz.");
+    /* Se crea un ciclo for anidado para mostrar los datos en el vector datosMatriz */
+    for (int i = 0; i < this->filas; i++) {
+        for (int j = 0; j < this->columnas; j++) {   
+            /* Se imprime el valor actual del iterador y luego se suma uno para acceder al siguiente dato*/
+            cout << *it << " ";
+            it++;
         }
 
-        /* Se instancia un iterador para manipular el contenido del vector */
-        typename vector<T>::const_iterator it = this->datosMatriz.begin();
-
-        /* Verificar si el vector datosMatriz está vacío */
-        if (this->datosMatriz.empty()) {
-            throw out_of_range("\nError: La matriz esta vacia.");
-        }
-
-        /* Mensaje de lo que se va a imprimir */
-        cout << "A continuacion se imprime el contenido de la Matriz " 
-             << this->filas << "x" << this->columnas << ":" << endl << endl;
-
-        /* Se crea un ciclo for anidado para mostrar los datos en el vector datosMatriz */
-        for (int i = 0; i < this->filas; i++)
-        {
-            for (int j = 0; j < this->columnas; j++)
-            {   
-                /* Se imprime el valor actual del iterador y luego se suma uno para acceder al siguiente dato*/
-                cout << *it << " ";
-                it++;
-            }
-
-            /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
-            cout << endl;
-        }
-
-        /* Se hace un salto de línea para que se vea más clara la matriz */
+        /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
         cout << endl;
-
-    } catch (const exception& e) 
-    {
-        cout << e.what() << endl;
     }
+
+    /* Se hace un salto de línea para que se vea más clara la matriz */
+    cout << endl;
 }
 
 
@@ -190,7 +164,7 @@ void Matriz<T>::menuMatriz() {
 
     while (1) {
         try {
-            cout << "\nIngrese una opcion: ";
+            cout << "\nIngrese una opcion para su matriz: ";
             cin >> this->dato;
 
             /* Si el dato ingresado es incorrecto se vuelve a solicitar el ingreso */
@@ -200,20 +174,32 @@ void Matriz<T>::menuMatriz() {
                 /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-                throw invalid_argument("\nNError: No se ingreso un numero.");
+                throw invalid_argument("\nError: No se ingreso un numero.");
             }
             else if (this->dato == 1) {   
                 cout << "\nSelecciona el tamayo de la matriz:\n" ;
                 sizeMatriz();
             }
             else if (this->dato == 2) {   
-                cout << this->dato;
+                /* Comprueba que el valor de los atributos sea mayor a cero para que tenga sentido la matriz */
+                if (this->filas <= 0 || this->columnas <= 0)
+                {
+                    throw invalid_argument("Error: La matriz carece de tamayo, ingresa la opcion 1 antes");
+                }
+                cout << "\nIngrese los datos de la matriz:\n" ;
+                ingresarDatosMatriz();
+
             }
             else if (this->dato == 3) {   
-                cout << this->dato;
+                /* Verificar si el vector datosMatriz está vacío */
+                if (this->datosMatriz.empty()) {
+                    throw out_of_range("\nError: La matriz esta vacia, ingrese la opcion 2 antes.");
+                }
+                mostrarMatriz();
             }
             else if (this->dato == 4){   
                 cout << this->dato;
+                return;
             }
             else {
                 throw invalid_argument("\nError: No se ingreso un numero dentro de las opciones disponibles.");
