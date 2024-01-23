@@ -5,6 +5,8 @@
 /* Se incluyen las librerías necesarias: */
 #include <iostream>
 #include <stdexcept>
+#include <vector>
+#include <typeinfo>     /* Para saber el tipo de dato de una variable */
 using namespace std;
 
 /* Se crea una clase llamada Matriz (bidimensional) que sea genérica mediante template*/
@@ -15,12 +17,17 @@ class Matriz
         T filas;        /* Corresponde al valor de las filas de la matriz*/
         T columnas;     /* Corresponde al valor de las columnas de la matriz*/
         T dato;         /* Corresponde a los datos que va a tener la matriz*/
-
+        vector<T> datosMatriz;  /* Contiene el valor de los datos ingresados */
     public:
 
         /* Se crea un método que le solicite al usuario el tamaño de la matriz */
         void sizeMatriz();
-        void mostrarMatriz() const;
+
+        /* Se crea un método que utiliza el vector para ingresar valores al vector */
+        void ingresarDatosMatriz();
+
+        /* Método para mostrar el contenido de la matriz siempre y cuando sea válida*/
+        void mostrarMatriz() ;
 
 };
 
