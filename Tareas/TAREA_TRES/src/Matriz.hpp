@@ -44,8 +44,8 @@ class Matriz
         void menuMatriz();
 
         /* Lo siguiente son métodos para obtener información de los atributos */
-        void getFilas() const;
-        void getColumnas() const;
+        T getFilas() const;
+        T getColumnas() const;
         bool getComplejo() const;
 
 };

@@ -323,12 +323,12 @@ void Matriz<T>::menuMatriz() {
 
 /* Lo siguiente son métodos para obtener información de los atributos */
 template<typename T>
-void Matriz<T>::getFilas() const{
+T Matriz<T>::getFilas() const{
     return filas;
 }
 
 template<typename T>
-void Matriz<T>::getColumnas() const{
+T Matriz<T>::getColumnas() const{
     return columnas;
 }
 
