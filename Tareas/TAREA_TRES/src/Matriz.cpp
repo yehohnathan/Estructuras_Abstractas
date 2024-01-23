@@ -264,7 +264,7 @@ void Matriz<T>::menuMatriz() {
                 cin.clear();
                 /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw invalid_argument("\nError: No se ingreso un numero.");
+                throw invalid_argument("Error: No se ingreso un numero.");
             }
             else if (dato == 1) {   
                 cout << "Selecciona el tamayo de la matriz:\n" ;
@@ -289,7 +289,7 @@ void Matriz<T>::menuMatriz() {
             else if (dato == 3) {   
                 /* Verificar si el vector datosMatriz está vacío */
                 if (  datosMatriz.empty()) {
-                    throw out_of_range("\nError: La matriz esta vacia, ingrese la opcion 2 antes.");
+                    throw out_of_range("Error: La matriz esta vacia, ingrese la opcion 2 antes.");
                 }
                 if (complejo == true){
                     mostrarComplejosMatriz();
@@ -299,7 +299,7 @@ void Matriz<T>::menuMatriz() {
             }
             else if (dato == 4){   
                 if (datosMatriz.empty()) {
-                    throw out_of_range("\nError: La matriz esta vacia, es mejor ingresar la opcion 2 antes.");
+                    throw out_of_range("Error: La matriz esta vacia, es mejor ingresar la opcion 2 antes.");
                 } else
                 {
                     return; /* Retorna si el usuario ya termino la matriz*/
@@ -308,7 +308,7 @@ void Matriz<T>::menuMatriz() {
             else {
                 /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw invalid_argument("\nError: No se ingreso un numero dentro de las opciones disponibles.");
+                throw invalid_argument("Error: No se ingreso un numero dentro de las opciones disponibles.");
             }
         }
         catch(const exception& e) {
