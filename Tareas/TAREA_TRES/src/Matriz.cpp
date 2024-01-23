@@ -25,24 +25,16 @@ void Matriz<T>::sizeMatriz() {
             if (cin.fail()) {
                 /* Limpia el estado de error*/
                 cin.clear();
-                /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw invalid_argument("\nError: No se ingreso un numero.");
             }
             /* Si no se puede realizar una conversión explícita que lance un error y termine el programa*/
             else if (static_cast<int>(filas) <= 0) {
-                /* Descarta caracteres no deseados de cin */
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
                 throw invalid_argument("\nError: Debiste ingresar un numero, valido mayor que 0.");
             } 
 
             /* Se asegura que el valor ingresado sea un entero */
             filas = static_cast<int>(filas);
-                
-            /* Descarta caracteres no deseados de cin */
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
+        
             /* Se inserta un salto de linea para darle paso a las columnas */
             cout << "\n";
         }
@@ -50,6 +42,8 @@ void Matriz<T>::sizeMatriz() {
         {
             cerr << e.what() << endl;
         }     
+        /* Descarta caracteres no deseados de cin */
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     
     /* Se repite el ciclo while hasta que se ingrese un valor válido */
@@ -64,28 +58,22 @@ void Matriz<T>::sizeMatriz() {
             if (cin.fail()) {
                 /* Limpia el estado de error*/
                 cin.clear();
-                /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw invalid_argument("\nError: No se ingreso un numero.");
             }
             /* Si no se puede realizar una conversión explícita que lance un error y termine el programa*/
             else if (static_cast<int>(columnas) <= 0) {
-                /* Descarta caracteres no deseados de cin */
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
                 throw invalid_argument("\nError: Debiste ingresar un numero, valido mayor que 0.");
             } 
 
             /* Se asegura que el valor ingresado sea un entero */
             columnas = static_cast<int>(columnas);
-                
-            /* Descarta caracteres no deseados de cin */
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         catch(const exception& e)
         {
             cerr << e.what() << endl;
-        }     
+        } 
+        /* Descarta caracteres no deseados de cin */
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');   
     }
 }
 
@@ -109,8 +97,6 @@ void Matriz<T>::ingresarDatosMatriz() {
                 if (cin.fail()) {
                     /* Limpia el estado de error*/
                     cin.clear();
-                    /* Descarta caracteres no deseados de cin */
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido */
                     j--;
                     throw invalid_argument("\nError: No se ingreso un numero.\n");
@@ -118,14 +104,13 @@ void Matriz<T>::ingresarDatosMatriz() {
                 else {  /* Se ingresa el dato, el cual es valido */
                     /* Ingresa el dato a la "matriz" */
                     datosMatriz.push_back(dato);
-                }
-                /* Descarta caracteres no deseados de cin */
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                
+                }  
             }
             catch(const exception& e) {
                 cerr << e.what() << '\n';
             }
+            /* Descarta caracteres no deseados de cin */
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     } 
 }
@@ -156,8 +141,6 @@ void Matriz<T>::ingresarDatosComplejos() {
                     if (cin.fail()) {
                         /* Limpia el estado de error*/
                         cin.clear();
-                        /* Descarta caracteres no deseados de cin */
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido */
                         j--;
                         throw invalid_argument("\nError: No se ingreso un numero.\n");
@@ -169,8 +152,6 @@ void Matriz<T>::ingresarDatosComplejos() {
                         /* Se dice que la parte real ingresada fue correcta y esta lista*/
                         realLista = true;
                     }
-                    /* Descarta caracteres no deseados de cin */
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 } 
 
                 /* Se le solicita al usuario que ingrese un dato para la matriz. Adicionalmente se le va
@@ -182,10 +163,7 @@ void Matriz<T>::ingresarDatosComplejos() {
                 if (cin.fail()) {
                     /* Limpia el estado de error*/
                     cin.clear();
-                    /* Descarta caracteres no deseados de cin */
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido
-                    para la parte imaginaria */
+                    /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido */
                     j--;
                     cout << realLista;
                     throw invalid_argument("\nError: No se ingreso un numero.\n");
@@ -200,12 +178,14 @@ void Matriz<T>::ingresarDatosComplejos() {
                 }
 
                 /* Descarta caracteres no deseados de cin */
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');   
+
             }
             catch(const exception& e) {
                 cerr << e.what() << '\n';
             }
+            /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
 }
@@ -287,7 +267,6 @@ void Matriz<T>::menuMatriz() {
                 cin.clear();
                 /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
                 throw invalid_argument("\nError: No se ingreso un numero.");
             }
             else if (dato == 1) {   
@@ -300,8 +279,9 @@ void Matriz<T>::menuMatriz() {
                 {
                     throw invalid_argument("Error: La matriz carece de tamayo, ingresa la opcion 1 antes");
                 }
+
                 cout << "\nIngrese los datos de la matriz:\n" ;
-                
+
                 if (complejo == true){
                     ingresarDatosComplejos();
                 } else {
@@ -329,12 +309,15 @@ void Matriz<T>::menuMatriz() {
                 }
             }
             else {
+                /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw invalid_argument("\nError: No se ingreso un numero dentro de las opciones disponibles.");
             }
         }
-        catch(const std::exception& e) {
-                std::cerr << e.what() << '\n';
+        catch(const exception& e) {
+            cerr << e.what() << '\n';
         }  
+
     }
 }
 
