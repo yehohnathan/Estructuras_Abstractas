@@ -48,6 +48,8 @@ class Matriz
         T getColumnas() const;
         bool getComplejo() const;
 
+        /* Se crea un método para obtener el dato correspondiende a una fila x columna */
+        T get(int fila, int columna) const;
 };
 
 /* Para que no de errores */

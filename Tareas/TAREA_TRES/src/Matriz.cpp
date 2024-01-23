@@ -336,3 +336,11 @@ template<typename T>
 bool Matriz<T>::getComplejo() const{
     return complejo;
 }
+
+/* Se crea un método para obtener el dato correspondiende a una fila x columna */
+template<typename T>
+T Matriz<T>::get(int fila, int columna) const {
+    /* Realiza la lógica para obtener el dato en la posición fila x columna
+    y devuelve el valor correspondiente*/
+    return datosMatriz[fila * columnas + columna];
+}
