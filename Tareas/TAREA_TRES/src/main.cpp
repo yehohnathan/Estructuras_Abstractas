@@ -8,6 +8,11 @@ using namespace std;
 
 /* Operaciones con matrices */
 void problema1();
+void seleccionMatriz(OperacionesBasicas<int>& operacion1, OperacionesBasicas<double>& operacion2,
+                     OperacionCompleja<int>& operacionCompleja1, OperacionCompleja<double>& operacionCompleja2);
+template <typename T>
+void ingresarMatriz(OperacionesBasicas<T>& operacion, OperacionCompleja<T>& operacionCompleja);
+
 /* Validador de correos electrónicos */
 void problema2();
 
@@ -59,61 +64,6 @@ int main(){
     return 0;
 }
 
-/* Función que encapsula todo que hace que Problema 1 funciones perfectamente */
-void problema1(){
-    /* Se crean dos objetos de la clase Matriz. Cada objeto debe configurarse antes de ingresarlo
-    en el objeto OperacionesBasicas o el objeto OperacionesComplejas */
-    Matriz<double> matriz1(true);
-    Matriz<double> matriz2(true);
-
-    /* Por defecto, si ambos objetos matriz no son iguales al tipo del objeto de OperacionesBasicas
-    o OperacionesComplejas, no se puede usar. Por ello se descarta preguntar si dos matrices son
-    iguales antes de ingresarlas con un método a los objetos de OperacionesX */
-    
-    OperacionesBasicas<double> operacionReal;
-    OperacionCompleja<double> operacionCompleja;
-
-    /* Aunque si se pregunta si los objetos matrices son complejos para decidir en qué objeto Operacion
-       deben ser ingresador*/
-
-    if ((matriz1.getComplejo() == true) && (matriz2.getComplejo() == true))
-    {
-        /* Se solicita que se configuren las matrices: */
-        cout <<"\n===================Configure el la matriz 1: ===================" << endl;
-        matriz1.menuMatriz();
-        cout <<"\n===================Configure el la matriz 2: ===================" << endl;
-        matriz2.menuMatriz();
-
-        /*Se ingresan las matrices al objeto de Operaciones Basicas */
-        operacionCompleja.agregarMatriz(matriz1);
-        operacionCompleja.agregarMatriz(matriz2);
-
-        /* Se accede al menú */
-        operacionCompleja.menuOperacion();
-
-        
-    } 
-    else if ((matriz1.getComplejo() == false) && (matriz2.getComplejo() == false ))
-    {
-        /* Se solicita que se configuren las matrices: */
-        cout <<"\n========================= Configure la matriz 1: =========================" << endl;
-        matriz1.menuMatriz();
-        cout <<"\n========================= Configure la matriz 2: =========================" << endl;
-        matriz2.menuMatriz();
-
-        /* Se ingresan las matrices al objeto de Operaciones Basicas*/
-        operacionReal.agregarMatriz(matriz1);
-        operacionReal.agregarMatriz(matriz2);
-
-        /* Se accede al menú */
-        operacionReal.menuOperacion();
-    } 
-    else {
-        cout << "\nUna matriz es de numeros complejos y la otra es de numeros real. No se puede" 
-             << " realizar ninguna operacion"<< endl;
-    }
-}
-
 /* Función que encapsula todo lo que hace que Problema 2 funcione correctamente*/
 void problema2(){
     /* Crea un objeto de la clase ValidaCorreo */ 
@@ -137,5 +87,118 @@ void problema2(){
         }
     } catch (invalid_argument& e) {
         cout << e.what() << "\n";
+    }
+}
+
+/* Función que encapsula todo que hace que Problema 1 funciones perfectamente */
+void problema1(){
+    /* Se instancian los objetos de OperacionesBasicas y OperacionesBasicas*/
+    OperacionesBasicas<int> operacion1;
+    OperacionesBasicas<double> operacion2;
+
+    OperacionCompleja<int> operacionCompleja1;
+    OperacionCompleja<double> operacionCompleja2;
+
+    cout << "\nIngrese el tipo de dato para la matriz 1:\n"
+         << "1. Entero\n"
+         << "2. Double\n";
+
+    seleccionMatriz(operacion1, operacion2, operacionCompleja1, operacionCompleja2);
+
+    cout << "\nIngrese el tipo de dato para la matriz 2:\n"
+         << "1. Entero\n"
+         << "2. Double\n";
+
+    seleccionMatriz(operacion1, operacion2, operacionCompleja1, operacionCompleja2);
+
+    /* Se accede a cada menu de Operación */
+    operacion1.menuOperacion();
+    operacion2.menuOperacion();
+    operacionCompleja1.menuOperacion();
+    operacionCompleja2.menuOperacion();
+
+    if(operacion1.getValidar() == false && operacion1.getValidar() == false &&
+       operacionCompleja1.getValidar() == false && operacionCompleja2.getValidar() == false){
+        cout << "\nLas matrices ingresadas no eran de las mismas dimensiones o no eran"
+             << " del mismo tipo." << endl;
+    }
+}
+
+/* Aquí se selecciona si la matriz es entera o double */
+void seleccionMatriz(OperacionesBasicas<int>& operacion1, OperacionesBasicas<double>& operacion2,
+                     OperacionCompleja<int>& operacionCompleja1, OperacionCompleja<double>& operacionCompleja2) {
+    int opcion;
+
+    while (true) {
+        try {
+            cout << "Ingrese una opcion: ";
+            cin >> opcion;
+
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Error: No se ingreso un numero.");
+            }
+
+            if (opcion != 1 && opcion != 2) {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Error: Opcion invalida. Ingrese 1 o 2.");
+            }
+
+            /* Decide a qué objeto ingresar*/
+            if (opcion == 1) {
+                ingresarMatriz(operacion1, operacionCompleja1);
+            } else {
+                ingresarMatriz(operacion2, operacionCompleja2);
+            }
+            break; 
+        } catch (const exception& e) {
+            cerr << e.what() << '\n';
+        }
+    }
+}
+
+/* Aquí se selecciona si la matriz es real o compleja */
+template <typename T>
+void ingresarMatriz(OperacionesBasicas<T>& operacion, OperacionCompleja<T>& operacionCompleja) {
+    int opcionTipoMatriz;
+    
+    cout << "Ingrese el tipo de matriz:\n"
+         << "1. Real\n"
+         << "2. Compleja\n" << endl;
+
+    while (true) {
+        try {
+            cout << "Ingrese una opcion: ";
+            cin >> opcionTipoMatriz;
+
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Error: No se ingreso un numero.");
+            }
+
+            if (opcionTipoMatriz != 1 && opcionTipoMatriz != 2) {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Error: Opcion invalida. Ingrese 1 o 2.");
+            }
+
+            /* Se guardan dependiendo de la selección utilizada */
+            if (opcionTipoMatriz == 1) {
+                /* Matriz real */
+                Matriz<T> matriz(false);
+                matriz.menuMatriz();
+                operacion.agregarMatriz(matriz);
+            } else {
+                /* Matriz compleja */
+                Matriz<T> matriz(true);
+                matriz.menuMatriz();
+                operacionCompleja.agregarMatriz(matriz);
+            }
+
+            break; // Salir del bucle while
+        } catch (const exception& e) {
+            cerr << e.what() << '\n';
+        }
     }
 }
