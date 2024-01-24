@@ -2,7 +2,6 @@
 #include "OperacionesBasicas.hpp"
 #include "OperacionCompleja.hpp"
 #include <iostream>
-#include <typeinfo> /* Para averiguar el tipo de dato que es una matriz */
 using namespace std;
 
 void problema1();
