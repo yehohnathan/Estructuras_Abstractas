@@ -304,7 +304,6 @@ void OperacionCompleja<T>::menuOperacion(){
                 multiplicacion(matriz1[0], matriz2[0], matrizCompleja1, matrizCompleja2);
             }
             else if (opciones == 5){   
-                cout << "\nFin del programa." << endl;
                 return; /* Retorna la función */
             }
             else {

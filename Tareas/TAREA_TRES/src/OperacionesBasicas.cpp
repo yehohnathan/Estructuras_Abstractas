@@ -202,7 +202,6 @@ void OperacionesBasicas<T>::menuOperacion(){
                 multiplicacion(matriz1[0], matriz2[0]);
             }
             else if (resultadoDato == 5){   
-                cout << "\nFin del programa." << endl;
                 return; /* Retorna la función */
             }
             else {
