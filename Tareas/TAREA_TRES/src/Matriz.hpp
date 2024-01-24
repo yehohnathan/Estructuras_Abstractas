@@ -3,7 +3,7 @@
  * @brief Contiene lo necesario para crear una función entera o double de tipo real o compleja 
  * @author Yehohnathan Miranda Vigil (yehohnathan.miranda@ucr.ac.cr)
  * @version 1.0
- * @date 2024-01-42
+ * @date 2024-01-24
  * 
  * @copyright Copyright (c) 2024
  */
