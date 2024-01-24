@@ -252,7 +252,7 @@ void Matriz<T>::mostrarComplejosMatriz() const{
 el objeto sin importar si se equivoca */
 template <typename T>
 void Matriz<T>::menuMatriz() {
-    cout << "Seleccione una de las siguientes opciones para su matriz, ingresando un numero entero:\n"
+    cout << "\nSeleccione una de las siguientes opciones para su matriz, ingresando un numero entero:\n"
          << "Ingrese 1 para seleccionar la cantidad de filas y columnas de la matriz.\n"
          << "Ingrese 2 para ingresar los datos de la matriz.\n"
          << "Ingrese 3 para mostrar la matriz ingresada.\n"
