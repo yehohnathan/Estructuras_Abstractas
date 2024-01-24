@@ -1,8 +1,16 @@
 # Tarea 3: Algebra lineal, expresiones regulares en C++ y teoría
 
-## Parte práctica 1:
+## Ejecución del programa:
 
-## Parte práctica 2:
+Para ejecutar el programa, asegúrese de estar en el directorio del repositorio en su computadora y escriba el comando `make`, como se muestra a continuación:
+
+```go
+...\ie0217\Tareas\TAREA_TRES> make
+```
+
+A continuación, se abrirá un menú interactivo que le permite seleccionar la ejecución del Problema 1 ingresando el número 1, o del Problema 2 ingresando el número 2. Posteriormente, se presentarán opciones claras y específicas según el problema seleccionado. En caso de equivocarse al ingresar una opción, el programa notificará al usuario y solicitará una nueva entrada, brindando así una experiencia intuitiva y sin complicaciones.
+
+El programa del Problema 1 concluirá cuando el usuario haya ingresado dos matrices que no guarden relación entre sí o cuando haya completado las operaciones correspondientes. En el caso del Problema 2, finalizará al ingresar una dirección de correo válida o inválida.
 
 ## Parte teórica:
 ### Templates:
