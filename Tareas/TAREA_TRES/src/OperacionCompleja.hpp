@@ -28,6 +28,9 @@ class OperacionCompleja
 
         /* Se crea para guardar datos de suma, resta, multiplicación y otros */
         complex<T> resultadoDato;
+
+        /* Se crea para que el usuario ingresa opciones en el menu */
+        int opciones;
         
         /* Creo un método para comprar si el tamaño de matriz 1 es igual al tamaño de
         matriz 1*/
@@ -37,6 +40,8 @@ class OperacionCompleja
         void conversorMatriz(const Matriz<T>& matriz);
 
     public:
+        /* Método de menú para que el usuario pueda elegir si sumar, multiplizar o dividir */
+        void menuOperacion();
 
         /* Método para agregar un objeto matriz al vector matriz1 o matriz2 */
         void agregarMatriz(const Matriz<T> matriz);

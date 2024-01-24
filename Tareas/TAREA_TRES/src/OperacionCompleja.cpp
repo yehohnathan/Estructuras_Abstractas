@@ -61,9 +61,7 @@ void OperacionCompleja<T>::conversorMatriz(const Matriz<T>& matriz){
             }
         }
         i ++;
-        cout << "\n";
     }
-    cout << "\n";
 
     /* La explicación de por qué este ciclo for funciona es por lo siguiente: 
     1. El vector matriz dice que es de tamaño NxM, pero en realidad es de tamaño Nx(M*2);
@@ -109,14 +107,11 @@ void OperacionCompleja<T>::validarMatrices(){
         else{
             /* Como las matrices no estan vacias me pregunto por su tamaño */
             if (sonIguales(matriz1[0], matriz2[0]) == false) {
-                throw runtime_error("Error: Las matrices no son del mismo tamayo o son complejas.");
+                throw runtime_error("Error: Las matrices no son del mismo tamayo o NO son complejas.");
             } else {
                 /* Significa que las matrices son validas */
                 validar = true;
                 cout << "Las matrices son validas para ser utilizadas";
-                suma(matriz1[0], matriz2[0], matrizCompleja1, matrizCompleja2);
-                resta(matriz1[0], matriz2[0], matrizCompleja1, matrizCompleja2);
-                multiplicacion(matriz1[0], matriz2[0], matrizCompleja1, matrizCompleja2);
             }
         }
     }
@@ -238,19 +233,90 @@ void OperacionCompleja<T>::multiplicacion(const Matriz<T>& matriz1, const Matriz
 /* Método para mostrar el cualquier tipo de matriz compleja */
 template <typename T>
 void OperacionCompleja<T>::mostrarMatriz(const Matriz<T>& matriz, const vector<complex<T>>& matrizCompleja) {
+    /* Se crea un ciclo for anidado para mostrar los datos en el vector datosMatriz */
     for (int i = 0; i < matriz.getFilas(); ++i) {
         for (int j = 0; j < matriz.getColumnas(); ++j) {
+            /* A los datos de matrizCompleja se separan en su componente real e imaginaria*/
             T real = matrizCompleja[i * matriz.getColumnas() + j].real();
             T imag = matrizCompleja[i * matriz.getColumnas() + j].imag();
 
+            /* Se imprime primero la parte real */
             cout << real;
-                
+            
+            /* Luego se pregunta si la parte imaginaria es positiva o no */
             if (imag >= 0) {
                 cout << "+";
             }
-                
+            /*El número negativo no necesita que se le coloque un simbolo. Se imprime en número
+            imaginario. */
             cout << imag << "j  ";
         }
+        /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
         cout << endl;
     }
+}
+
+/* Método de menú para que el usuario pueda elegir si sumar, multiplizar o dividir */
+template<typename T>
+void OperacionCompleja<T>::menuOperacion(){
+    cout << "\nPrimero se valida las matrices ingresadas:" << endl;
+    validarMatrices();
+
+    /* Si el resultado de validación es invalido para realizar operaciones*/
+    if (validar == false){
+        cout << "No se puede continuar el programa.";
+        liberarEspacio();
+        return; /* Sale de la función*/
+    }
+
+    /* Se crea el menú para que el usuario pueda realizar una operación: */
+    cout << "\nIngrese una de las siguientes opciones para realizar una operacion basica para las dos matrices: "
+         << "\nIngrese 1 para sumar (matriz1 + matriz2)."
+         << "\nIngrese 2 para restar (matriz1 - matriz2)."
+         << "\nIngrese 3 para restar (matriz2 - matriz1)."
+         << "\nIngrese 4 para multiplicar (matriz1 * matriz2)."
+         << "\nIngrese 5 para finalizar el programa." << endl;
+
+    while (1) {
+        try {
+            cout << "\nIngrese una opcion para relizar una operacion: ";
+            cin >> opciones;
+
+            /* Si el dato ingresado es incorrecto se vuelve a solicitar el ingreso */
+            if (cin.fail()) {
+                /* Limpia el estado de error*/
+                cin.clear();
+                /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Error: No se ingreso un numero.");
+            }
+            else if (opciones == 1) {   
+                suma(matriz1[0], matriz2[0], matrizCompleja1, matrizCompleja2);
+            }
+            else if (opciones == 2) {   
+                resta(matriz1[0], matriz2[0], matrizCompleja1, matrizCompleja2);
+            }
+            else if (opciones == 3) {   
+                resta(matriz1[0], matriz2[0], matrizCompleja2, matrizCompleja1);
+            }
+            else if (opciones == 4){   
+                multiplicacion(matriz1[0], matriz2[0], matrizCompleja1, matrizCompleja2);
+            }
+            else if (opciones == 5){   
+                cout << "\nFin del programa." << endl;
+                return; /* Retorna la función */
+            }
+            else {
+                /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Error: No se ingreso un numero dentro de las opciones disponibles.");
+            }
+        }
+        catch(const exception& e) {
+            cerr << e.what() << '\n';
+        }  
+    }
+
+    /* Se le solicita al programa que borre toda la información */
+    liberarEspacio();
 }

@@ -9,15 +9,15 @@ int main(){
     
     /* Se crean dos objetos de la clase Matriz. Cada objeto debe configurarse antes de ingresarlo
     en el objeto OperacionesBasicas o el objeto OperacionesComplejas */
-    Matriz<int> matriz1(true);
-    Matriz<int> matriz2(true);
+    Matriz<double> matriz1(true);
+    Matriz<double> matriz2(true);
 
     /* Por defecto, si ambos objetos matriz no son iguales al tipo del objeto de OperacionesBasicas
     o OperacionesComplejas, no se puede usar. Por ello se descarta preguntar si dos matrices son
     iguales antes de ingresarlas con un método a los objetos de OperacionesX */
     
-    OperacionesBasicas<int> operacionReal;
-    OperacionCompleja<int> operacionCompleja;
+    OperacionesBasicas<double> operacionReal;
+    OperacionCompleja<double> operacionCompleja;
 
     /* Aunque si se pregunta si los objetos matrices son complejos para decidir en qué objeto Operacion
        deben ser ingresador*/
@@ -31,12 +31,11 @@ int main(){
         matriz2.menuMatriz();
 
         /*Se ingresan las matrices al objeto de Operaciones Basicas */
-        operacionCompleja.validarMatrices();
         operacionCompleja.agregarMatriz(matriz1);
         operacionCompleja.agregarMatriz(matriz2);
-        operacionCompleja.validarMatrices();
 
-        //operacionCompleja.validarMatrices();
+        /* Se accede al menú */
+        operacionCompleja.menuOperacion();
 
         
     } 
