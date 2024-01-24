@@ -138,6 +138,8 @@ void Matriz<T>::ingresarDatosComplejos() {
                     if (cin.fail()) {
                         /* Limpia el estado de error*/
                         cin.clear();
+                        /* Descarta caracteres no deseados de cin */
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido */
                         j--;
                         throw invalid_argument("\nError: No se ingreso un numero.\n");
@@ -149,6 +151,8 @@ void Matriz<T>::ingresarDatosComplejos() {
                         /* Se dice que la parte real ingresada fue correcta y esta lista*/
                         realLista = true;
                     }
+                    /* Descarta caracteres no deseados de cin */
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 } 
 
                 /* Se le solicita al usuario que ingrese un dato para la matriz. Adicionalmente se le va
@@ -160,7 +164,10 @@ void Matriz<T>::ingresarDatosComplejos() {
                 if (cin.fail()) {
                     /* Limpia el estado de error*/
                     cin.clear();
-                    /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido */
+                    /* Descarta caracteres no deseados de cin */
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    /* Se le resta 1 al iterador j para que el usuario pueda ingresar un dato valido
+                    para la parte imaginaria */
                     j--;
                     cout << realLista;
                     throw invalid_argument("\nError: No se ingreso un numero.\n");
@@ -175,14 +182,12 @@ void Matriz<T>::ingresarDatosComplejos() {
                 }
 
                 /* Descarta caracteres no deseados de cin */
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');   
-
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                
             }
             catch(const exception& e) {
                 cerr << e.what() << '\n';
             }
-            /* Descarta caracteres no deseados hasta alcanzar el salto de línea */
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
 }
@@ -228,7 +233,7 @@ void Matriz<T>::mostrarComplejosMatriz() const{
             it++;
 
             /* Luego se pregunta si la parte imaginaria es positiva o no */
-            if(*it > 0){
+            if(*it >= 0){
                 /* Se imprime un número de más para indicar que es positivo */
                 cout << "+";
             }
