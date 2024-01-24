@@ -1,3 +1,13 @@
+/**
+ * @file OperacionCompleja.hpp
+ * @brief Puede realizar operaciones de suma, resta y multiplicación de matrices complejas
+ * @author Yehohnathan Miranda Vigil (yehohnathan.miranda@ucr.ac.cr)
+ * @version 1.0
+ * @date 2024-01-42
+ * 
+ * @copyright Copyright (c) 2024
+ */
+
 #ifndef OPERACION_COMPLEJA_HPP
 #define OPERACION_COMPLEJA_HPP
 
@@ -9,71 +19,110 @@
 #include "Matriz.hpp"
 using namespace std;
 
+/**
+ * @brief Clase que realiza operaciones complejas con matrices.
+ * @tparam T Tipo de dato de la matriz (int o double).
+ */
 template<typename T>
 class OperacionCompleja
 {
     private:
-        /* Se instancia un vector para cada matriz (son solo 2) */
-        vector<Matriz<T>> matriz1;
-        vector<Matriz<T>> matriz2;
+        vector<Matriz<T>> matriz1;  /**< Vector que contiene la primera matriz. */
+        vector<Matriz<T>> matriz2;  /**< Vector que contiene la segunda matriz. */
 
-        /* Se instancia un vector que contiene los resultados de las conversiones */
-        vector<complex<T>> matrizCompleja1; 
-        vector<complex<T>> matrizCompleja2; 
-        vector<complex<T>> resultadoMatrices;
+        vector<complex<T>> matrizCompleja1;  /**< Vector que contiene la versión compleja de la primera matriz. */
+        vector<complex<T>> matrizCompleja2;  /**< Vector que contiene la versión compleja de la segunda matriz. */
+        vector<complex<T>> resultadoMatrices;  /**< Vector que almacena los resultados de las operaciones. */
 
-        /* Se crea una bandera para asegurar que las matrices ingresadas cumplas
-        con los requisitos solicitados */
-        bool validar = false;
+        bool validar = false;  /**< Bandera para asegurar que las matrices ingresadas cumplen con los requisitos solicitados. */
 
-        /* Se crea para guardar datos de suma, resta, multiplicación y otros */
-        complex<T> resultadoDato;
+        complex<T> resultadoDato;  /**< Almacena el resultado de una operación entre dos elementos. */
 
-        /* Se crea para que el usuario ingresa opciones en el menu */
-        int opciones;
-        
-        /* Creo un método para comprar si el tamaño de matriz 1 es igual al tamaño de
-        matriz 1*/
+        int opciones;  /**< Almacena las opciones ingresadas por el usuario en el menú de operaciones. */
+
+        /**
+         * @brief Compara si el tamaño de dos matrices es igual.
+         * @param matriz1 Primera matriz a comparar.
+         * @param matriz2 Segunda matriz a comparar.
+         * @return true si las matrices tienen el mismo tamaño, false de lo contrario.
+         */
         bool sonIguales(const Matriz<T>& matriz1, const Matriz<T>& matriz2) const;
 
-        /* Convierte una matriz "normal" a una matriz "compleja"*/
+        /**
+         * @brief Convierte una matriz "normal" a una matriz "compleja".
+         * @param matriz Matriz a convertir.
+         */
         void conversorMatriz(const Matriz<T>& matriz);
 
     public:
-        /* Método de menú para que el usuario pueda elegir si sumar, multiplizar o dividir */
+        /**
+         * @brief Menú de operaciones para que el usuario pueda elegir sumar, multiplicar o dividir.
+         */
         void menuOperacion();
 
-        /* Método para agregar un objeto matriz al vector matriz1 o matriz2 */
+        /**
+         * @brief Agrega un objeto matriz al vector matriz1 o matriz2.
+         * @param matriz Matriz a agregar.
+         */
         void agregarMatriz(const Matriz<T> matriz);
 
-        /* El siguiente método se encarga de borrar las matrices guardadas*/
+        /**
+         * @brief Libera el espacio ocupado por las matrices guardadas.
+         */
         void liberarEspacio();
 
-        /* Método para validar para saber si se ingresaron dos matrices, si estas dos matrices
-        tienen las mismas dimensiones y si son del mismo tipo. */
+        /**
+         * @brief Valida si se ingresaron dos matrices, si estas dos matrices tienen las mismas dimensiones y si son del mismo tipo.
+         */
         void validarMatrices();
 
-        /* Sobrecarga de operador de suma (+) */
+        /**
+         * @brief Sobrecarga del operador de suma (+).
+         * @param matriz1 Primera matriz a sumar.
+         * @param matriz2 Segunda matriz a sumar.
+         * @param matrizCompleja1 Versión compleja de la primera matriz.
+         * @param matrizCompleja2 Versión compleja de la segunda matriz.
+         */
         void suma(const Matriz<T>& matriz1, const Matriz<T>& matriz2,
-                  const vector<complex<T>> matrizCompleja1, 
-                  const vector<complex<T>> matrizCompleja2);
+                const vector<complex<T>> matrizCompleja1, 
+                const vector<complex<T>> matrizCompleja2);
 
-        /* Sobrecarga de operador de resta (-) */
+        /**
+         * @brief Sobrecarga del operador de resta (-).
+         * @param matriz1 Primera matriz a restar.
+         * @param matriz2 Segunda matriz a restar.
+         * @param matrizCompleja1 Versión compleja de la primera matriz.
+         * @param matrizCompleja2 Versión compleja de la segunda matriz.
+         */
         void resta(const Matriz<T>& matriz1, const Matriz<T>& matriz2,
-                   const vector<complex<T>> matrizCompleja1, 
-                   const vector<complex<T>> matrizCompleja2);
+                const vector<complex<T>> matrizCompleja1, 
+                const vector<complex<T>> matrizCompleja2);
 
-        /* Sobrecarga de operador de multiplicación (*) */
+        /**
+         * @brief Sobrecarga del operador de multiplicación (*).
+         * @param matriz1 Primera matriz a multiplicar.
+         * @param matriz2 Segunda matriz a multiplicar.
+         * @param matrizCompleja1 Versión compleja de la primera matriz.
+         * @param matrizCompleja2 Versión compleja de la segunda matriz.
+         */
         void multiplicacion(const Matriz<T>& matriz1, const Matriz<T>& matriz2,
                             const vector<complex<T>> matrizCompleja1, 
                             const vector<complex<T>> matrizCompleja2);
 
-        /* Método para mostrar el cualquier tipo de matriz compleja */
+        /**
+         * @brief Muestra el contenido de cualquier tipo de matriz compleja.
+         * @param matriz Matriz a mostrar.
+         * @param matrizCompleja Versión compleja de la matriz.
+         */
         void mostrarMatriz(const Matriz<T>& matriz, const vector<complex<T>>& matrizCompleja);
 
-        /* Método para retornar validar */
+        /**
+         * @brief Obtiene el valor de la bandera de validación.
+         * @return Valor de la bandera de validación.
+         */
         bool getValidar();
 };
+
 
 #include "OperacionCompleja.cpp"
 #endif

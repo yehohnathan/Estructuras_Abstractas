@@ -6,16 +6,54 @@
 #include <iostream>
 using namespace std;
 
-/* Operaciones con matrices */
+/** @defgroup Problema1 Operaciones con matrices
+ * @{
+ */
+
+/**
+ * @brief Función principal que encapsula todo para que el Problema 1 funcione correctamente.
+ */
 void problema1();
+
+/**
+ * @brief Función que permite al usuario seleccionar el tipo de matriz (entera o double) para las operaciones.
+ * @param operacion1 Objeto de la clase OperacionesBasicas para matrices enteras.
+ * @param operacion2 Objeto de la clase OperacionesBasicas para matrices double.
+ * @param operacionCompleja1 Objeto de la clase OperacionCompleja para matrices complejas enteras.
+ * @param operacionCompleja2 Objeto de la clase OperacionCompleja para matrices complejas double.
+ */
+
 void seleccionMatriz(OperacionesBasicas<int>& operacion1, OperacionesBasicas<double>& operacion2,
                      OperacionCompleja<int>& operacionCompleja1, OperacionCompleja<double>& operacionCompleja2);
+
+/**
+ * @brief Función que permite al usuario ingresar el tipo de matriz (real o compleja) para las operaciones.
+ * @tparam T Tipo de dato de la matriz (int o double).
+ * @param operacion Objeto de la clase OperacionesBasicas para matrices reales o complejas.
+ * @param operacionCompleja Objeto de la clase OperacionCompleja para matrices complejas reales o complejas.
+ */
 template <typename T>
 void ingresarMatriz(OperacionesBasicas<T>& operacion, OperacionCompleja<T>& operacionCompleja);
 
-/* Validador de correos electrónicos */
+/** @} */
+
+/** @defgroup Problema2 Validador de correos electrónicos
+ * @{
+ */
+
+/**
+ * @brief Función principal que encapsula todo para que el Problema 2 funcione correctamente.
+ */
 void problema2();
 
+/** @} */
+
+/**
+ * @brief Implementación de la función principal del programa.
+ * @details Se crea un menú para que el usuario pueda acceder al Problema 1 o al Problema 2.
+ *          Se manejan excepciones para validar la entrada del usuario.
+ * @return 0 si el programa se ejecuta con éxito.
+ */
 int main(){
     /* Se crea el ménu para que el usuario pueda acceder al Problema 1 o al Problema 2*/
     cout << "\nPara ejecutar al Problema 1 o al Problema 2, ingrese un numero entero:"
@@ -64,7 +102,11 @@ int main(){
     return 0;
 }
 
-/* Función que encapsula todo lo que hace que Problema 2 funcione correctamente*/
+/**
+ * @brief Implementación de la función que encapsula todo para que el Problema 2 funcione correctamente.
+ * @details Crea un objeto de la clase ValidaCorreo, solicita al usuario que ingrese un correo electrónico
+ *          y utiliza el validador para verificar si es válido o no. Maneja excepciones.
+ */
 void problema2(){
     /* Crea un objeto de la clase ValidaCorreo */ 
     ValidaCorreo correos;
@@ -90,7 +132,12 @@ void problema2(){
     }
 }
 
-/* Función que encapsula todo que hace que Problema 1 funciones perfectamente */
+/**
+ * @brief Implementación de la función que encapsula todo para que el Problema 1 funcione correctamente.
+ * @details Se instancian objetos de las clases OperacionesBasicas y OperacionesComplejas,
+ *          se solicita al usuario que ingrese el tipo de dato para las matrices, y se realiza
+ *          operaciones según la selección del usuario. Se manejan excepciones para validar la entrada.
+ */
 void problema1(){
     /* Se instancian los objetos de OperacionesBasicas y OperacionesBasicas*/
     OperacionesBasicas<int> operacion1;
@@ -124,7 +171,14 @@ void problema1(){
     }
 }
 
-/* Aquí se selecciona si la matriz es entera o double */
+/**
+ * @brief Implementación de la función que permite al usuario seleccionar el tipo de matriz (entera o double) para las operaciones.
+ * @details Se utiliza un bucle while para manejar la entrada del usuario y se llama a la función ingresarMatriz.
+ * @param operacion1 Objeto de la clase OperacionesBasicas para matrices enteras.
+ * @param operacion2 Objeto de la clase OperacionesBasicas para matrices double.
+ * @param operacionCompleja1 Objeto de la clase OperacionCompleja para matrices complejas enteras.
+ * @param operacionCompleja2 Objeto de la clase OperacionCompleja para matrices complejas double.
+ */
 void seleccionMatriz(OperacionesBasicas<int>& operacion1, OperacionesBasicas<double>& operacion2,
                      OperacionCompleja<int>& operacionCompleja1, OperacionCompleja<double>& operacionCompleja2) {
     int opcion;
@@ -158,7 +212,13 @@ void seleccionMatriz(OperacionesBasicas<int>& operacion1, OperacionesBasicas<dou
     }
 }
 
-/* Aquí se selecciona si la matriz es real o compleja */
+/**
+ * @brief Implementación de la función que permite al usuario ingresar el tipo de matriz (real o compleja) para las operaciones.
+ * @details Se utiliza un bucle while para manejar la entrada del usuario y se agrega la matriz correspondiente al objeto operacion o operacionCompleja.
+ * @tparam T Tipo de dato de la matriz (int o double).
+ * @param operacion Objeto de la clase OperacionesBasicas para matrices reales o complejas.
+ * @param operacionCompleja Objeto de la clase OperacionCompleja para matrices complejas reales o complejas.
+ */
 template <typename T>
 void ingresarMatriz(OperacionesBasicas<T>& operacion, OperacionCompleja<T>& operacionCompleja) {
     int opcionTipoMatriz;
