@@ -39,9 +39,9 @@ int main(){
     else if ((matriz1.getComplejo() == false) && (matriz2.getComplejo() == false ))
     {
         /* Se solicita que se configuren las matrices: */
-        cout <<"\n=================== Configure el la matriz 1: ===================" << endl;
+        cout <<"\n========================= Configure la matriz 1: =========================" << endl;
         matriz1.menuMatriz();
-        cout <<"\n=================== Configure el la matriz 2: ===================" << endl;
+        cout <<"\n========================= Configure la matriz 2: =========================" << endl;
         matriz2.menuMatriz();
 
         /* Se ingresan las matrices al objeto de Operaciones Basicas*/
@@ -53,7 +53,7 @@ int main(){
              << " realizar ninguna operacion"<< endl;
     }
     
-    operacionReal.validarMatrices();
+    operacionReal.menuOperacion();
     
     return 0;
 }

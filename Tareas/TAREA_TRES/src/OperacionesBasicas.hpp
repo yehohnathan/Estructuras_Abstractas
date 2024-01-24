@@ -23,7 +23,7 @@ class OperacionesBasicas
         con los requisitos solicitados */
         bool validar = false;
 
-        /* Se cre*/
+        /* Se crea para guardar datos de suma, resta, multiplicación y otros */
         T resultadoDato;
         
         /* Creo un método para comprar si el tamaño de matriz 1 es igual al tamaño de
@@ -31,6 +31,9 @@ class OperacionesBasicas
         bool sonIguales(const Matriz<T>& matriz1, const Matriz<T>& matriz2) const;
 
     public:
+        /* Método de menú para que el usuario pueda elegir si sumar, multiplizar o dividir */
+        void menuOperacion();
+
         /* Método para agregar un objeto matriz al vector matriz1 o matriz2 */
         void agregarMatriz(const Matriz<T> matriz);
 
