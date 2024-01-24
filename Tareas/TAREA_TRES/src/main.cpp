@@ -5,8 +5,14 @@
 #include <typeinfo> /* Para averiguar el tipo de dato que es una matriz */
 using namespace std;
 
+void problema1();
+
 int main(){
-    
+    problema1();
+    return 0;
+}
+
+void problema1(){
     /* Se crean dos objetos de la clase Matriz. Cada objeto debe configurarse antes de ingresarlo
     en el objeto OperacionesBasicas o el objeto OperacionesComplejas */
     Matriz<double> matriz1(true);
@@ -58,6 +64,4 @@ int main(){
         cout << "\nUna matriz es de numeros complejos y la otra es de numeros real. No se puede" 
              << " realizar ninguna operacion"<< endl;
     }
-    
-    return 0;
 }
