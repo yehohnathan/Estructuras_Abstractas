@@ -1,0 +1,100 @@
+\doxysection{Operaciones con matrices}
+\hypertarget{group___problema1}{}\label{group___problema1}\index{Operaciones con matrices@{Operaciones con matrices}}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___problema1_ga96b7d028de500ff98a46757c55b74393}{problema1}} ()
+\begin{DoxyCompactList}\small\item\em Función principal que encapsula todo para que el Problema 1 funcione correctamente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___problema1_ga2fb3992c18275233be6a83afdf20239a}{seleccion\+Matriz}} (\mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ int $>$ \&operacion1, \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ double $>$ \&operacion2, \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ int $>$ \&operacion\+Compleja1, \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ double $>$ \&operacion\+Compleja2)
+\begin{DoxyCompactList}\small\item\em Función que permite al usuario seleccionar el tipo de matriz (entera o double) para las operaciones. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{group___problema1_ga232531e3f96ea8648290d259ccd7f409}{ingresar\+Matriz}} (\mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$ \&operacion, \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$ \&operacion\+Compleja)
+\begin{DoxyCompactList}\small\item\em Función que permite al usuario ingresar el tipo de matriz (real o compleja) para las operaciones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{group___problema1_ga232531e3f96ea8648290d259ccd7f409}\label{group___problema1_ga232531e3f96ea8648290d259ccd7f409} 
+\index{Operaciones con matrices@{Operaciones con matrices}!ingresarMatriz@{ingresarMatriz}}
+\index{ingresarMatriz@{ingresarMatriz}!Operaciones con matrices@{Operaciones con matrices}}
+\doxysubsubsection{\texorpdfstring{ingresarMatriz()}{ingresarMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void ingresar\+Matriz (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$ \&}]{operacion,  }\item[{\mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$ \&}]{operacion\+Compleja }\end{DoxyParamCaption})}
+
+
+
+Función que permite al usuario ingresar el tipo de matriz (real o compleja) para las operaciones. 
+
+Implementación de la función que permite al usuario ingresar el tipo de matriz (real o compleja) para las operaciones.
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de dato de la matriz (int o double). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em operacion} & Objeto de la clase \doxylink{class_operaciones_basicas}{Operaciones\+Basicas} para matrices reales o complejas. \\
+\hline
+{\em operacion\+Compleja} & Objeto de la clase \doxylink{class_operacion_compleja}{Operacion\+Compleja} para matrices complejas reales o complejas.\\
+\hline
+\end{DoxyParams}
+Se utiliza un bucle while para manejar la entrada del usuario y se agrega la matriz correspondiente al objeto operacion o operacion\+Compleja. 
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de dato de la matriz (int o double). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parámetros}
+{\em operacion} & Objeto de la clase \doxylink{class_operaciones_basicas}{Operaciones\+Basicas} para matrices reales o complejas. \\
+\hline
+{\em operacion\+Compleja} & Objeto de la clase \doxylink{class_operacion_compleja}{Operacion\+Compleja} para matrices complejas reales o complejas. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___problema1_ga96b7d028de500ff98a46757c55b74393}\label{group___problema1_ga96b7d028de500ff98a46757c55b74393} 
+\index{Operaciones con matrices@{Operaciones con matrices}!problema1@{problema1}}
+\index{problema1@{problema1}!Operaciones con matrices@{Operaciones con matrices}}
+\doxysubsubsection{\texorpdfstring{problema1()}{problema1()}}
+{\footnotesize\ttfamily void problema1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Función principal que encapsula todo para que el Problema 1 funcione correctamente. 
+
+Implementación de la función que encapsula todo para que el Problema 1 funcione correctamente.
+
+Se instancian objetos de las clases \doxylink{class_operaciones_basicas}{Operaciones\+Basicas} y Operaciones\+Complejas, se solicita al usuario que ingrese el tipo de dato para las matrices, y se realiza operaciones según la selección del usuario. Se manejan excepciones para validar la entrada. \Hypertarget{group___problema1_ga2fb3992c18275233be6a83afdf20239a}\label{group___problema1_ga2fb3992c18275233be6a83afdf20239a} 
+\index{Operaciones con matrices@{Operaciones con matrices}!seleccionMatriz@{seleccionMatriz}}
+\index{seleccionMatriz@{seleccionMatriz}!Operaciones con matrices@{Operaciones con matrices}}
+\doxysubsubsection{\texorpdfstring{seleccionMatriz()}{seleccionMatriz()}}
+{\footnotesize\ttfamily void seleccion\+Matriz (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ int $>$ \&}]{operacion1,  }\item[{\mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ double $>$ \&}]{operacion2,  }\item[{\mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ int $>$ \&}]{operacion\+Compleja1,  }\item[{\mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ double $>$ \&}]{operacion\+Compleja2 }\end{DoxyParamCaption})}
+
+
+
+Función que permite al usuario seleccionar el tipo de matriz (entera o double) para las operaciones. 
+
+Implementación de la función que permite al usuario seleccionar el tipo de matriz (entera o double) para las operaciones.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em operacion1} & Objeto de la clase \doxylink{class_operaciones_basicas}{Operaciones\+Basicas} para matrices enteras. \\
+\hline
+{\em operacion2} & Objeto de la clase \doxylink{class_operaciones_basicas}{Operaciones\+Basicas} para matrices double. \\
+\hline
+{\em operacion\+Compleja1} & Objeto de la clase \doxylink{class_operacion_compleja}{Operacion\+Compleja} para matrices complejas enteras. \\
+\hline
+{\em operacion\+Compleja2} & Objeto de la clase \doxylink{class_operacion_compleja}{Operacion\+Compleja} para matrices complejas double.\\
+\hline
+\end{DoxyParams}
+Se utiliza un bucle while para manejar la entrada del usuario y se llama a la función ingresar\+Matriz. 
+\begin{DoxyParams}{Parámetros}
+{\em operacion1} & Objeto de la clase \doxylink{class_operaciones_basicas}{Operaciones\+Basicas} para matrices enteras. \\
+\hline
+{\em operacion2} & Objeto de la clase \doxylink{class_operaciones_basicas}{Operaciones\+Basicas} para matrices double. \\
+\hline
+{\em operacion\+Compleja1} & Objeto de la clase \doxylink{class_operacion_compleja}{Operacion\+Compleja} para matrices complejas enteras. \\
+\hline
+{\em operacion\+Compleja2} & Objeto de la clase \doxylink{class_operacion_compleja}{Operacion\+Compleja} para matrices complejas double. \\
+\hline
+\end{DoxyParams}

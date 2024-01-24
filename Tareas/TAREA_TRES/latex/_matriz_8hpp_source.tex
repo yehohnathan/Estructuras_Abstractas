@@ -1,0 +1,53 @@
+\doxysection{Matriz.\+hpp}
+\hypertarget{_matriz_8hpp_source}{}\label{_matriz_8hpp_source}\mbox{\hyperlink{_matriz_8hpp}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ MATRIZ\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ MATRIZ\_HPP}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{/*\ Se\ incluyen\ las\ librerías\ necesarias:\ */}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matriz}{Matriz}}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ T\ filas\ =\ 0;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ T\ columnas\ =\ 0;\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ complejo;\ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ T\ dato;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ vector<T>\ datosMatriz;\ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_matriz_aaf7bf1f5bc11ebbbbcaa995f9ab670d4}{Matriz}}(\textcolor{keywordtype}{bool}\ complejo);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a0e087bc72e35911531b5c67c5fe33407}{sizeMatriz}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_ada17240523ffaf6da6f17feb8e68178e}{ingresarDatosComplejos}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a4e6be3e7354e0dc815ec7e9a055d7aa3}{ingresarDatosMatriz}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a0303f418b2af0c790afa96f0e551b7af}{mostrarMatriz}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a9a791ded21fd284ab692131882068152}{mostrarComplejosMatriz}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a60cdb066218200aef0dc7cbffc4c6790}{menuMatriz}}();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_matriz_a508e385baf9d3d8458b8c0c96ee7eddb}{getComplejo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{class_matriz_a57d7929e6deeedc40861430cfa1c2a77}{get}}(\textcolor{keywordtype}{int}\ fila,\ \textcolor{keywordtype}{int}\ columna)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{/*\ Para\ que\ no\ de\ errores\ */}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_matriz_8cpp}{Matriz.cpp}}"{}}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

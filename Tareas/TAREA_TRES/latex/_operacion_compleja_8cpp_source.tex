@@ -1,0 +1,332 @@
+\doxysection{Operacion\+Compleja.\+cpp}
+\hypertarget{_operacion_compleja_8cpp_source}{}\label{_operacion_compleja_8cpp_source}\mbox{\hyperlink{_operacion_compleja_8cpp}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Se\ incluye\ el\ header\ asociado\ a\ esta\ clase\ */}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_operacion_compleja_8hpp}{OperacionCompleja.hpp}}"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{/*\ Método\ para\ agregar\ un\ objeto\ matriz\ al\ vector\ matriz1\ o\ matriz2\ */}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a30ff249145f39ba36f4b2c045ec3530a}{OperacionCompleja<T>::agregarMatriz}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\ matriz)\{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{/*\ Se\ verifica\ si\ el\ usuario\ ha\ ingresado\ las\ matrices\ validando\ el\ estado\ de\ los}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ \ \ \ \ vectores\ de\ la\ clase.\ Si\ el\ vector\ matriz1\ esta\ vacio,\ continue\ con\ el\ vector\ matriz2}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ \ \ \ si\ también\ esta\ vacio.\ Si\ ninguno\ esta\ vacio\ lanza\ un\ mensaje\ */}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(matriz1.empty())\{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ conversorMatriz(matriz);}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ matriz1.push\_back(matriz);}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(matriz2.empty())\{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ conversorMatriz(matriz);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ matriz2.push\_back(matriz);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}\(\backslash\)nNo\ hay\ espacio\ disponible,\ ya\ se\ agregaron\ las\ dos\ matrices."{}});}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \}\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{/*\ El\ siguiente\ método\ se\ encarga\ de\ borrar\ las\ matrices\ guardadas*/}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_acdcbd7c1a452fd2e2c175de494a039b0}{OperacionCompleja<T>::liberarEspacio}}()\{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{/*\ Se\ libera\ el\ posible\ espacio\ almacenado\ por\ los\ vectores\ */}}
+\DoxyCodeLine{00034\ \ \ \ \ matriz1.clear();}
+\DoxyCodeLine{00035\ \ \ \ \ matriz2.clear();}
+\DoxyCodeLine{00036\ \ \ \ \ matrizCompleja1.clear();}
+\DoxyCodeLine{00037\ \ \ \ \ matrizCompleja2.clear();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{/*\ Mensaje\ indicandole\ al\ usuario\ la\ acción\ }}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ cout\ <<\ "{}\(\backslash\)nLas\ posibles\ matrices\ ingresadas\ han\ sido\ borradas.\ "{}\ }}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ <<\ "{}Vuelve\ a\ utilizar\ el\ metodo\ agregarMatriz()."{}\ <<\ endl;\ }}
+\DoxyCodeLine{00042\ \textcolor{comment}{}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ No\ es\ necesario\ que\ el\ usuario\ se\ de\ cuenta\ \ \ \ \ }}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00045\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{/*\ El\ siguiente\ método\ se\ encarga\ de\ borrar\ las\ matrices\ guardadas*/}}
+\DoxyCodeLine{00048\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja}{OperacionCompleja<T>::conversorMatriz}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz)\{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ convertir\ los\ datos\ en\ el\ vector\ real\ pero}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ distribuido\ como\ si\ fuera\ un\ número\ complejo\ a\ un\ verdadero\ vector\ complejo\ */}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{/*\ Se\ multiplcan\ los\ iteradores\ *\ 2\ para\ ajustar\ los\ espacios\ */}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matriz.\mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}()*2;\ i++)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ matriz.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()*2;\ j\ +=2)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ obtiene\ el\ valor\ de\ la\ parte\ real\ y\ la\ parte\ imaginaria*/}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ complex<double>\ numeroComplejo(matriz.\mbox{\hyperlink{class_matriz_a57d7929e6deeedc40861430cfa1c2a77}{get}}(i,\ j),\ matriz.\mbox{\hyperlink{class_matriz_a57d7929e6deeedc40861430cfa1c2a77}{get}}(i,\ (j\ +\ 1)));}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(matriz1.empty())\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrizCompleja1.push\_back(numeroComplejo);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(matriz2.empty())\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrizCompleja2.push\_back(numeroComplejo);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ i\ ++;}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{/*\ La\ explicación\ de\ por\ qué\ este\ ciclo\ for\ funciona\ es\ por\ lo\ siguiente:\ }}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ 1.\ El\ vector\ matriz\ dice\ que\ es\ de\ tamaño\ NxM,\ pero\ en\ realidad\ es\ de\ tamaño\ Nx(M*2);}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ ocultando\ el\ hecho\ de\ que\ realmente\ no\ es\ una\ matriz\ compleja,\ unicamente\ es\ real.}}
+\DoxyCodeLine{00072\ \textcolor{comment}{}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ 2.\ En\ el\ caso\ de\ tener\ una\ matriz:}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ \ \ \ \ 1+2j\ 3+4j}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ \ \ \ \ 5+6j\ 7+8j}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ \ \ \ \ Eso\ es\ igual\ a\ matriz\ =\ [1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8]}}
+\DoxyCodeLine{00077\ \textcolor{comment}{}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ 3.\ matriz.get(i,j)\ =\ i*matriz.getColumnas()+\ j.\ Por\ lo\ que\ en\ el\ caso\ de\ tener\ una\ matriz\ 2x2:}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ \ \ \ \ \ Para\ el\ elemento\ 1x1:\ }}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ real\ =\ get(0,0)\ =\ 0*2+0\ =\ matriz[0]}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ imaginario\ =\ get(0,1)\ =\ 0*2+1\ =\ matriz[1]}}
+\DoxyCodeLine{00082\ \textcolor{comment}{}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ \ \ \ \ Para\ el\ elemento\ 1x2:\ }}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ real\ =\ get(0,2)\ =\ 0*2+2\ =\ matriz[2]}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ imaginario\ =\ get(0,3)\ =\ 0*2+3\ =\ matriz[3]}}
+\DoxyCodeLine{00086\ \textcolor{comment}{}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ \ \ \ \ Para\ el\ elemento\ 2x1:\ }}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ No\ se\ puede\ hacer:}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ real\ =\ get(1,0)\ =\ 1*2+0\ =\ matriz[2]}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ Por\ lo\ que\ se\ le\ suma\ i\ +\ 1\ al\ final\ del\ ciclo\ for\ de\ j:}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ real\ =\ get(2,0)\ =\ 2*2+0\ =\ matriz[4]}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ imaginario\ =\ get(2,1)\ =\ 2*2+1\ =\ matriz[5]}}
+\DoxyCodeLine{00093\ \textcolor{comment}{}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ \ \ \ \ Para\ el\ elemento\ 2x2:\ }}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ real\ =\ get(2,2)\ =\ 2*2+2\ =\ matriz[6]}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ imaginario\ =\ get(2,3)\ =\ 2*2+3\ =\ matriz[7]}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00098\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{/*\ Método\ para\ validar\ para\ saber\ si\ se\ ingresaron\ dos\ matrices,\ si\ estas\ dos\ matrices}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ tienen\ las\ mismas\ dimensiones\ y\ si\ son\ del\ mismo\ tipo.\ */}}
+\DoxyCodeLine{00102\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_ad330ec4845e4b4345706d993804428d0}{OperacionCompleja<T>::validarMatrices}}()\{}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{/*\ Se\ realiza\ un\ bloque\ de\ excepciones\ para\ evitar\ problemas\ */}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ pregunta\ si\ las\ matrices\ estan\ vacias*/}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrizCompleja1.empty()\ ||\ matrizCompleja2.empty())\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ runtime\_error(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Como\ las\ matrices\ no\ estan\ vacias\ me\ pregunto\ por\ su\ tamaño\ */}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sonIguales(matriz1[0],\ matriz2[0])\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ runtime\_error(\textcolor{stringliteral}{"{}Error:\ Las\ matrices\ no\ son\ del\ mismo\ tamayo\ o\ NO\ son\ complejas."{}});}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Significa\ que\ las\ matrices\ son\ validas\ */}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ validar\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Las\ matrices\ son\ validas\ para\ ser\ utilizadas"{}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ cerr\ <<\ e.what();}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{/*\ Salto\ de\ linea\ para\ mejorar\ la\ impresión\ de\ mensajes*/}}
+\DoxyCodeLine{00126\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00127\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{comment}{/*\ Creo\ un\ método\ para\ comprar\ si\ el\ tamaño\ de\ matriz\ 1\ es\ igual\ al\ tamaño\ de\ matriz\ 2.\ Además\ de}}
+\DoxyCodeLine{00131\ \textcolor{comment}{asegurarse\ de\ que\ ambas\ sean\ de\ numeros\ complejos\ */}}
+\DoxyCodeLine{00132\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_operacion_compleja}{OperacionCompleja<T>::sonIguales}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{return}\ ((matriz1.\mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}()\ ==\ matriz2.\mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}())\ \&\&\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ (matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ ==\ matriz2.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}())}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (matriz1.\mbox{\hyperlink{class_matriz_a508e385baf9d3d8458b8c0c96ee7eddb}{getComplejo}}()\ ==\ \textcolor{keyword}{true}\ \&\&\ matriz2.\mbox{\hyperlink{class_matriz_a508e385baf9d3d8458b8c0c96ee7eddb}{getComplejo}}()\ ==\ \textcolor{keyword}{true}));}
+\DoxyCodeLine{00137\ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{comment}{/*\ Sobrecarga\ de\ operador\ de\ suma\ (+)\ */}}
+\DoxyCodeLine{00140\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00141\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a0f7ecc5066b1e7431d61b4911190fc54}{OperacionCompleja<T>::suma}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2,}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja1,\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja2)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{/*\ Se\ limpia\ el\ vector\ de\ resultados\ */}}
+\DoxyCodeLine{00145\ \ \ \ \ resultadoMatrices.clear();}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{/*\ Se\ valida\ si\ las\ matrices\ son\ válidas\ con\ el\ atributo\ bool\ */}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{if}\ (validar\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nEl\ resultado\ de\ sumar\ (matriz\ 1\ +\ matriz\ 2)\ es\ una\ matriz:\ "{}}\ <<\ endl;}
+\DoxyCodeLine{00153\ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ sumar\ los\ datos\ en\ el\ vector\ resultado\ */}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matriz1.\mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}();\ i++)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}();\ j\ ++)\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ obtienen\ los\ datos\ directamente\ de\ las\ matrices\ y\ se\ suman\ */}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ resultadoDato\ =\ matrizCompleja1[i\ *\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ j]\ +}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrizCompleja2[i\ *\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ j];}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ guardan\ los\ resultados\ en\ un\ vector\ */}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ resultadoMatrices.push\_back(resultadoDato);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{/*\ Muestra\ el\ resultado\ de\ la\ suma\ */}}
+\DoxyCodeLine{00166\ \ \ \ \ mostrarMatriz(matriz1,\ resultadoMatrices);}
+\DoxyCodeLine{00167\ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{comment}{/*\ Sobrecarga\ de\ operador\ de\ resta\ (-\/)\ */}}
+\DoxyCodeLine{00170\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00171\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_ae4cf14c5415df58b404ff94f96a3caf7}{OperacionCompleja<T>::resta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2,}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja1,\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja2)\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{comment}{/*\ Se\ limpia\ el\ vector\ de\ resultados\ */}}
+\DoxyCodeLine{00175\ \ \ \ \ resultadoMatrices.clear();}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{/*\ Se\ valida\ si\ las\ matrices\ son\ válidas\ con\ el\ atributo\ bool\ */}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (validar\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ dice\ al\ usuario\ el\ resultado\ de\ multiplicar\ las\ matrices*/}}
+\DoxyCodeLine{00183\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nEl\ resultado\ de\ restar\ (matriz\ 1\ -\/\ matriz\ 2)\ es\ una\ matriz:\ "{}}\ <<\ endl;}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ restar\ los\ datos\ en\ el\ vector\ resultado\ */}}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matriz1.\mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}();\ i++)\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}();\ j\ ++)\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ obtienen\ los\ datos\ directamente\ de\ las\ matrices\ y\ se\ restan\ */}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ resultadoDato\ =\ matrizCompleja1[i\ *\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ j]\ -\/}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrizCompleja2[i\ *\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ j];}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ guardan\ los\ resultados\ en\ un\ vector\ */}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ resultadoMatrices.push\_back(resultadoDato);}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{/*\ Muestra\ el\ resultado\ de\ la\ resta\ */}}
+\DoxyCodeLine{00197\ \ \ \ \ mostrarMatriz(matriz1,\ resultadoMatrices);}
+\DoxyCodeLine{00198\ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{comment}{/*\ Sobrecarga\ de\ operador\ de\ resta\ (*)\ */}}
+\DoxyCodeLine{00201\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00202\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_ac133e7b99c92d858c11bec2debf1fa89}{OperacionCompleja<T>::multiplicacion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2,}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja1,\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja2)\ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{comment}{/*\ Se\ limpia\ el\ vector\ de\ resultados\ */}}
+\DoxyCodeLine{00206\ \ \ \ \ resultadoMatrices.clear();}
+\DoxyCodeLine{00207\ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{/*\ Se\ valida\ si\ las\ matrices\ son\ válidas\ con\ el\ atributo\ bool\ */}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordflow}{if}\ (validar\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00211\ \ \ \ \ \}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ dice\ al\ usuario\ el\ resultado\ de\ multiplicar\ las\ matrices*/}}
+\DoxyCodeLine{00214\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nEl\ resultado\ de\ multiplicar\ (matriz\ 1\ *\ matriz\ 2)\ es\ una\ matriz:\ "{}}\ <<\ endl;}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ restar\ los\ datos\ en\ el\ vector\ resultado\ */}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matriz1.\mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}();\ i++)\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}();\ j\ ++)\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ obtienen\ los\ datos\ directamente\ de\ las\ matrices\ y\ se\ multiplican\ */}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ resultadoDato\ =\ 0.0;}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//*\ Se\ realiza\ la\ multiplicación\ de\ cada\ elemento\ y\ se\ acumula\ el\ resultado\ */}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}();\ ++k)\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ resultadoDato\ +=\ matrizCompleja1[i\ *\ matriz1.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ k]\ *}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ matrizCompleja2[k\ *\ matriz2.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ j];}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ guardan\ los\ resultados\ en\ un\ vector\ */}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ resultadoMatrices.push\_back(resultadoDato);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{comment}{/*\ Muestra\ el\ resultado\ de\ la\ multiplicación\ */}}
+\DoxyCodeLine{00233\ \ \ \ \ mostrarMatriz(matriz1,\ resultadoMatrices);}
+\DoxyCodeLine{00234\ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{comment}{/*\ Método\ para\ mostrar\ el\ cualquier\ tipo\ de\ matriz\ compleja\ */}}
+\DoxyCodeLine{00237\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00238\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a604be832590607c78ecdbfeb01afa838}{OperacionCompleja<T>::mostrarMatriz}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz,\ \textcolor{keyword}{const}\ vector<complex<T>>\&\ matrizCompleja)\ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ mostrar\ los\ datos\ en\ el\ vector\ datosMatriz\ */}}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matriz.\mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{getFilas}}();\ ++i)\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ matriz.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}();\ ++j)\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ A\ los\ datos\ de\ matrizCompleja\ se\ separan\ en\ su\ componente\ real\ e\ imaginaria*/}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ T\ real\ =\ matrizCompleja[i\ *\ matriz.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ j].real();}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ T\ imag\ =\ matrizCompleja[i\ *\ matriz.\mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{getColumnas}}()\ +\ j].imag();}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ imprime\ primero\ la\ parte\ real\ */}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ real;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Luego\ se\ pregunta\ si\ la\ parte\ imaginaria\ es\ positiva\ o\ no\ */}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (imag\ >=\ 0)\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}+"{}};}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*El\ número\ negativo\ no\ necesita\ que\ se\ le\ coloque\ un\ simbolo.\ Se\ imprime\ en\ número}}
+\DoxyCodeLine{00254\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ imaginario.\ */}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ imag\ <<\ \textcolor{stringliteral}{"{}j\ \ "{}};}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Hace\ un\ salto\ de\ línea\ cuando\ se\ terminó\ de\ mostrar\ los\ datos\ de\ una\ fila\ */}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00259\ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \textcolor{comment}{/*\ Método\ de\ menú\ para\ que\ el\ usuario\ pueda\ elegir\ si\ sumar,\ multiplizar\ o\ dividir\ */}}
+\DoxyCodeLine{00263\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00264\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a0c9034b7fa685018182d7e99ef719b0e}{OperacionCompleja<T>::menuOperacion}}()\{}
+\DoxyCodeLine{00265\ \ \ \ \ validarMatrices();}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ resultado\ de\ validación\ es\ invalido\ para\ realizar\ operaciones*/}}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordflow}{if}\ (validar\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ liberarEspacio();}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{/*\ Sale\ de\ la\ función*/}}
+\DoxyCodeLine{00271\ \ \ \ \ \}}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ el\ menú\ para\ que\ el\ usuario\ pueda\ realizar\ una\ operación:\ */}}
+\DoxyCodeLine{00274\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ una\ de\ las\ siguientes\ opciones\ para\ realizar\ una\ operacion\ basica\ para\ las\ dos\ matrices:\ "{}}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ 1\ para\ sumar\ (matriz1\ +\ matriz2)."{}}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ 2\ para\ restar\ (matriz1\ -\/\ matriz2)."{}}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ 3\ para\ restar\ (matriz2\ -\/\ matriz1)."{}}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ 4\ para\ multiplicar\ (matriz1\ *\ matriz2)."{}}}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ 5\ para\ finalizar\ el\ programa."{}}\ <<\ endl;}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ una\ opcion\ para\ relizar\ una\ operacion:\ "{}};}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ opciones;}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ dato\ ingresado\ es\ incorrecto\ se\ vuelve\ a\ solicitar\ el\ ingreso\ */}}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Limpia\ el\ estado\ de\ error*/}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ hasta\ alcanzar\ el\ salto\ de\ línea\ */}}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ No\ se\ ingreso\ un\ numero."{}});}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (opciones\ ==\ 1)\ \{\ \ \ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suma(matriz1[0],\ matriz2[0],\ matrizCompleja1,\ matrizCompleja2);}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (opciones\ ==\ 2)\ \{\ \ \ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ resta(matriz1[0],\ matriz2[0],\ matrizCompleja1,\ matrizCompleja2);}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (opciones\ ==\ 3)\ \{\ \ \ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ resta(matriz1[0],\ matriz2[0],\ matrizCompleja2,\ matrizCompleja1);}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (opciones\ ==\ 4)\{\ \ \ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multiplicacion(matriz1[0],\ matriz2[0],\ matrizCompleja1,\ matrizCompleja2);}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (opciones\ ==\ 5)\{\ \ \ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{/*\ Retorna\ la\ función\ */}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ hasta\ alcanzar\ el\ salto\ de\ línea\ */}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ No\ se\ ingreso\ un\ numero\ dentro\ de\ las\ opciones\ disponibles."{}});}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)\ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00318\ \ \ \ \ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ solicita\ al\ programa\ que\ borre\ toda\ la\ información\ */}}
+\DoxyCodeLine{00321\ \ \ \ \ liberarEspacio();}
+\DoxyCodeLine{00322\ \}}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00325\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_operacion_compleja_a620123da7ec1d48b58edd01b1c8d80f9}{OperacionCompleja<T>::getValidar}}()\{}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>validar;}
+\DoxyCodeLine{00327\ \}}
+
+\end{DoxyCode}

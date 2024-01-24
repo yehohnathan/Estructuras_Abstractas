@@ -1,0 +1,353 @@
+\doxysection{Matriz.\+cpp}
+\hypertarget{_matriz_8cpp_source}{}\label{_matriz_8cpp_source}\mbox{\hyperlink{_matriz_8cpp}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Se\ incluye\ el\ header\ asociado\ a\ esta\ clase\ */}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_matriz_8hpp}{Matriz.hpp}}"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{/*\ Se\ instancia\ el\ contructor:\ */}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00006\ \mbox{\hyperlink{class_matriz_aaf7bf1f5bc11ebbbbcaa995f9ab670d4}{Matriz<T>::Matriz}}(\textcolor{keywordtype}{bool}\ complejo):\ complejo(complejo)\ \{\};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{/*\ Se\ crea\ un\ método\ que\ le\ solicite\ al\ usuario\ el\ tamaño\ de\ la\ matriz\ */}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a0e087bc72e35911531b5c67c5fe33407}{Matriz<T>::sizeMatriz}}()\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{/*\ Se\ inicializan\ los\ atributos\ cada\ vez\ se\ ingresa\ a\ este\ método*/}}
+\DoxyCodeLine{00013\ \ \ \ \ filas\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ columnas\ =\ 0;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{/*\ Se\ repite\ el\ ciclo\ while\ hasta\ que\ se\ ingrese\ un\ valor\ válido\ */}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{while}\ (filas\ <=\ 0)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ bloque\ de\ excepción\ para\ asegurar\ que\ los\ datos\ ingresados\ por\ el\ usuario\ puedan}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ \ \ \ \ ser\ convertidos\ a\ un\ valor\ entero\ */}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ingrese\ el\ valor\ de\ filas\ de\ la\ matriz:\ "{}};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ filas;\ \textcolor{comment}{/*\ Ingresa\ el\ valor\ al\ atributo\ filas\ */}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ dato\ ingresado\ es\ incorrecto\ se\ vuelve\ a\ solicitar\ el\ ingreso\ */}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Limpia\ el\ estado\ de\ error*/}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ No\ se\ ingreso\ un\ numero."{}});}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ no\ se\ puede\ realizar\ una\ conversión\ explícita\ que\ lance\ un\ error\ y\ termine\ el\ programa*/}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(filas)\ <=\ 0)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ Debiste\ ingresar\ un\ numero,\ valido\ mayor\ que\ 0."{}});}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ asegura\ que\ el\ valor\ ingresado\ sea\ un\ entero\ */}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ filas\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(filas);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ endl;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ de\ cin\ */}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{/*\ Se\ repite\ el\ ciclo\ while\ hasta\ que\ se\ ingrese\ un\ valor\ válido\ */}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{while}\ (columnas\ <=\ 0)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ bloque\ de\ excepción\ para\ asegurar\ que\ los\ datos\ ingresados\ por\ el\ usuario\ puedan}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ \ \ \ \ \ ser\ convertidos\ a\ un\ valor\ entero\ */}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ingrese\ el\ valor\ de\ columnas\ de\ la\ matriz:\ "{}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ columnas;\ \textcolor{comment}{/*\ Ingresa\ el\ valor\ al\ atributo\ columnas\ */}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ dato\ ingresado\ es\ incorrecto\ se\ vuelve\ a\ solicitar\ el\ ingreso\ */}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Limpia\ el\ estado\ de\ error*/}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ No\ se\ ingreso\ un\ numero."{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ no\ se\ puede\ realizar\ una\ conversión\ explícita\ que\ lance\ un\ error\ y\ termine\ el\ programa*/}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(columnas)\ <=\ 0)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ Debiste\ ingresar\ un\ numero,\ valido\ mayor\ que\ 0."{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ asegura\ que\ el\ valor\ ingresado\ sea\ un\ entero\ */}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ columnas\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(columnas);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ endl;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ de\ cin\ */}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});\ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{comment}{/*\ Se\ crea\ un\ método\ que\ utiliza\ el\ vector\ para\ ingresar\ valores\ al\ vector\ */}}
+\DoxyCodeLine{00078\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a4e6be3e7354e0dc815ec7e9a055d7aa3}{Matriz<T>::ingresarDatosMatriz}}()\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{/*\ Se\ inicializa\ la\ matriz\ limpiandola:\ */}}
+\DoxyCodeLine{00081\ \ \ \ \ datosMatriz.clear();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ ingresar\ los\ datos\ en\ el\ vector\ datosMatriz\ */}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ filas;\ i++)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ columnas;\ j++)\ \{\ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Bloque\ de\ excepción\ para\ asegurar\ que\ se\ ingresen\ los\ datos\ correctamente\ */}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ solicita\ al\ usuario\ que\ ingrese\ un\ dato\ para\ la\ matriz.\ Adicionalmente\ se\ le\ va}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indicando\ en\ qué\ posición\ de\ la\ matriz\ ingresa\ el\ dato\ */}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ingrese\ el\ numero\ de\ la\ posicion\ "{}}\ <<\ i\ +\ 1\ <<\ \textcolor{stringliteral}{"{}x"{}}\ <<\ j\ +\ 1\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ dato;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ dato\ ingresado\ es\ incorrecto\ se\ vuelve\ a\ solicitar\ el\ ingreso\ */}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Limpia\ el\ estado\ de\ error*/}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ resta\ 1\ al\ iterador\ j\ para\ que\ el\ usuario\ pueda\ ingresar\ un\ dato\ valido\ */}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j-\/-\/;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}\(\backslash\)nError:\ No\ se\ ingreso\ un\ numero.\(\backslash\)n"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ \textcolor{comment}{/*\ Se\ ingresa\ el\ dato,\ el\ cual\ es\ valido\ */}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Ingresa\ el\ dato\ a\ la\ "{}matriz"{}\ */}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datosMatriz.push\_back(dato);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ de\ cin\ */}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \}\ }
+\DoxyCodeLine{00113\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{/*\ Se\ crea\ un\ método\ que\ utiliza\ el\ vector\ para\ ingresar\ numeros\ complejos\ al\ vector\ */}}
+\DoxyCodeLine{00117\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_ada17240523ffaf6da6f17feb8e68178e}{Matriz<T>::ingresarDatosComplejos}}()\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{/*\ Se\ crean\ una\ bandera\ para\ no\ reescribir\ la\ parte\ real\ y\ la\ imaginaria\ fue\ incorrecta\ */}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{bool}\ realLista\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{/*\ Se\ inicializa\ la\ matriz\ limpiandola:\ */}}
+\DoxyCodeLine{00122\ \ \ \ \ datosMatriz.clear();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ ingresar\ los\ datos\ en\ el\ vector\ datosMatriz\ */}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ filas;\ i++)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ columnas;\ j++)\ \{\ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Bloque\ de\ excepción\ para\ asegurar\ que\ se\ ingresen\ los\ datos\ correctamente\ */}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ realLista\ no\ es\ igual\ a\ false\ significa\ que\ esta\ lista\ y\ no\ necesita\ ingresarse.}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Esto\ se\ usa\ para\ cuando\ hay\ un\ error\ en\ la\ parte\ imaginaria\ */}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (realLista\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ solicita\ al\ usuario\ que\ ingrese\ un\ dato\ para\ la\ matriz.\ Adicionalmente\ se\ le\ va}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indicando\ en\ qué\ posición\ de\ la\ matriz\ ingresa\ el\ dato\ */}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ingrese\ la\ parte\ real\ de\ la\ posicion\ "{}}\ <<\ i\ +\ 1\ <<\ \textcolor{stringliteral}{"{}x"{}}\ <<\ j\ +\ 1\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ dato;}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ dato\ ingresado\ es\ incorrecto\ se\ vuelve\ a\ solicitar\ el\ ingreso\ */}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Limpia\ el\ estado\ de\ error*/}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ de\ cin\ */}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ resta\ 1\ al\ iterador\ j\ para\ que\ el\ usuario\ pueda\ ingresar\ un\ dato\ valido\ */}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j-\/-\/;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}\(\backslash\)nError:\ No\ se\ ingreso\ un\ numero.\(\backslash\)n"{}});}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ \textcolor{comment}{/*\ Se\ ingresa\ el\ dato,\ el\ cual\ es\ valido\ */}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Ingresa\ la\ parte\ real\ a\ la\ "{}matriz"{}\ */}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datosMatriz.push\_back(dato);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ dice\ que\ la\ parte\ real\ ingresada\ fue\ correcta\ y\ esta\ lista*/}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ realLista\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ de\ cin\ */}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ solicita\ al\ usuario\ que\ ingrese\ un\ dato\ para\ la\ matriz.\ Adicionalmente\ se\ le\ va}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indicando\ en\ qué\ posición\ de\ la\ matriz\ ingresa\ el\ dato\ */}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ingrese\ la\ parte\ imaginaria\ de\ la\ posicion\ "{}}\ <<\ i\ +\ 1\ <<\ \textcolor{stringliteral}{"{}x"{}}\ <<\ j\ +\ 1\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ dato;}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ dato\ ingresado\ es\ incorrecto\ se\ vuelve\ a\ solicitar\ el\ ingreso\ */}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Limpia\ el\ estado\ de\ error*/}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ de\ cin\ */}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ resta\ 1\ al\ iterador\ j\ para\ que\ el\ usuario\ pueda\ ingresar\ un\ dato\ valido}}
+\DoxyCodeLine{00170\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ para\ la\ parte\ imaginaria\ */}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j-\/-\/;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ realLista;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}\(\backslash\)nError:\ No\ se\ ingreso\ un\ numero.\(\backslash\)n"{}});}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ \textcolor{comment}{/*\ Se\ ingresa\ el\ dato,\ el\ cual\ es\ valido\ */}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Ingresa\ la\ parte\ imaginaria\ a\ la\ "{}matriz"{}\ */}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datosMatriz.push\_back(dato);}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ dice\ que\ la\ parte\ imaginaria\ ingresada\ fue\ correcta\ y\ se\ va\ a\ agregar\ una}}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nueva\ parte\ real\ */}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ realLista\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ de\ cin\ */}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \textcolor{comment}{/*\ Método\ para\ mostrar\ el\ contenido\ de\ la\ matriz\ siempre\ y\ cuando\ sea\ válida*/}}
+\DoxyCodeLine{00196\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00197\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a0303f418b2af0c790afa96f0e551b7af}{Matriz<T>::mostrarMatriz}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{/*\ Se\ instancia\ un\ iterador\ para\ manipular\ el\ contenido\ del\ vector\ */}}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{typename}\ vector<T>::const\_iterator\ it\ =\ this-\/>datosMatriz.begin();}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{comment}{/*\ Mensaje\ de\ lo\ que\ se\ va\ a\ imprimir\ */}}
+\DoxyCodeLine{00202\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}A\ continuacion\ se\ imprime\ el\ contenido\ de\ la\ Matriz\ "{}}\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ <<\ filas\ <<\ \textcolor{stringliteral}{"{}x"{}}\ <<\ columnas\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ endl\ <<\ endl;}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ mostrar\ los\ datos\ en\ el\ vector\ datosMatriz\ */}}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ filas;\ i++)\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ columnas;\ j++)\ \{\ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ imprime\ el\ valor\ actual\ del\ iterador\ y\ luego\ se\ suma\ uno\ para\ acceder\ al\ siguiente\ dato*/}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ *it\ <<\ \textcolor{stringliteral}{"{}\ \ "{}};}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Hace\ un\ salto\ de\ línea\ cuando\ se\ terminó\ de\ mostrar\ los\ datos\ de\ una\ fila\ */}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \textcolor{comment}{/*\ Método\ para\ mostrar\ el\ contenido\ de\ la\ matriz\ siempre\ y\ cuando\ sea\ válida*/}}
+\DoxyCodeLine{00219\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00220\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a9a791ded21fd284ab692131882068152}{Matriz<T>::mostrarComplejosMatriz}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{comment}{/*\ Se\ instancia\ un\ iterador\ para\ manipular\ el\ contenido\ del\ vector\ */}}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{typename}\ vector<T>::const\_iterator\ it\ =\ this-\/>datosMatriz.begin();}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{/*\ Mensaje\ de\ lo\ que\ se\ va\ a\ imprimir\ */}}
+\DoxyCodeLine{00225\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}A\ continuacion\ se\ imprime\ el\ contenido\ de\ la\ Matriz\ "{}}\ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ <<\ filas\ <<\ \textcolor{stringliteral}{"{}x"{}}\ <<\ \ \ columnas\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ endl\ <<\ endl;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{/*\ Se\ crea\ un\ ciclo\ for\ anidado\ para\ mostrar\ los\ datos\ en\ el\ vector\ datosMatriz\ */}}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ filas;\ i++)\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ columnas;\ j++)\ \{\ \ \ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ imprime\ primero\ la\ parte\ real\ */}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ *it;}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Luego\ se\ pregunta\ si\ la\ parte\ imaginaria\ es\ positiva\ o\ no\ */}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*it\ >=\ 0)\{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ imprime\ un\ número\ de\ más\ para\ indicar\ que\ es\ positivo\ */}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}+"{}};}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*El\ número\ negativo\ no\ necesita\ que\ se\ le\ coloque\ un\ simbolo.\ Se\ imprime\ en\ número}}
+\DoxyCodeLine{00241\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ imaginario.\ */}}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ *it\ <<\ \textcolor{stringliteral}{"{}j\ \ "{}};}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ it++;\ \ \ \textcolor{comment}{/*\ Para\ que\ continue\ el\ siguiente\ número\ real*/}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Hace\ un\ salto\ de\ línea\ cuando\ se\ terminó\ de\ mostrar\ los\ datos\ de\ una\ fila\ */}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00248\ \ \ \ \ \}}
+\DoxyCodeLine{00249\ \}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \textcolor{comment}{/*\ Este\ menú\ sirve\ mostrarle\ al\ usuario\ todas\ las\ funciones\ que\ puede\ realizar\ con}}
+\DoxyCodeLine{00252\ \textcolor{comment}{el\ objeto\ sin\ importar\ si\ se\ equivoca\ */}}
+\DoxyCodeLine{00253\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00254\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matriz_a60cdb066218200aef0dc7cbffc4c6790}{Matriz<T>::menuMatriz}}()\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nSeleccione\ una\ de\ las\ siguientes\ opciones\ para\ su\ matriz,\ ingresando\ un\ numero\ entero:\(\backslash\)n"{}}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Ingrese\ 1\ para\ seleccionar\ la\ cantidad\ de\ filas\ y\ columnas\ de\ la\ matriz.\(\backslash\)n"{}}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Ingrese\ 2\ para\ ingresar\ los\ datos\ de\ la\ matriz.\(\backslash\)n"{}}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Ingrese\ 3\ para\ mostrar\ la\ matriz\ ingresada.\(\backslash\)n"{}}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Ingrese\ 4\ para\ dar\ por\ finalizada\ la\ matriz.\(\backslash\)n"{}};}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nIngrese\ una\ opcion\ para\ su\ matriz:\ "{}};}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ dato;}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ el\ dato\ ingresado\ es\ incorrecto\ se\ vuelve\ a\ solicitar\ el\ ingreso\ */}}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cin.fail())\ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Limpia\ el\ estado\ de\ error*/}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ hasta\ alcanzar\ el\ salto\ de\ línea\ */}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ No\ se\ ingreso\ un\ numero."{}});}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dato\ ==\ 1)\ \{\ \ \ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Selecciona\ el\ tamayo\ de\ la\ matriz:\(\backslash\)n"{}}\ ;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sizeMatriz();}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dato\ ==\ 2)\ \{\ \ \ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Comprueba\ que\ el\ valor\ de\ los\ atributos\ sea\ mayor\ a\ cero\ para\ que\ tenga\ sentido\ la\ matriz\ */}}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filas\ <=\ 0\ ||\ columnas\ <=\ 0)}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ La\ matriz\ carece\ de\ tamayo,\ ingresa\ la\ opcion\ 1\ antes"{}});}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ingrese\ los\ datos\ de\ la\ matriz:\(\backslash\)n"{}}\ ;}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (complejo\ ==\ \textcolor{keyword}{true})\{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ingresarDatosComplejos();}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ingresarDatosMatriz();}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dato\ ==\ 3)\ \{\ \ \ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Verificar\ si\ el\ vector\ datosMatriz\ está\ vacío\ */}}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \ datosMatriz.empty())\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}Error:\ La\ matriz\ esta\ vacia,\ ingrese\ la\ opcion\ 2\ antes."{}});}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (complejo\ ==\ \textcolor{keyword}{true})\{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mostrarComplejosMatriz();}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mostrarMatriz();}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dato\ ==\ 4)\{\ \ \ }
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (datosMatriz.empty())\ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ out\_of\_range(\textcolor{stringliteral}{"{}Error:\ La\ matriz\ esta\ vacia,\ es\ mejor\ ingresar\ la\ opcion\ 2\ antes."{}});}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{/*\ Retorna\ si\ el\ usuario\ ya\ termino\ la\ matriz*/}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Descarta\ caracteres\ no\ deseados\ hasta\ alcanzar\ el\ salto\ de\ línea\ */}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore(numeric\_limits<streamsize>::max(),\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ No\ se\ ingreso\ un\ numero\ dentro\ de\ las\ opciones\ disponibles."{}});}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)\ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \}}
+\DoxyCodeLine{00324\ \}}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \textcolor{comment}{/*\ Lo\ siguiente\ son\ métodos\ para\ obtener\ información\ de\ los\ atributos\ */}}
+\DoxyCodeLine{00327\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00328\ T\ \mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{Matriz<T>::getFilas}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keywordflow}{return}\ filas;}
+\DoxyCodeLine{00330\ \}}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00333\ T\ \mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{Matriz<T>::getColumnas}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keywordflow}{return}\ columnas;}
+\DoxyCodeLine{00335\ \}}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00338\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_matriz_a508e385baf9d3d8458b8c0c96ee7eddb}{Matriz<T>::getComplejo}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keywordflow}{return}\ complejo;}
+\DoxyCodeLine{00340\ \}}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \textcolor{comment}{/*\ Se\ crea\ un\ método\ para\ obtener\ el\ dato\ correspondiende\ a\ una\ fila\ x\ columna\ */}}
+\DoxyCodeLine{00343\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00344\ T\ \mbox{\hyperlink{class_matriz_a57d7929e6deeedc40861430cfa1c2a77}{Matriz<T>::get}}(\textcolor{keywordtype}{int}\ fila,\ \textcolor{keywordtype}{int}\ columna)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{comment}{/*\ Realiza\ la\ lógica\ para\ obtener\ el\ dato\ en\ la\ posición\ fila\ x\ columna}}
+\DoxyCodeLine{00346\ \textcolor{comment}{\ \ \ \ y\ devuelve\ el\ valor\ correspondiente*/}}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordflow}{return}\ datosMatriz[fila\ *\ columnas\ +\ columna];}
+\DoxyCodeLine{00348\ \}}
+
+\end{DoxyCode}

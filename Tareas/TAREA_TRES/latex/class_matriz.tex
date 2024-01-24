@@ -1,0 +1,205 @@
+\doxysection{Referencia de la plantilla de la clase Matriz\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}}
+\hypertarget{class_matriz}{}\label{class_matriz}\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+
+
+Clase que representa una matriz bidimensional genérica mediante templates.  
+
+
+
+
+{\ttfamily \#include $<$Matriz.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_matriz_aaf7bf1f5bc11ebbbbcaa995f9ab670d4}{Matriz}} (bool complejo)
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxylink{class_matriz}{Matriz}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matriz_a0e087bc72e35911531b5c67c5fe33407}{size\+Matriz}} ()
+\begin{DoxyCompactList}\small\item\em Método que le solicita al usuario el tamaño de la matriz. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matriz_ada17240523ffaf6da6f17feb8e68178e}{ingresar\+Datos\+Complejos}} ()
+\begin{DoxyCompactList}\small\item\em Método que utiliza el vector para ingresar datos complejos al vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matriz_a4e6be3e7354e0dc815ec7e9a055d7aa3}{ingresar\+Datos\+Matriz}} ()
+\begin{DoxyCompactList}\small\item\em Método que utiliza el vector para ingresar valores al vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matriz_a0303f418b2af0c790afa96f0e551b7af}{mostrar\+Matriz}} () const
+\begin{DoxyCompactList}\small\item\em Método para mostrar el contenido de la matriz siempre y cuando sea válida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matriz_a9a791ded21fd284ab692131882068152}{mostrar\+Complejos\+Matriz}} () const
+\begin{DoxyCompactList}\small\item\em Método para mostrar el contenido de la matriz compleja siempre y cuando sea válida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matriz_a60cdb066218200aef0dc7cbffc4c6790}{menu\+Matriz}} ()
+\begin{DoxyCompactList}\small\item\em Menú que muestra todas las funciones que el usuario puede realizar con el objeto \doxylink{class_matriz}{Matriz}. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}{get\+Filas}} () const
+\begin{DoxyCompactList}\small\item\em Método para obtener el número de filas de la matriz. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_matriz_a57fad396fa19031d2019dee9f734e56c}{get\+Columnas}} () const
+\begin{DoxyCompactList}\small\item\em Método para obtener el número de columnas de la matriz. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_matriz_a508e385baf9d3d8458b8c0c96ee7eddb}{get\+Complejo}} () const
+\begin{DoxyCompactList}\small\item\em Método para obtener la información sobre si la matriz contiene números complejos o no. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_matriz_a57d7929e6deeedc40861430cfa1c2a77}{get}} (int fila, int columna) const
+\begin{DoxyCompactList}\small\item\em Método para obtener el dato correspondiente a una fila y columna específicas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\subsubsection*{template$<$typename T$>$\newline
+class Matriz$<$ T $>$}
+Clase que representa una matriz bidimensional genérica mediante templates. 
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de dato de la matriz (int o double). \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_matriz_aaf7bf1f5bc11ebbbbcaa995f9ab670d4}\label{class_matriz_aaf7bf1f5bc11ebbbbcaa995f9ab670d4} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!Matriz@{Matriz}}
+\index{Matriz@{Matriz}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Matriz()}{Matriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\mbox{\hyperlink{class_matriz}{\+::\+Matriz}} (\begin{DoxyParamCaption}\item[{bool}]{complejo }\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase \doxylink{class_matriz}{Matriz}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em complejo} & Indica si la matriz contiene números complejos (true) o reales (false). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_matriz_a57d7929e6deeedc40861430cfa1c2a77}\label{class_matriz_a57d7929e6deeedc40861430cfa1c2a77} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!get@{get}}
+\index{get@{get}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::get (\begin{DoxyParamCaption}\item[{int}]{fila,  }\item[{int}]{columna }\end{DoxyParamCaption}) const}
+
+
+
+Método para obtener el dato correspondiente a una fila y columna específicas. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em fila} & Número de fila. \\
+\hline
+{\em columna} & Número de columna. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor almacenado en la posición fila x columna de la matriz. 
+\end{DoxyReturn}
+\Hypertarget{class_matriz_a57fad396fa19031d2019dee9f734e56c}\label{class_matriz_a57fad396fa19031d2019dee9f734e56c} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!getColumnas@{getColumnas}}
+\index{getColumnas@{getColumnas}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getColumnas()}{getColumnas()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::get\+Columnas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Método para obtener el número de columnas de la matriz. 
+
+\begin{DoxyReturn}{Devuelve}
+Número de columnas. 
+\end{DoxyReturn}
+\Hypertarget{class_matriz_a508e385baf9d3d8458b8c0c96ee7eddb}\label{class_matriz_a508e385baf9d3d8458b8c0c96ee7eddb} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!getComplejo@{getComplejo}}
+\index{getComplejo@{getComplejo}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getComplejo()}{getComplejo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::get\+Complejo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Método para obtener la información sobre si la matriz contiene números complejos o no. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor booleano indicando si la matriz es compleja. 
+\end{DoxyReturn}
+\Hypertarget{class_matriz_a31851c6b5b45c61aa4926c1181efbae1}\label{class_matriz_a31851c6b5b45c61aa4926c1181efbae1} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!getFilas@{getFilas}}
+\index{getFilas@{getFilas}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getFilas()}{getFilas()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::get\+Filas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Método para obtener el número de filas de la matriz. 
+
+\begin{DoxyReturn}{Devuelve}
+Número de filas. 
+\end{DoxyReturn}
+\Hypertarget{class_matriz_ada17240523ffaf6da6f17feb8e68178e}\label{class_matriz_ada17240523ffaf6da6f17feb8e68178e} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!ingresarDatosComplejos@{ingresarDatosComplejos}}
+\index{ingresarDatosComplejos@{ingresarDatosComplejos}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ingresarDatosComplejos()}{ingresarDatosComplejos()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::ingresar\+Datos\+Complejos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que utiliza el vector para ingresar datos complejos al vector. 
+
+\Hypertarget{class_matriz_a4e6be3e7354e0dc815ec7e9a055d7aa3}\label{class_matriz_a4e6be3e7354e0dc815ec7e9a055d7aa3} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!ingresarDatosMatriz@{ingresarDatosMatriz}}
+\index{ingresarDatosMatriz@{ingresarDatosMatriz}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ingresarDatosMatriz()}{ingresarDatosMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::ingresar\+Datos\+Matriz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que utiliza el vector para ingresar valores al vector. 
+
+\Hypertarget{class_matriz_a60cdb066218200aef0dc7cbffc4c6790}\label{class_matriz_a60cdb066218200aef0dc7cbffc4c6790} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!menuMatriz@{menuMatriz}}
+\index{menuMatriz@{menuMatriz}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{menuMatriz()}{menuMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::menu\+Matriz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menú que muestra todas las funciones que el usuario puede realizar con el objeto \doxylink{class_matriz}{Matriz}. 
+
+\Hypertarget{class_matriz_a9a791ded21fd284ab692131882068152}\label{class_matriz_a9a791ded21fd284ab692131882068152} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!mostrarComplejosMatriz@{mostrarComplejosMatriz}}
+\index{mostrarComplejosMatriz@{mostrarComplejosMatriz}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{mostrarComplejosMatriz()}{mostrarComplejosMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::mostrar\+Complejos\+Matriz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Método para mostrar el contenido de la matriz compleja siempre y cuando sea válida. 
+
+\Hypertarget{class_matriz_a0303f418b2af0c790afa96f0e551b7af}\label{class_matriz_a0303f418b2af0c790afa96f0e551b7af} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!mostrarMatriz@{mostrarMatriz}}
+\index{mostrarMatriz@{mostrarMatriz}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{mostrarMatriz()}{mostrarMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::mostrar\+Matriz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Método para mostrar el contenido de la matriz siempre y cuando sea válida. 
+
+\Hypertarget{class_matriz_a0e087bc72e35911531b5c67c5fe33407}\label{class_matriz_a0e087bc72e35911531b5c67c5fe33407} 
+\index{Matriz$<$ T $>$@{Matriz$<$ T $>$}!sizeMatriz@{sizeMatriz}}
+\index{sizeMatriz@{sizeMatriz}!Matriz$<$ T $>$@{Matriz$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{sizeMatriz()}{sizeMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$\+::size\+Matriz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que le solicita al usuario el tamaño de la matriz. 
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_matriz_8hpp}{Matriz.\+hpp}}\item 
+\mbox{\hyperlink{_matriz_8cpp}{Matriz.\+cpp}}\end{DoxyCompactItemize}

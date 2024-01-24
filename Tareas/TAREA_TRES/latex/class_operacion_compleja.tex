@@ -1,0 +1,200 @@
+\doxysection{Referencia de la plantilla de la clase Operacion\+Compleja\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}}
+\hypertarget{class_operacion_compleja}{}\label{class_operacion_compleja}\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+
+
+Clase que realiza operaciones complejas con matrices.  
+
+
+
+
+{\ttfamily \#include $<$Operacion\+Compleja.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_operacion_compleja_a0c9034b7fa685018182d7e99ef719b0e}{menu\+Operacion}} ()
+\begin{DoxyCompactList}\small\item\em Menú de operaciones para que el usuario pueda elegir sumar, multiplicar o dividir. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operacion_compleja_a30ff249145f39ba36f4b2c045ec3530a}{agregar\+Matriz}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ matriz)
+\begin{DoxyCompactList}\small\item\em Agrega un objeto matriz al vector matriz1 o matriz2. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operacion_compleja_acdcbd7c1a452fd2e2c175de494a039b0}{liberar\+Espacio}} ()
+\begin{DoxyCompactList}\small\item\em Libera el espacio ocupado por las matrices guardadas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operacion_compleja_ad330ec4845e4b4345706d993804428d0}{validar\+Matrices}} ()
+\begin{DoxyCompactList}\small\item\em Valida si se ingresaron dos matrices, si estas dos matrices tienen las mismas dimensiones y si son del mismo tipo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operacion_compleja_a0f7ecc5066b1e7431d61b4911190fc54}{suma}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz1, const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz2, const vector$<$ complex$<$ T $>$ $>$ matriz\+Compleja1, const vector$<$ complex$<$ T $>$ $>$ matriz\+Compleja2)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de suma (+). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operacion_compleja_ae4cf14c5415df58b404ff94f96a3caf7}{resta}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz1, const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz2, const vector$<$ complex$<$ T $>$ $>$ matriz\+Compleja1, const vector$<$ complex$<$ T $>$ $>$ matriz\+Compleja2)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de resta (-\/). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operacion_compleja_ac133e7b99c92d858c11bec2debf1fa89}{multiplicacion}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz1, const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz2, const vector$<$ complex$<$ T $>$ $>$ matriz\+Compleja1, const vector$<$ complex$<$ T $>$ $>$ matriz\+Compleja2)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de multiplicación (\texorpdfstring{$\ast$}{*}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operacion_compleja_a604be832590607c78ecdbfeb01afa838}{mostrar\+Matriz}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz, const vector$<$ complex$<$ T $>$ $>$ \&matriz\+Compleja)
+\begin{DoxyCompactList}\small\item\em Muestra el contenido de cualquier tipo de matriz compleja. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_operacion_compleja_a620123da7ec1d48b58edd01b1c8d80f9}{get\+Validar}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la bandera de validación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\subsubsection*{template$<$typename T$>$\newline
+class Operacion\+Compleja$<$ T $>$}
+Clase que realiza operaciones complejas con matrices. 
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de dato de la matriz (int o double). \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_operacion_compleja_a30ff249145f39ba36f4b2c045ec3530a}\label{class_operacion_compleja_a30ff249145f39ba36f4b2c045ec3530a} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!agregarMatriz@{agregarMatriz}}
+\index{agregarMatriz@{agregarMatriz}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{agregarMatriz()}{agregarMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::agregar\+Matriz (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$}]{matriz }\end{DoxyParamCaption})}
+
+
+
+Agrega un objeto matriz al vector matriz1 o matriz2. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz} & \doxylink{class_matriz}{Matriz} a agregar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operacion_compleja_a620123da7ec1d48b58edd01b1c8d80f9}\label{class_operacion_compleja_a620123da7ec1d48b58edd01b1c8d80f9} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!getValidar@{getValidar}}
+\index{getValidar@{getValidar}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getValidar()}{getValidar()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::get\+Validar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la bandera de validación. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor de la bandera de validación. 
+\end{DoxyReturn}
+\Hypertarget{class_operacion_compleja_acdcbd7c1a452fd2e2c175de494a039b0}\label{class_operacion_compleja_acdcbd7c1a452fd2e2c175de494a039b0} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!liberarEspacio@{liberarEspacio}}
+\index{liberarEspacio@{liberarEspacio}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{liberarEspacio()}{liberarEspacio()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::liberar\+Espacio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Libera el espacio ocupado por las matrices guardadas. 
+
+\Hypertarget{class_operacion_compleja_a0c9034b7fa685018182d7e99ef719b0e}\label{class_operacion_compleja_a0c9034b7fa685018182d7e99ef719b0e} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!menuOperacion@{menuOperacion}}
+\index{menuOperacion@{menuOperacion}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{menuOperacion()}{menuOperacion()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::menu\+Operacion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menú de operaciones para que el usuario pueda elegir sumar, multiplicar o dividir. 
+
+\Hypertarget{class_operacion_compleja_a604be832590607c78ecdbfeb01afa838}\label{class_operacion_compleja_a604be832590607c78ecdbfeb01afa838} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!mostrarMatriz@{mostrarMatriz}}
+\index{mostrarMatriz@{mostrarMatriz}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{mostrarMatriz()}{mostrarMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::mostrar\+Matriz (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz,  }\item[{const vector$<$ complex$<$ T $>$ $>$ \&}]{matriz\+Compleja }\end{DoxyParamCaption})}
+
+
+
+Muestra el contenido de cualquier tipo de matriz compleja. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz} & \doxylink{class_matriz}{Matriz} a mostrar. \\
+\hline
+{\em matriz\+Compleja} & Versión compleja de la matriz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operacion_compleja_ac133e7b99c92d858c11bec2debf1fa89}\label{class_operacion_compleja_ac133e7b99c92d858c11bec2debf1fa89} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!multiplicacion@{multiplicacion}}
+\index{multiplicacion@{multiplicacion}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{multiplicacion()}{multiplicacion()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::multiplicacion (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz1,  }\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz2,  }\item[{const vector$<$ complex$<$ T $>$ $>$}]{matriz\+Compleja1,  }\item[{const vector$<$ complex$<$ T $>$ $>$}]{matriz\+Compleja2 }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de multiplicación (\texorpdfstring{$\ast$}{*}). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz1} & Primera matriz a multiplicar. \\
+\hline
+{\em matriz2} & Segunda matriz a multiplicar. \\
+\hline
+{\em matriz\+Compleja1} & Versión compleja de la primera matriz. \\
+\hline
+{\em matriz\+Compleja2} & Versión compleja de la segunda matriz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operacion_compleja_ae4cf14c5415df58b404ff94f96a3caf7}\label{class_operacion_compleja_ae4cf14c5415df58b404ff94f96a3caf7} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!resta@{resta}}
+\index{resta@{resta}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resta()}{resta()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::resta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz1,  }\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz2,  }\item[{const vector$<$ complex$<$ T $>$ $>$}]{matriz\+Compleja1,  }\item[{const vector$<$ complex$<$ T $>$ $>$}]{matriz\+Compleja2 }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de resta (-\/). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz1} & Primera matriz a restar. \\
+\hline
+{\em matriz2} & Segunda matriz a restar. \\
+\hline
+{\em matriz\+Compleja1} & Versión compleja de la primera matriz. \\
+\hline
+{\em matriz\+Compleja2} & Versión compleja de la segunda matriz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operacion_compleja_a0f7ecc5066b1e7431d61b4911190fc54}\label{class_operacion_compleja_a0f7ecc5066b1e7431d61b4911190fc54} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!suma@{suma}}
+\index{suma@{suma}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{suma()}{suma()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::suma (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz1,  }\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz2,  }\item[{const vector$<$ complex$<$ T $>$ $>$}]{matriz\+Compleja1,  }\item[{const vector$<$ complex$<$ T $>$ $>$}]{matriz\+Compleja2 }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de suma (+). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz1} & Primera matriz a sumar. \\
+\hline
+{\em matriz2} & Segunda matriz a sumar. \\
+\hline
+{\em matriz\+Compleja1} & Versión compleja de la primera matriz. \\
+\hline
+{\em matriz\+Compleja2} & Versión compleja de la segunda matriz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operacion_compleja_ad330ec4845e4b4345706d993804428d0}\label{class_operacion_compleja_ad330ec4845e4b4345706d993804428d0} 
+\index{OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}!validarMatrices@{validarMatrices}}
+\index{validarMatrices@{validarMatrices}!OperacionCompleja$<$ T $>$@{OperacionCompleja$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{validarMatrices()}{validarMatrices()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operacion_compleja}{Operacion\+Compleja}}$<$ T $>$\+::validar\+Matrices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Valida si se ingresaron dos matrices, si estas dos matrices tienen las mismas dimensiones y si son del mismo tipo. 
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_operacion_compleja_8hpp}{Operacion\+Compleja.\+hpp}}\item 
+\mbox{\hyperlink{_operacion_compleja_8cpp}{Operacion\+Compleja.\+cpp}}\end{DoxyCompactItemize}

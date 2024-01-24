@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TAREA_TRES: Archivo de código fuente Matriz.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TAREA_TRES<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Operaciones en matrices complejas y reales, además de la comprobación de correos electrónicos.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Matriz.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_matriz_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef MATRIZ_HPP</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define MATRIZ_HPP</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/* Se incluyen las librerías necesarias: */</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="class_matriz.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="class_matriz.html">Matriz</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        T filas = 0;        </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        T columnas = 0;     </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">bool</span> complejo;      </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        T dato;             </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        vector&lt;T&gt; datosMatriz;  </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_function" href="class_matriz.html#aaf7bf1f5bc11ebbbbcaa995f9ab670d4">Matriz</a>(<span class="keywordtype">bool</span> complejo);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matriz.html#a0e087bc72e35911531b5c67c5fe33407">sizeMatriz</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matriz.html#ada17240523ffaf6da6f17feb8e68178e">ingresarDatosComplejos</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matriz.html#a4e6be3e7354e0dc815ec7e9a055d7aa3">ingresarDatosMatriz</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matriz.html#a0303f418b2af0c790afa96f0e551b7af">mostrarMatriz</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matriz.html#a9a791ded21fd284ab692131882068152">mostrarComplejosMatriz</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matriz.html#a60cdb066218200aef0dc7cbffc4c6790">menuMatriz</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        T <a class="code hl_function" href="class_matriz.html#a31851c6b5b45c61aa4926c1181efbae1">getFilas</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        T <a class="code hl_function" href="class_matriz.html#a57fad396fa19031d2019dee9f734e56c">getColumnas</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_matriz.html#a508e385baf9d3d8458b8c0c96ee7eddb">getComplejo</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        T <a class="code hl_function" href="class_matriz.html#a57d7929e6deeedc40861430cfa1c2a77">get</a>(<span class="keywordtype">int</span> fila, <span class="keywordtype">int</span> columna) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>};</div>
+</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">/* Para que no de errores */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#include &quot;<a class="code" href="_matriz_8cpp.html">Matriz.cpp</a>&quot;</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_matriz_8cpp_html"><div class="ttname"><a href="_matriz_8cpp.html">Matriz.cpp</a></div></div>
+<div class="ttc" id="aclass_matriz_html"><div class="ttname"><a href="class_matriz.html">Matriz</a></div><div class="ttdoc">Clase que representa una matriz bidimensional genérica mediante templates.</div><div class="ttdef"><b>Definition</b> Matriz.hpp:27</div></div>
+<div class="ttc" id="aclass_matriz_html_a0303f418b2af0c790afa96f0e551b7af"><div class="ttname"><a href="class_matriz.html#a0303f418b2af0c790afa96f0e551b7af">Matriz::mostrarMatriz</a></div><div class="ttdeci">void mostrarMatriz() const</div><div class="ttdoc">Método para mostrar el contenido de la matriz siempre y cuando sea válida.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:197</div></div>
+<div class="ttc" id="aclass_matriz_html_a0e087bc72e35911531b5c67c5fe33407"><div class="ttname"><a href="class_matriz.html#a0e087bc72e35911531b5c67c5fe33407">Matriz::sizeMatriz</a></div><div class="ttdeci">void sizeMatriz()</div><div class="ttdoc">Método que le solicita al usuario el tamaño de la matriz.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:11</div></div>
+<div class="ttc" id="aclass_matriz_html_a31851c6b5b45c61aa4926c1181efbae1"><div class="ttname"><a href="class_matriz.html#a31851c6b5b45c61aa4926c1181efbae1">Matriz::getFilas</a></div><div class="ttdeci">T getFilas() const</div><div class="ttdoc">Método para obtener el número de filas de la matriz.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:328</div></div>
+<div class="ttc" id="aclass_matriz_html_a4e6be3e7354e0dc815ec7e9a055d7aa3"><div class="ttname"><a href="class_matriz.html#a4e6be3e7354e0dc815ec7e9a055d7aa3">Matriz::ingresarDatosMatriz</a></div><div class="ttdeci">void ingresarDatosMatriz()</div><div class="ttdoc">Método que utiliza el vector para ingresar valores al vector.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:79</div></div>
+<div class="ttc" id="aclass_matriz_html_a508e385baf9d3d8458b8c0c96ee7eddb"><div class="ttname"><a href="class_matriz.html#a508e385baf9d3d8458b8c0c96ee7eddb">Matriz::getComplejo</a></div><div class="ttdeci">bool getComplejo() const</div><div class="ttdoc">Método para obtener la información sobre si la matriz contiene números complejos o no.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:338</div></div>
+<div class="ttc" id="aclass_matriz_html_a57d7929e6deeedc40861430cfa1c2a77"><div class="ttname"><a href="class_matriz.html#a57d7929e6deeedc40861430cfa1c2a77">Matriz::get</a></div><div class="ttdeci">T get(int fila, int columna) const</div><div class="ttdoc">Método para obtener el dato correspondiente a una fila y columna específicas.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:344</div></div>
+<div class="ttc" id="aclass_matriz_html_a57fad396fa19031d2019dee9f734e56c"><div class="ttname"><a href="class_matriz.html#a57fad396fa19031d2019dee9f734e56c">Matriz::getColumnas</a></div><div class="ttdeci">T getColumnas() const</div><div class="ttdoc">Método para obtener el número de columnas de la matriz.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:333</div></div>
+<div class="ttc" id="aclass_matriz_html_a60cdb066218200aef0dc7cbffc4c6790"><div class="ttname"><a href="class_matriz.html#a60cdb066218200aef0dc7cbffc4c6790">Matriz::menuMatriz</a></div><div class="ttdeci">void menuMatriz()</div><div class="ttdoc">Menú que muestra todas las funciones que el usuario puede realizar con el objeto Matriz.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:254</div></div>
+<div class="ttc" id="aclass_matriz_html_a9a791ded21fd284ab692131882068152"><div class="ttname"><a href="class_matriz.html#a9a791ded21fd284ab692131882068152">Matriz::mostrarComplejosMatriz</a></div><div class="ttdeci">void mostrarComplejosMatriz() const</div><div class="ttdoc">Método para mostrar el contenido de la matriz compleja siempre y cuando sea válida.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:220</div></div>
+<div class="ttc" id="aclass_matriz_html_aaf7bf1f5bc11ebbbbcaa995f9ab670d4"><div class="ttname"><a href="class_matriz.html#aaf7bf1f5bc11ebbbbcaa995f9ab670d4">Matriz::Matriz</a></div><div class="ttdeci">Matriz(bool complejo)</div><div class="ttdoc">Constructor de la clase Matriz.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:6</div></div>
+<div class="ttc" id="aclass_matriz_html_ada17240523ffaf6da6f17feb8e68178e"><div class="ttname"><a href="class_matriz.html#ada17240523ffaf6da6f17feb8e68178e">Matriz::ingresarDatosComplejos</a></div><div class="ttdeci">void ingresarDatosComplejos()</div><div class="ttdoc">Método que utiliza el vector para ingresar datos complejos al vector.</div><div class="ttdef"><b>Definition</b> Matriz.cpp:118</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

@@ -1,0 +1,168 @@
+\doxysection{Referencia de la plantilla de la clase Operaciones\+Basicas\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}}
+\hypertarget{class_operaciones_basicas}{}\label{class_operaciones_basicas}\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+
+
+Clase que realiza operaciones básicas con matrices.  
+
+
+
+
+{\ttfamily \#include $<$Operaciones\+Basicas.\+hpp$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_operaciones_basicas_aef2c01e83888acad30ac54a76ce1642e}{menu\+Operacion}} ()
+\begin{DoxyCompactList}\small\item\em Menú de operaciones para que el usuario pueda elegir sumar, multiplicar o dividir. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operaciones_basicas_ae9637969d266d209141cb8218ad347f3}{agregar\+Matriz}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ matriz)
+\begin{DoxyCompactList}\small\item\em Agrega un objeto matriz al vector matriz1 o matriz2. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operaciones_basicas_a8dc8f2b5bf4a302f8dec7c30a2428f37}{liberar\+Espacio}} ()
+\begin{DoxyCompactList}\small\item\em Libera el espacio ocupado por las matrices guardadas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operaciones_basicas_ab69b9441b3d45f5f33212bff1eb5bf60}{validar\+Matrices}} ()
+\begin{DoxyCompactList}\small\item\em Valida si se ingresaron dos matrices, si estas dos matrices tienen las mismas dimensiones y si son del mismo tipo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operaciones_basicas_a7d000f62904277810c9c04e16ab3315a}{suma}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz1, const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz2)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de suma (+). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operaciones_basicas_afd047f28d1ff56e039c07c8eb45c28e6}{resta}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz1, const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz2)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de resta (-\/). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_operaciones_basicas_a67e1dcd23c3ef2da982c0637f1ec0cfb}{multiplicacion}} (const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz1, const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&matriz2)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de multiplicación (\texorpdfstring{$\ast$}{*}). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_operaciones_basicas_ab6f80ccb9d992f39623a1027162b66d0}{get\+Validar}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la bandera de validación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\subsubsection*{template$<$typename T$>$\newline
+class Operaciones\+Basicas$<$ T $>$}
+Clase que realiza operaciones básicas con matrices. 
+
+
+\begin{DoxyTemplParams}{Parámetros de plantilla}
+{\em T} & Tipo de dato de la matriz (int o double). \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_operaciones_basicas_ae9637969d266d209141cb8218ad347f3}\label{class_operaciones_basicas_ae9637969d266d209141cb8218ad347f3} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!agregarMatriz@{agregarMatriz}}
+\index{agregarMatriz@{agregarMatriz}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{agregarMatriz()}{agregarMatriz()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::agregar\+Matriz (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$}]{matriz }\end{DoxyParamCaption})}
+
+
+
+Agrega un objeto matriz al vector matriz1 o matriz2. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz} & \doxylink{class_matriz}{Matriz} a agregar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operaciones_basicas_ab6f80ccb9d992f39623a1027162b66d0}\label{class_operaciones_basicas_ab6f80ccb9d992f39623a1027162b66d0} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!getValidar@{getValidar}}
+\index{getValidar@{getValidar}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getValidar()}{getValidar()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::get\+Validar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la bandera de validación. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor de la bandera de validación. 
+\end{DoxyReturn}
+\Hypertarget{class_operaciones_basicas_a8dc8f2b5bf4a302f8dec7c30a2428f37}\label{class_operaciones_basicas_a8dc8f2b5bf4a302f8dec7c30a2428f37} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!liberarEspacio@{liberarEspacio}}
+\index{liberarEspacio@{liberarEspacio}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{liberarEspacio()}{liberarEspacio()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::liberar\+Espacio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Libera el espacio ocupado por las matrices guardadas. 
+
+\Hypertarget{class_operaciones_basicas_aef2c01e83888acad30ac54a76ce1642e}\label{class_operaciones_basicas_aef2c01e83888acad30ac54a76ce1642e} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!menuOperacion@{menuOperacion}}
+\index{menuOperacion@{menuOperacion}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{menuOperacion()}{menuOperacion()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::menu\+Operacion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menú de operaciones para que el usuario pueda elegir sumar, multiplicar o dividir. 
+
+\Hypertarget{class_operaciones_basicas_a67e1dcd23c3ef2da982c0637f1ec0cfb}\label{class_operaciones_basicas_a67e1dcd23c3ef2da982c0637f1ec0cfb} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!multiplicacion@{multiplicacion}}
+\index{multiplicacion@{multiplicacion}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{multiplicacion()}{multiplicacion()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::multiplicacion (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz1,  }\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz2 }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de multiplicación (\texorpdfstring{$\ast$}{*}). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz1} & Primera matriz a multiplicar. \\
+\hline
+{\em matriz2} & Segunda matriz a multiplicar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operaciones_basicas_afd047f28d1ff56e039c07c8eb45c28e6}\label{class_operaciones_basicas_afd047f28d1ff56e039c07c8eb45c28e6} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!resta@{resta}}
+\index{resta@{resta}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resta()}{resta()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::resta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz1,  }\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz2 }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de resta (-\/). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz1} & Primera matriz a restar. \\
+\hline
+{\em matriz2} & Segunda matriz a restar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operaciones_basicas_a7d000f62904277810c9c04e16ab3315a}\label{class_operaciones_basicas_a7d000f62904277810c9c04e16ab3315a} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!suma@{suma}}
+\index{suma@{suma}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{suma()}{suma()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::suma (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz1,  }\item[{const \mbox{\hyperlink{class_matriz}{Matriz}}$<$ T $>$ \&}]{matriz2 }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de suma (+). 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em matriz1} & Primera matriz a sumar. \\
+\hline
+{\em matriz2} & Segunda matriz a sumar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_operaciones_basicas_ab69b9441b3d45f5f33212bff1eb5bf60}\label{class_operaciones_basicas_ab69b9441b3d45f5f33212bff1eb5bf60} 
+\index{OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}!validarMatrices@{validarMatrices}}
+\index{validarMatrices@{validarMatrices}!OperacionesBasicas$<$ T $>$@{OperacionesBasicas$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{validarMatrices()}{validarMatrices()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_operaciones_basicas}{Operaciones\+Basicas}}$<$ T $>$\+::validar\+Matrices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Valida si se ingresaron dos matrices, si estas dos matrices tienen las mismas dimensiones y si son del mismo tipo. 
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_operaciones_basicas_8hpp}{Operaciones\+Basicas.\+hpp}}\item 
+\mbox{\hyperlink{_operaciones_basicas_8cpp}{Operaciones\+Basicas.\+cpp}}\end{DoxyCompactItemize}

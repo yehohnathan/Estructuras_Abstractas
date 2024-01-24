@@ -1,0 +1,63 @@
+\doxysection{Valida\+Correo.\+cpp}
+\hypertarget{_valida_correo_8cpp_source}{}\label{_valida_correo_8cpp_source}\mbox{\hyperlink{_valida_correo_8cpp}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Se\ incluye\ el\ header\ correspondiente\ */}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_valida_correo_8hpp}{ValidaCorreo.hpp}}"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{/*\ Se\ instancia\ el\ contructor\ de\ la\ clase,\ el\ cual\ en\ vez\ de\ ingresar\ un\ correo(correo)}}
+\DoxyCodeLine{00005\ \textcolor{comment}{realiza\ un\ correo(R"{}patron"{})*/}}
+\DoxyCodeLine{00006\ \mbox{\hyperlink{class_valida_correo_ac54bbc8fda098f46cc7db1277196bdfc}{ValidaCorreo::ValidaCorreo}}()\{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{/*\ Se\ le\ asigna\ el\ patron\ de\ la\ variable\ regex\ */}}
+\DoxyCodeLine{00008\ \ \ \ \ this-\/>correo\ =\ regex(R\textcolor{stringliteral}{"{}(([a-\/zA-\/Z0-\/9][a-\/zA-\/Z0-\/9\(\backslash\).-\/]\{0,13\}[a-\/zA-\/Z0-\/9])@([a-\/zA-\/Z]+)\(\backslash\).([a-\/zA-\/Z]\{2,4\}))"{});}}
+\DoxyCodeLine{00009\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00010\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{comment}{/*\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ -\/\ El\ primer\ grupo\ [a-\/zA-\/Z0-\/9][a-\/zA-\/Z0-\/9\(\backslash\).-\/]\{0,13\}[a-\/zA-\/Z0-\/9]\ representa\ el\ nombre}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ \ \ y\ debe\ seguir\ las\ siguientes\ restrincciones:}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ Es\ invalido\ que\ el\ correo\ pueda\ empezar\ o\ terminar\ con\ un\ punto\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ o\ guión\ [a-\/zA-\/Z0-\/9].\ Solo\ con\ letras\ o\ numeros.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ El\ nombre\ puede\ tener\ letras,\ numeros,\ puntos\ y\ fuiones,\ pero\ su\ conjunto}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ no\ debe\ ser\ mayor\ a\ 15\ carácteres\ ([a-\/zA-\/Z0-\/9.-\/]\{0,13\}).}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ -\/\ El\ simbolo\ @\ separa\ el\ nombre\ del\ (expansion\ de)\ dominio.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ -\/\ El\ segudo\ grupo\ ([a-\/zA-\/Z]+)\(\backslash\).\ represente\ a\ el\ dominio\ y\ debe\ seguir\ las\ siguientes}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ \ \ restricciones:}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ El\ dominio\ solo\ contiene\ letras\ y\ tiene\ un\ punto\ al\ final\ (\(\backslash\).).}}
+\DoxyCodeLine{00024\ \textcolor{comment}{}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ -\/\ EL\ tercer\ grupo\ ([a-\/zA-\/Z]\{2,4\}))\ representa\ la\ extensión\ del\ correo\ y\ debe\ seguir}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ \ \ las\ siguientes\ restricciones:}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ La\ extensión\ solo\ puede\ contener\ letras\ ([a-\/zA-\/Z]).}}
+\DoxyCodeLine{00028\ \textcolor{comment}{}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ La\ extensión\ debe\ tener\ entre\ 2\ y\ 4\ caracteres\ (\{2,4\}).}}
+\DoxyCodeLine{00030\ \textcolor{comment}{}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ \ -\/\ Todo\ lo\ que\ no\ cumpla\ lo\ anterior,\ como\ los\ carácteres\ adicionales,\ son\ excluidos.\ \ }}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{/*\ Se\ crea\ un\ método\ que\ solicita\ una\ cenada\ de\ texto\ (string\ cadena)\ y\ luego\ retorna\ }}
+\DoxyCodeLine{00036\ \textcolor{comment}{si\ la\ dirección\ de\ correo\ es\ valida(true)\ o\ no(false).\ */}}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_valida_correo_abebc613d00db10bdab9743b00a58735b}{ValidaCorreo::validador}}(\textcolor{keywordtype}{string}\ cadena)\{}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{/*\ Bloque\ de\ excepciones\ para\ validar\ la\ cadena\ ingresada\ */}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ la\ cadena\ no\ contiene\ un\ @,\ se\ lanza\ inmediatamente\ una\ excepción\ */}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(cadena.find(\textcolor{charliteral}{'@'})\ ==\ string::npos)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ invalid\_argument(\textcolor{stringliteral}{"{}Error:\ No\ incluiste\ el\ arroba,\ correo\ invalido."{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Si\ la\ cadena\ coincide\ con\ el\ patron\ retorna\ un\ true\ */}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(regex\_match(cadena,\ correo))\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{catch}(\textcolor{keyword}{const}\ exception\&\ e)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ cerr\ <<\ e.what()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{/*\ Si\ se\ llegó\ a\ este\ punto\ el\ correo\ es\ totalmente\ invalido\ */}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,62 @@
+\doxysection{Operacion\+Compleja.\+hpp}
+\hypertarget{_operacion_compleja_8hpp_source}{}\label{_operacion_compleja_8hpp_source}\mbox{\hyperlink{_operacion_compleja_8hpp}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ OPERACION\_COMPLEJA\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ OPERACION\_COMPLEJA\_HPP}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_matriz_8hpp}{Matriz.hpp}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_operacion_compleja}{OperacionCompleja}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ vector<Matriz<T>>\ matriz1;\ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ vector<Matriz<T>>\ matriz2;\ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ vector<complex<T>>\ matrizCompleja1;\ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ vector<complex<T>>\ matrizCompleja2;\ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ vector<complex<T>>\ resultadoMatrices;\ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ validar\ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ complex<T>\ resultadoDato;\ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ opciones;\ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ sonIguales(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ conversorMatriz(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a0c9034b7fa685018182d7e99ef719b0e}{menuOperacion}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a30ff249145f39ba36f4b2c045ec3530a}{agregarMatriz}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\ matriz);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_acdcbd7c1a452fd2e2c175de494a039b0}{liberarEspacio}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_ad330ec4845e4b4345706d993804428d0}{validarMatrices}}();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a0f7ecc5066b1e7431d61b4911190fc54}{suma}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja1,\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja2);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_ae4cf14c5415df58b404ff94f96a3caf7}{resta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja1,\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja2);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_ac133e7b99c92d858c11bec2debf1fa89}{multiplicacion}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz2,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja1,\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<complex<T>>\ matrizCompleja2);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_operacion_compleja_a604be832590607c78ecdbfeb01afa838}{mostrarMatriz}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matriz}{Matriz<T>}}\&\ matriz,\ \textcolor{keyword}{const}\ vector<complex<T>>\&\ matrizCompleja);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_operacion_compleja_a620123da7ec1d48b58edd01b1c8d80f9}{getValidar}}();}
+\DoxyCodeLine{00124\ \};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_operacion_compleja_8cpp}{OperacionCompleja.cpp}}"{}}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
