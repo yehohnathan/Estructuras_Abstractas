@@ -36,9 +36,12 @@ void OperacionCompleja<T>::liberarEspacio(){
     matrizCompleja1.clear();
     matrizCompleja2.clear();
 
-    /* Mensaje indicandole al usuario la acción */
+    /* Mensaje indicandole al usuario la acción 
     cout << "\nLas posibles matrices ingresadas han sido borradas. " 
-         << "Vuelve a utilizar el metodo agregarMatriz()." << endl;
+         << "Vuelve a utilizar el metodo agregarMatriz()." << endl; 
+
+    No es necesario que el usuario se de cuenta     
+    */
 }
 
 /* El siguiente método se encarga de borrar las matrices guardadas*/
@@ -102,7 +105,7 @@ void OperacionCompleja<T>::validarMatrices(){
     try {
         /* Se pregunta si las matrices estan vacias*/
         if (matrizCompleja1.empty() || matrizCompleja2.empty()) {
-            throw runtime_error("Error: No se han ingresado las dos matrices esperadas.");
+            throw runtime_error("");
         }
         else{
             /* Como las matrices no estan vacias me pregunto por su tamaño */
@@ -259,12 +262,10 @@ void OperacionCompleja<T>::mostrarMatriz(const Matriz<T>& matriz, const vector<c
 /* Método de menú para que el usuario pueda elegir si sumar, multiplizar o dividir */
 template<typename T>
 void OperacionCompleja<T>::menuOperacion(){
-    cout << "\nPrimero se valida las matrices ingresadas:" << endl;
     validarMatrices();
 
     /* Si el resultado de validación es invalido para realizar operaciones*/
     if (validar == false){
-        cout << "No se puede continuar el programa.";
         liberarEspacio();
         return; /* Sale de la función*/
     }
@@ -319,4 +320,9 @@ void OperacionCompleja<T>::menuOperacion(){
 
     /* Se le solicita al programa que borre toda la información */
     liberarEspacio();
+}
+
+template<typename T>
+bool OperacionCompleja<T>::getValidar(){
+    return this->validar;
 }

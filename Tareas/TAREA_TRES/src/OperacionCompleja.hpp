@@ -70,6 +70,9 @@ class OperacionCompleja
 
         /* Método para mostrar el cualquier tipo de matriz compleja */
         void mostrarMatriz(const Matriz<T>& matriz, const vector<complex<T>>& matrizCompleja);
+
+        /* Método para retornar validar */
+        bool getValidar();
 };
 
 #include "OperacionCompleja.cpp"

@@ -32,9 +32,12 @@ void OperacionesBasicas<T>::liberarEspacio(){
     matriz1.clear();
     matriz2.clear();
 
-    /* Mensaje indicandole al usuario la acción */
+    /* Mensaje indicandole al usuario la acción 
     cout << "\nLas posibles matrices ingresadas han sido borradas. " 
-         << "Vuelve a utilizar el metodo agregarMatriz()." << endl;
+         << "Vuelve a utilizar el metodo agregarMatriz()." << endl; 
+
+    No es necesario que el usuario se de cuenta     
+    */
 }
 
 /* Método para validar para saber si se ingresaron dos matrices, si estas dos matrices
@@ -45,7 +48,7 @@ void OperacionesBasicas<T>::validarMatrices(){
     try {
         /* Se pregunta si las matrices estan vacias*/
         if (matriz1.empty() || matriz2.empty()) {
-            throw runtime_error("Error: No se han ingresado las dos matrices esperadas.");
+            throw runtime_error("");
         }
         else{
             /* Como las matrices no estan vacias me pregunto por su tamaño */
@@ -157,12 +160,10 @@ void OperacionesBasicas<T>::multiplicacion(const Matriz<T>& matriz1, const Matri
 /* Método de menú para que el usuario pueda elegir si sumar, multiplizar o dividir */
 template<typename T>
 void OperacionesBasicas<T>::menuOperacion(){
-    cout << "\nPrimero se valida las matrices ingresadas:" << endl;
     validarMatrices();
 
     /* Si el resultado de validación es invalido para realizar operaciones*/
     if (validar == false){
-        cout << "No se puede continuar el programa.";
         liberarEspacio();
         return; /* Sale de la función*/
     }
@@ -217,4 +218,9 @@ void OperacionesBasicas<T>::menuOperacion(){
 
     /* Se le solicita al programa que borre toda la información */
     liberarEspacio();
+}
+
+template<typename T>
+bool OperacionesBasicas<T>::getValidar(){
+    return this->validar;
 }

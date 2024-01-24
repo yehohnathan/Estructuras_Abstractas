@@ -49,6 +49,9 @@ class OperacionesBasicas
 
         /* Sobrecarga de operador de multiplicación (*) */
         void multiplicacion(const Matriz<T>& matriz1, const Matriz<T>& matriz2);
+
+        /* Método para retornar validar */
+        bool getValidar();
 };
 
 #include "OperacionesBasicas.cpp"
