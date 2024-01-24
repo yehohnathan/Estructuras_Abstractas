@@ -16,9 +16,6 @@ class OperacionesBasicas
         vector<Matriz<T>> matriz1;
         vector<Matriz<T>> matriz2;
 
-        /* Se instancia un vector que contiene los resultados de las operaciones */
-        vector<T> resultado; 
-
         /* Se crea una bandera para asegurar que las matrices ingresadas cumplas
         con los requisitos solicitados */
         bool validar = false;

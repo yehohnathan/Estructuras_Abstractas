@@ -31,7 +31,6 @@ void OperacionesBasicas<T>::liberarEspacio(){
     /* Se libera el posible espacio almacenado por los vectores */
     matriz1.clear();
     matriz2.clear();
-    resultado.clear();
 
     /* Mensaje indicandole al usuario la acción */
     cout << "\nLas posibles matrices ingresadas han sido borradas. " 
@@ -79,9 +78,6 @@ bool OperacionesBasicas<T>::sonIguales(const Matriz<T>& matriz1, const Matriz<T>
 /* Sobrecarga de operador de suma (+) */
 template <typename T>
 void OperacionesBasicas<T>::suma(const Matriz<T>& matriz1, const Matriz<T>& matriz2) {
-    /* Limpiamos lo que hace en el vector resultado */
-    resultado.clear();
-
     /* Se valida si las matrices son válidas con el atributo bool */
     if (validar == false) {
         return;
@@ -96,10 +92,7 @@ void OperacionesBasicas<T>::suma(const Matriz<T>& matriz1, const Matriz<T>& matr
             /* Se obtienen los datos directamente de las matrices y se suman */
             T resultadoDato = matriz1.get(i, j) + matriz2.get(i, j);
 
-            /* Esto hay que mejorarlo */
             cout << resultadoDato << "  ";
-
-            resultado.push_back(resultadoDato);
         }
 
         /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
@@ -110,9 +103,6 @@ void OperacionesBasicas<T>::suma(const Matriz<T>& matriz1, const Matriz<T>& matr
 /* Sobrecarga de operador de resta (-) */
 template <typename T>
 void OperacionesBasicas<T>::resta(const Matriz<T>& matriz1, const Matriz<T>& matriz2) {
-    /* Limpiamos lo que hace en el vector resultado */
-    resultado.clear();
-
     /* Se valida si las matrices son válidas con el atributo bool */
     if (validar == false) {
         return;
@@ -128,10 +118,7 @@ void OperacionesBasicas<T>::resta(const Matriz<T>& matriz1, const Matriz<T>& mat
             /* Se obtienen los datos directamente de las matrices y se restan */
             T resultadoDato = matriz1.get(i, j) - matriz2.get(i, j);
 
-            /* Esto hay que mejorarlo */
             cout << resultadoDato << "  ";
-
-            resultado.push_back(resultadoDato);
         }
 
         /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
@@ -142,9 +129,6 @@ void OperacionesBasicas<T>::resta(const Matriz<T>& matriz1, const Matriz<T>& mat
 /* Sobrecarga de operador de multiplicación (*) */
 template <typename T>
 void OperacionesBasicas<T>::multiplicacion(const Matriz<T>& matriz1, const Matriz<T>& matriz2) {
-    /* Limpiamos lo que hace en el vector resultado */
-    resultado.clear();
-
     /* Se valida si las matrices son válidas con el atributo bool */
     if (validar == false) {
         return;
@@ -162,11 +146,7 @@ void OperacionesBasicas<T>::multiplicacion(const Matriz<T>& matriz1, const Matri
             for (int k = 0; k < matriz1.getColumnas(); k++) {
                 resultadoDato += matriz1.get(i, k) * matriz2.get(k, j);
             }
-
-            /* Esto hay que mejorarlo */
             cout << resultadoDato << "  ";
-
-            resultado.push_back(resultadoDato);
         }
 
         /* Hace un salto de línea cuando se terminó de mostrar los datos de una fila */
