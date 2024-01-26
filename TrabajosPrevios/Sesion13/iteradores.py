@@ -43,6 +43,7 @@ for element in my_list:
     __next__() debe devolver el siguiente elemento de la secuencia. Al llegar
     al final, y en llamadas posteriores, debe levantar StopIteration.
 """
+print("\nSe usan iteradores especiales:")
 
 
 class PowTwo:   # Se crea un iterador personalizado
@@ -54,12 +55,12 @@ class PowTwo:   # Se crea un iterador personalizado
         return self
 
     def __next__(self):     # Iterador para hasta llegar al máximo
-        if self.n > self.max:
+        if self.n <= self.max:
+            result = 2 ** self.n
+            self.n += 1
+            return result
+        else:
             raise StopIteration
-
-        result = 2 ** self.n
-        self.n += 1
-        return result
 
 
 # Se crea un objeto y con el inicilizador se coloca max = 3
@@ -69,12 +70,17 @@ numbers = PowTwo(3)
 i = iter(numbers)
 
 # Usando next se imprime el siguiente elemento
-print(next(i))
-print(next(i))
-print(next(i))
-print(next(i))
-print(next(i))  # Esto generará un error StopIteration, n sería mayor que max
+try:
+    print(next(i))
+    print(next(i))
+    print(next(i))
+    print(next(i))
+    print(next(i))  # Esto generará un error StopIteration, n > max
+except StopIteration:
+    print("Se alcanzó el valor máximo de iteración")
 
-# También se puede utilizar un ciclo for para el iterador
+# También se puede utilizar un ciclo for para el iterado
+"""
 for i in PowTwo(3):
     print(i)
+"""
