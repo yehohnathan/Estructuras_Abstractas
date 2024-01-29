@@ -78,6 +78,9 @@ class Alergia:
         """
         print("\nA continuación se muestras todas las alergias, existentes",
               "en el registro, y su valor asociado:")
+
+        # Se crea un ciclo for para imprimir un diccionario. Se puede
+        # interpretar como nombre: (alergia, codigo)
         for nombre, (alergia, codigo) in self._alergias.items():
             print(f"{alergia}: {codigo}")
 
