@@ -142,12 +142,14 @@ class TiposAlergias(Alergia):
         Permite al usuario elegir entre ingresar nombre y valor, solo nombre
         o solo valor.
         """
-        print("\nTecleé un número asociado a una opción para agregar una",
-              "alergia")
-        print("Opción '1': ingrese el nombre y valor de la alergia a agregar.")
-        print("Opción '2': ingrese el nombre de la alergia a agregar.")
-        print("Opción '3': ingrese el valor de la alergia a agregar.")
         while True:
+            print("\nTecleé un número asociado a una opción para agregar una",
+                  "alergia",
+                  "\nOpción '1': ingrese el nombre y valor de la alergia",
+                  "a agregar.",
+                  "\nOpción '2': ingrese el nombre de la alergia a agregar.",
+                  "\nOpción '3': ingrese el valor de la alergia a agregar.",
+                  "\nOpción '4': para dejar de agregar alergias.")
             try:
                 opcion = int(input("Ingrese una opción: "))
 
@@ -155,15 +157,17 @@ class TiposAlergias(Alergia):
                     nombre = self.__agregar_nombre()
                     valor = self.__agregar_valor()
                     self._lista_alergias.append([nombre, valor])
-                    break
                 elif opcion == 2:
                     nombre = self.__agregar_nombre()
                     self._lista_alergias.append([None, nombre])
-                    break
                 elif opcion == 3:
                     valor = self.__agregar_valor()
                     self._lista_alergias.append([None, valor])
-                    break
+                elif opcion == 4:
+                    if len(self._lista_alergias) == 0:
+                        print("No haz ingresado ninguna alergia")
+                    else:
+                        break
 
                 raise ValueError("No se ingresó una opción válida")
 
