@@ -50,9 +50,10 @@ class EvaluacionEspecifica(Alergia):
             if self.__puntuacion & codigo == codigo:
                 self.__lista_alergias.append(alergia)
 
+        self.mostrar_alergias()
         return self.__lista_alergias
 
-    def imprimir_informacion_completa(self):
+    def mostrar_alergias(self):
         """
         Método que imprime información completa sobre las alergias de una
         persona.
@@ -66,8 +67,8 @@ class EvaluacionEspecifica(Alergia):
             print("La puntuación general es 0, no hay información que mostrar")
             return
 
-        print("Este tiene las siguientes alergias, cada una con una",
-              "puntuación asociada):")
+        print("El usuario tiene las siguientes alergias, cada una con una",
+              "puntuación asociada:")
 
         for nombre, (alergia, codigo) in self._alergias.items():
             # Si alergia (que es un string) está dentro de la lista, entonces
