@@ -32,7 +32,7 @@ class Alergia:
             "leche": ("Leche", 4096),
             "soja": ("Soja", 8192),
             "miel": ("Miel", 16384),
-            "pina": ("Piña", 32768),
+            "piña": ("Piña", 32768),
             "ajo": ("Ajo", 65536),
             "maiz": ("Maíz", 131072),
             "kiwi": ("Kiwi", 262144),
@@ -65,7 +65,7 @@ class Alergia:
             "higos": ("Higos", 35184372088832),
             "centeno": ("Centeno", 70368744177664),
             "pistachos": ("Pistachos", 140737488355328),
-            "cangrejo_de_rio": ("Cangrejo de río", 281474976710656),
+            "cangrejo de río": ("Cangrejo de río", 281474976710656),
             "col": ("Col", 562949953421312)
         }
 
