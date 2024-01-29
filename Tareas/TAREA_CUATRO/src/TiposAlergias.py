@@ -175,9 +175,9 @@ class TiposAlergias(Alergia):
 
     def get_lista_alergias(self):
         """
-        Método público que retorna la lista de alergias.
+        Método público que retorna la lista de alergias total.
         """
-        return self._lista_alergias
+        return self._lista_alergias + self._lista_nombre + self._lista_puntos
 
     def get_nombre_no_alergias(self):
         """
