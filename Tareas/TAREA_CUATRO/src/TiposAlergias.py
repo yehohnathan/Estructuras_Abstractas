@@ -142,6 +142,11 @@ class TiposAlergias(Alergia):
         Permite al usuario elegir entre ingresar nombre y valor, solo nombre
         o solo valor.
         """
+        # Reinicio de las listas cada vez que se accede a este método:
+        self._lista_alergias = []
+        self._lista_nombre = []
+        self._lista_puntos = []
+
         while True:
             print("\nTecleé un número asociado a una opción para agregar una",
                   "alergia",
