@@ -74,8 +74,3 @@ class EvaluacionEspecifica(Alergia):
             # se imprime el nombre junto con el valor asociado
             if alergia in self.__lista_alergias:
                 print(f"{alergia}: {codigo}")
-
-
-hola = EvaluacionEspecifica()
-hola.evaluar_alergias()
-hola.imprimir_informacion_completa()
