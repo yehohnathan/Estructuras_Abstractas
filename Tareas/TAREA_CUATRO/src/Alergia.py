@@ -5,11 +5,6 @@ class Alergia:
     Los códigos de alergias son atributos privados de la clase y se asignan
     valores numéricos únicos a cada alergia. Estos códigos se utilizan para
     identificar las alergias de una persona.
-
-    Ejemplo de uso:
-    alergias = Alergia()
-    print(alergias.get_cacahuetes())  # Acceso a un atributo privado mediante
-    un método público
     """
 
     def __init__(self):
