@@ -114,6 +114,62 @@ Aparte de esas 3 pruebas se hicieron busquedas de cuellos de botellas, forzando 
 
 Respecto a los tiempos de ejecución obtenidos son buenos, al realizar las pruebas no hay ningun tipo de relantización que el usuario pueda percibir o que resulte llamativo. El hecho que el tiempo de ejecución no sea un problema es más que todo por tener que tomar desiciones dentro del código, leer lo que hay que hacer y ello conlleva más tiempo de lo que python es capaz de ejecutar el programa.
 
+### Perfilado de código:
+
+Al utilizar el módulo `cProfile` los siguientes códigos:
+- Alergia.py
+- EvaluacionEspecifica.py
+- TiposAlergias.py
+- EvaluacionGeneral.py
+
+Se encontró que el tiempo de cada método de cada clase que utiliza el programa es el siguiente:
+
+| Clase                    | Método                            | Tiempo de Ejecución (segundos) |
+|--------------------------|-----------------------------------|---------------------------------|
+| Alergia                  | imprimir_informacion_completa()   | 0.004                           |
+| Alergia                  | imprimir_alergia("col")           | 0.000                           |
+| Alergia                  | agregar_alergia()                 | 6.168                           |
+| Alergia                  | get_lista_alergias()              | 0.000                           |
+| EvaluacionEspecifica     | sumar_valor_alergias()            | 0.000                           |
+| EvaluacionEspecifica     | evaluar_alergias()                | 3.913                           |
+| EvaluacionEspecifica     | mostrar_alergias()                | 0.006                           |
+| TiposAlergias            | agregar_alergia()                 | 25.192                          |
+| TiposAlergias            | analiza_alergias()                | 0.000                           |
+| TiposAlergias            | agregar_nombre()                  | 5.477                           |
+| TiposAlergias            | agregar_valor()                   | 0.000                           |
+| TiposAlergias            | get_lista_alergias()              | 0.000                           |
+| TiposAlergias            | get_nombre_no_alergias()          | 0.000                           |
+| TiposAlergias            | get_valor_no_alergias()           | 0.000                           |
+| EvaluacionGeneral        | datos_alergias(lista)             | 0.002                           |
+| EvaluacionGeneral        | calcular_promedio()               | 0.000                           |
+
+Los métodos que más consumen recursos y tiempo con diferencia son los sigueintes:
+
+
+| Clase                    | Método                   | Tiempo de Ejecución (segundos)  |
+|--------------------------|--------------------------|---------------------------------|
+| Alergia                  | agregar_alergia()        | 6.168                           |
+| EvaluacionEspecifica     | evaluar_alergias()       | 3.913                           |
+| TiposAlergias            | agregar_nombre()         | 5.477                           |
+| TiposAlergias            | agregar_alergia()        | 25.192                          |
+
+Siendo que la diferencia entre consumo entre los métodos de la tabla anterior y los demás es sustancial, se procede a analizar el motivo del consumo de tiempo de estos métodos y verificar si se podría optimizar más.
+
+#### clase Alergia:
+- `agregar_alergia()` es el método encargado de incorporar una nueva alergia a la lista existente al inicio del programa. Durante las pruebas, la lista contenía 50 elementos, lo que implica que para agregar una alergia se verificaba primero si el nombre no existía previamente. Luego, se multiplicaba por dos el valor asociado al último elemento en ese instante para asignar un nuevo valor.
+
+    Esto indica que no hay una forma sencilla de simplificar su implementación, ya que aunque permitir un valor arbitrario para la nueva alergia reduciría el tiempo, implicaría verificar que ese valor no coincida con ningún otro en la lista.
+
+#### clase EvaluacionEspecifica:
+- `evaluar_alergias()` es el método que determina si el único nombre o valor ingresado por el usuario puede asociarse con algún elemento de la lista de alergias. En el momento de la prueba, la lista contenía 50 elementos. Dado que la comparación implica evaluar con cada elemento de la lista, no existe un método eficiente para optimizar este proceso.
+
+    Sin embargo, la detección de si un elemento en la lista necesita ser asociado está optimizada. Previo a esta evaluación, todos los elementos individuales de nombre o valor agregados se acompañan con un `None` para simplificar la detección.
+
+#### clase TiposAlergias:
+- `agregar_nombre()` es un método usado para ingresar un nombre a una lista, su duración se debe a la cantidad de excepciones que hay dentro de este método. Si el método contiene letras mayusculas, son pasadas a minusculas para que coincidan con el nombre del diccionario usado para las alergias, luego verifica que no tenga números en su nombre y que permita espacios; además de las clasicas excepciones para evitar que se ingrese otro tipo de dato. Esto significa que reducir su tiempo conlleva a quitar cualquier cosa que es necesaria.
+
+- `agregar_alergia() ` es el método con más duración y también el más complejo, de el se desprenden otro métodos protegidos de la misma clase y su función es crear una lista de listas de los elementos alergias nombre/alergia, nombre o solo alergia. Su complejidad es basada a lo extensa que es, su necesidad de solicitar valores al usuario para decidir qué elemento añadir y las excepciones. No hay una forma viable de cambiar su uso que no sea restructurar los demás métodos y clases.
+
 ## Parte teórica:
 ### 1. Explique la diferencia entre una lista y una tupla en Python.
 
