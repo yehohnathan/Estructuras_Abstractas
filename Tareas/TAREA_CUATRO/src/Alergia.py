@@ -118,3 +118,48 @@ class Alergia:
             print(f"Error: {e}")
         except ValueError as e:
             print(f"Error: {e}")
+
+    def agregar_alergia(self):
+        """
+        Método que solicita el nombre de una nueva alergia y la agrega al
+        diccionario.
+        """
+        try:
+            while True:
+                # Solicita el nombre de la nueva alergia al usuario
+                nombre = str(input("Ingrese el nombre de la nueva alergia: "))
+
+                # Verifica si se proporcionó una string
+                if not isinstance(nombre, str):
+                    raise ValueError("Debe proporcionar un nombre válido para"
+                                     + " la nueva alergia.")
+
+                # Si todo salió bien, convierte el nombre en minusculas
+                nombre = nombre.lower()
+
+                # Verifica si el nombre ya existe en el diccionario
+                if nombre in self._alergias:
+                    print(f"El nombre '{nombre}' ya existe."
+                          + " Intente con otro nombre.")
+                else:
+                    # Se accede al último elemento del diccionario
+                    ultimo_elemento = list(self._alergias.values())[-1][1]
+
+                    # Asigna un nuevo valor que sea el doble del último
+                    # elemento, asegurando que sea potencia de la base 2
+                    nuevo_valor = ultimo_elemento * 2
+
+                    # Se agrega la nueva alergia al diccionario, en donde el
+                    # el nombre inicia con la letra mayuscula para mejor
+                    # presentación
+                    self._alergias[nombre] = (nombre.capitalize(), nuevo_valor)
+
+                    print("\nSe ha agregado la nueva alergia",
+                          f"'{nombre.capitalize()}' con valor {nuevo_valor}.")
+                    break
+
+        except ValueError as e:
+            print(f"Error: {e}")
+
+    def get_lista_alergias(self):
+        return self._alergias
