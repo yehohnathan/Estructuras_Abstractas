@@ -1,6 +1,118 @@
 # Tarea 4: Uso de clases y tiempo de ejecuión en python, y teoría.
 ## Ejecución del programa:
 
+Para ejecutar el programa, asegúrese de estar en el directorio del repositorio en su computadora y escriba el comando `make`, como se muestra a continuación:
+
+```go
+...\ie0217\Tareas\TAREA_CUATRO> make
+```
+
+Luego se le despliegará un menú de opciones:
+```go
+================================================================================================
+Tecleé un número asociado a una opción para acceder a una funcionalidad del Sistema de Alergias 
+1. Para ingresar un puntaje y ver la lista de alergias a las que es sensible.
+2. Para ingresar los tipos de alergias que tiene.
+3. Para ingresar una nueva alergia a la lista.
+4. Para finalizar el programa.
+Ingrese una opción:
+```
+
+Este menú indica las acciones que tomará el programa dependiendo del número que ingrese, y cualquier número o dato que no corresponda a lo esperado conllevará a que el programa le vuelva a solicitar una opción.
+
+Dependiendo de la opción a escoger, se le despliegará un nuevo menú. Cada menú es igual de claro que el mostrado y se le indicará cuando este cometiendo un error.
+
+## Evaluación del rendimiento del código:
+### Medición de Tiempo de Ejecución:
+
+Utilizando el modulo `timeit` se analiza el tiempo de ejecución del programa, el cual se refiere al uso del usuario de todas sus funciones sin excepción, cambiando unicamente la cantidad de elementos que hay presentes en la lista.
+
+Para llevar esto acabo se ingresa el equivalente del `main` dentro de la siguiente función: 
+```py
+# ----------------- # Creación de la interfaz de usuario # ------------------ #
+def programa_principal():
+    while True:
+        print("\n================================================" +
+              "================================================")
+        print("Tecleé un número asociado a una opción para acceder a una",
+              "funcionalidad del Sistema de Alergias",
+              "\n1. Para ingresar un puntaje y ver la lista de",
+              "alergias a las que es sensible.",
+              "\n2. Para ingresar los tipos de alergias que tiene.",
+              "\n3. Para ingresar una nueva alergia a la lista.",
+              "\n4. Para finalizar el programa.")
+        try:
+            opcion = int(input("Ingrese una opción: "))
+
+            if opcion == 1:
+                print("\n================================================" +
+                      "================================================")
+                alergias = alergia.get_lista_alergias()
+                evaluacion_especifica.evaluar_alergias(alergias)
+
+            elif opcion == 2:
+                print("\n================================================" +
+                      "================================================")
+                tipos_alergias.agregar_alergia()
+                lista_alergias = tipos_alergias.get_lista_alergias()
+                evaluacion_general.datos_alergias(lista_alergias)
+                evaluacion_general.calcular_promedio()
+
+            elif opcion == 3:
+                alergia.agregar_alergia()
+                alergia.imprimir_informacion_completa()
+
+            elif opcion == 4:
+                print("=======================================",
+                      "FIN DEL PROGRAMA",
+                      "=======================================")
+                break
+
+        except ValueError:
+            print("Error: No se ingresó una opción válida.,"
+                  "Inténtelo de nuevo.\n")
+```
+
+Luego se procede a realizar las siguientes pruebas, segun el orden de presedencia:
+
+1. Se ingresa el peor caso del puntaje, el cual muestra todos los elementos de la lista a los que podría ser alergico.
+2. Se agregan dos elementos de los 3 casos posibles cuando el usuario desea ingresar elementos.
+    - 2 elementos con su nombre y puntaje
+    - 2 elementos, uno cuyo nombre no esta en la lista y otro cuyo nombre si esta en la lista.
+    - 2 elementos, uno cuyo valor no esta en la lista y otro cuyo valor si esta en la lista.
+3. Se añaden una nuevaa alergia, despues del punto 1 y 2.
+4. Se repite estos puntos con 10 elementos, 30 elementos y 50 elementos en la lista de alergias.
+
+Utilizando la intrucción:
+
+```py
+tiempo = timeit.timeit(programa_principal, number=1)
+print(f"Tiempo de ejecución agregar_alergia: {tiempo} segundos")
+```
+
+Se muestra el tiempo en segundos de una única ejecución. Por lo que para los 3 casos, en donde se varia la cantidad de alergias, se obtuvieron los siguientes valores:
+
+| Número de Alergias | Tiempo de Ejecución (segundos) |
+|---------------------|--------------------------------|
+| 10                  | 56.49701900000218              |
+| 30                  | 59.47061409999151              |
+| 50                  | 63.73561440000776              |
+
+La diferencia entre los valores fueron los siguientes:
+
+| Diferencia de Alergias | Diferencia de Tiempo (segundos) |
+|-------------------------|---------------------------------|
+| 30 - 10                 | 2.97359509998933                |
+| 50 - 10                 | 7.23859540000558                |
+| 50 - 30                 | 4.26500030001625                |
+
+La duración del código podría ser mucho mayor o mucho menor, dependiendo de las acciones del usuario, esta prueba la cual usa todas las funciones del programa permite tener un acercamiento del rendimiento del sistema y su comportamiento.
+
+Como se puede observar, al sacar la diferencia entre todas las pruebas, hay un crecimiento lineal en la duración de ejecución dependiendo de lo larga que sea la lista de alergias del sistema. Esto debido a que por cada 20 alergias que se agreguen al sistema hay un aumento de 3.5 segundos en la ejecución del programa.
+
+Aparte de esas 3 pruebas se hicieron busquedas de cuellos de botellas, forzando al programa tomar caminos complicados pero el tiempo no vario mucho y esto se debe a como esta estructurada la interfaz del usuario, ya que esta es sencilla y limitada. 
+
+Respecto a los tiempos de ejecución obtenidos son buenos, al realizar las pruebas no hay ningun tipo de relantización que el usuario pueda percibir o que resulte llamativo. El hecho que el tiempo de ejecución no sea un problema es más que todo por tener que tomar desiciones dentro del código, leer lo que hay que hacer y ello conlleva más tiempo de lo que python es capaz de ejecutar el programa.
 
 ## Parte teórica:
 ### 1. Explique la diferencia entre una lista y una tupla en Python.
