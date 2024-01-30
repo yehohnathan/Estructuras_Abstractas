@@ -218,13 +218,3 @@ class TiposAlergias(Alergia):
         Método público que retorna la lista de valores no asociados a alergias.
         """
         return self._lista_puntos
-
-
-
-
-import cProfile
-hola = TiposAlergias()
-cProfile.run('hola.agregar_alergia()')
-cProfile.run('hola.get_lista_alergias()')
-cProfile.run('hola.get_nombre_no_alergias()')
-cProfile.run('hola.get_valor_no_alergias()')
