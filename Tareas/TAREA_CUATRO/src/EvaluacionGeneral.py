@@ -93,11 +93,3 @@ class EvaluacionGeneral():
                   suma_alergias_desconocidas / total_desconocidos)
         else:
             print("No hay resultados desconocidos.")
-
-import cProfile
-from TiposAlergias import TiposAlergias
-hola2 = TiposAlergias()
-hola = EvaluacionGeneral()
-hola2.agregar_alergia()
-cProfile.run('hola.datos_alergias(hola2.get_lista_alergias())')
-cProfile.run('hola.calcular_promedio()')
