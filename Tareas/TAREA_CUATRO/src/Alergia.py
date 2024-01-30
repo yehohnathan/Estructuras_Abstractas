@@ -163,11 +163,3 @@ class Alergia:
 
     def get_lista_alergias(self):
         return self._alergias
-
-
-import cProfile
-hola = Alergia()
-cProfile.run('hola.imprimir_informacion_completa()')
-cProfile.run('hola.imprimir_alergia("col")')
-cProfile.run('hola.agregar_alergia()')
-cProfile.run('hola.get_lista_alergias()')
