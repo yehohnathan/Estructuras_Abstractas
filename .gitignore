@@ -25,6 +25,7 @@
 *.la
 *.a
 *.lib
+*.bat
 
 # Executables
 *.exe
@@ -33,3 +34,6 @@
 
 # Python
 __pycache__/
+
+# Files
+latex/
