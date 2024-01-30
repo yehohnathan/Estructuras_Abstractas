@@ -218,7 +218,3 @@ class TiposAlergias(Alergia):
         Método público que retorna la lista de valores no asociados a alergias.
         """
         return self._lista_puntos
-
-
-hola = TiposAlergias()
-hola.agregar_alergia()
