@@ -104,37 +104,49 @@ class TiposAlergias(Alergia):
         Método privado que analiza la lista de alergias y actualiza las listas
         de nombre y valor.
         """
-        # Iterador para acceder a los elemento de la lista que crea el usuario
-        iterador = 0
+        # Crear una copia de la lista para evitar problemas cuando se eliminan
+        # elementos
+        copia_alergias = list(self._lista_alergias)
 
-        # Ciclo for que verifica si un nombre o valor asociado esta existente
-        # en el diccionario para complementarlo. Si solo esta valor se le pone
-        # el nombre asociado, y viseversa.
-        for sublista in self._lista_alergias:
-            # Si el primer elemeno es None, significa que en ese elemento el
-            # usuario solo ingreso Nombre o Valor en agregar_alergia().
+        # Ciclo for que verifica si un nombre o valor asociado está existente
+        # en el diccionario para complementarlo. Si solo está valor, se le pone
+        # el nombre asociado, y viceversa.
+        for sublista in copia_alergias:
+            # Si el primer elemento es None, significa que en ese elemento el
+            # usuario solo ingresó Nombre o Valor en agregar_alergia().
             if sublista[0] is None:
                 # Se pregunta si segundo elemento es Nombre o Valor, para hacer
-                # la busqueda en el diccionario. Si el elemento esta se hace un
-                # asocie y se ingresa completo a la lista, sino se elimina y se
+                # la búsqueda en el diccionario. Si el elemento está se hace un
+                # asocié y se ingresa completo a la lista, sino se elimina y se
                 # agrega a una de las dos listas que solo admiten Nombres y
-                # Valores que no fueron encontrados
+                # Valores que no fueron encontrados.
                 if isinstance(sublista[1], str):
                     verificador = self.__busca_nombre(sublista[1])
                     if verificador is None:
+                        # Nombre no encontrado en el diccionario, se agrega a
+                        # una lista diferente y se borra de lista_alergias
                         self._lista_nombre.append(sublista[1])
-                        del self._lista_alergias[iterador]
+                        self._lista_alergias.remove(sublista)
                     else:
-                        self._lista_alergias[iterador] = verificador
+                        # El nombre si se encontró en el diccionario, por
+                        # lo que se modifica el contenido malo que esta en
+                        # indice y se coloca el nuevo
+                        indice = self._lista_alergias.index(sublista)
+                        self._lista_alergias[indice] = verificador
 
-                if isinstance(sublista[1], int):
+                elif isinstance(sublista[1], int):
                     verificador = self.__busca_valor(sublista[1])
                     if verificador is None:
+                        # Valor no encontrado en el diccionario, se agrega a
+                        # una lista diferente y se borra de lista_alergias
                         self._lista_puntos.append(sublista[1])
-                        del self._lista_alergias[iterador]
+                        self._lista_alergias.remove(sublista)
                     else:
-                        self._lista_alergias[iterador] = verificador
-            iterador += 1
+                        # El valor si se encontró en el diccionario, por
+                        # lo que se modifica el contenido malo que esta en
+                        # indice y se coloca el nuevo
+                        indice = self._lista_alergias.index(sublista)
+                        self._lista_alergias[indice] = verificador
 
     def agregar_alergia(self):
         """
@@ -146,7 +158,6 @@ class TiposAlergias(Alergia):
         self._lista_alergias = []
         self._lista_nombre = []
         self._lista_puntos = []
-
         while True:
             print("\nTecleé un número asociado a una opción para agregar una",
                   "alergia",
@@ -162,31 +173,39 @@ class TiposAlergias(Alergia):
                     nombre = self.__agregar_nombre()
                     valor = self.__agregar_valor()
                     self._lista_alergias.append([nombre, valor])
+
                 elif opcion == 2:
                     nombre = self.__agregar_nombre()
                     self._lista_alergias.append([None, nombre])
+
                 elif opcion == 3:
                     valor = self.__agregar_valor()
                     self._lista_alergias.append([None, valor])
+
                 elif opcion == 4:
                     if len(self._lista_alergias) == 0:
                         print("No haz ingresado ninguna alergia")
+                        continue
                     else:
                         break
 
-                raise ValueError("No se ingresó una opción válida")
+            except ValueError:
+                print("Error: No se ingresó una opción válida.",
+                      "Inténtelo de nuevo.\n")
 
-            except ValueError as e:
-                print(f"Error: {e}. Inténtelo de nuevo.\n")
-
+        # Se analizan los datos ingresados por el usuario, para verificar si
+        # los valores ya existen dentro del programa
         self.__analiza_alergias()
-        return
+
+        # Modifica el valor de lista, ya estando ordenada
+        self._lista_alergias = (self._lista_alergias + self._lista_nombre
+                                + self._lista_puntos)
 
     def get_lista_alergias(self):
         """
-        Método público que retorna la lista de alergias total.
+        Método público que retorna la lista de alergias.
         """
-        return self._lista_alergias + self._lista_nombre + self._lista_puntos
+        return self._lista_alergias
 
     def get_nombre_no_alergias(self):
         """
@@ -199,3 +218,7 @@ class TiposAlergias(Alergia):
         Método público que retorna la lista de valores no asociados a alergias.
         """
         return self._lista_puntos
+
+
+hola = TiposAlergias()
+hola.agregar_alergia()
