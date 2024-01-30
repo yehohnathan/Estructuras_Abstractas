@@ -24,7 +24,7 @@ class EvaluacionEspecifica(Alergia):
             suma += valor[1]
         return suma
 
-    def evaluar_alergias(self):
+    def evaluar_alergias(self, lista_alergias):
         """
         Método que evalúa las alergias de una persona según una puntuación
         dada.
@@ -32,6 +32,7 @@ class EvaluacionEspecifica(Alergia):
         :return: Lista de instancias de la clase Alergia a las que la persona
         es alérgica.
         """
+        self._alergias = lista_alergias
         self.__puntuacion = 0   # Se inicializa siempre que se llama al método
 
         while True:
