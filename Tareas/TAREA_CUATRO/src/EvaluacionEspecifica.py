@@ -12,6 +12,18 @@ class EvaluacionEspecifica(Alergia):
         self.__puntuacion = 0   # Se inicializa puntuación
         self.__lista_alergias = []
 
+    def sumar_valor_alergias(self):
+        """
+        Método que suma el valor de las alergias que se encuentran en el
+        sistema.
+
+        :return: la suma de todos los valores de las alergias
+        """
+        suma = 0
+        for valor in self._alergias.values():
+            suma += valor[1]
+        return suma
+
     def evaluar_alergias(self):
         """
         Método que evalúa las alergias de una persona según una puntuación
@@ -32,12 +44,12 @@ class EvaluacionEspecifica(Alergia):
 
         # Si la puntuación en menor o igual a cero se sale de la función
         if self.__puntuacion <= 0:
-            return "No se creó la lista: ingrese una puntuación mayor"
-        elif self.__puntuacion > 1125899906842623:
-            # El número anterior es el resultado del valor esperado de cada
-            # alergia
-            return ("No se creó la lista: ingresaste una puntuación" +
-                    " más baja")
+            print("No se creó la lista: ingrese una puntuación mayor")
+            return
+        elif self.__puntuacion > self.sumar_valor_alergias():
+            # El número anterior es la suma de todas las alergias
+            print("No se creó la lista: ingresa una puntuación más baja")
+            return
 
         self.__lista_alergias = []
 
