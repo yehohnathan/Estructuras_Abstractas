@@ -42,8 +42,7 @@ X_test_sorted, y_pred_ridge_sorted = \
     zip(*sorted(zip(X_test, modelo_ridge.predict(X_test))))
 
 
-plt.scatter(X_test_sorted, y_pred_polinomico_sorted,
-            label='Datos de prueba', color='blue')
+plt.scatter(X_test, y_test, label='Datos de prueba', color='blue')
 plt.plot(X_test_sorted, y_pred_polinomico_sorted,
          label='Regresión Polinómica', color='green')
 plt.plot(X_test_sorted, y_pred_lasso_sorted,
@@ -55,3 +54,4 @@ plt.title('Comparación de Modelos con Regularización')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()
+plt.show()
