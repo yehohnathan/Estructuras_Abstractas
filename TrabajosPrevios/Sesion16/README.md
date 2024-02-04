@@ -19,3 +19,14 @@ Proporciona una perspectiva relativa de los errores cuadráticos, normalizando l
 
 #### Coeficiente de Determinación \(R^2\):
 Es una medida estadística que indica la proporción de la variabilidad en la variable de respuesta explicada por el modelo de regresión. Toma valores entre 0 y 1, donde \(R^2 = 0\) indica que el modelo no explica ninguna variabilidad, mientras que \(R^2 = 1\) indica que el modelo explica toda la variabilidad.
+
+### Regularización:
+
+Es una técnica utilizada en el aprendizaje automático para evitar el sobreajuste (overfitting) y mejorar la generalización del modelo. Consiste en agregar términos adicionales a la función de costo del modelo para penalizar la complejidad del modelo, lo que puede ayudar a prevenir que los coeficientes de las características alcancen valores extremadamente altos Dos formas comunes de regularización son L1 (regularización de la norma L1 o "Lasso") y L2 (regularización de la norma L2 o "Ridge"). Ambas añaden términos a la función de costo, pero penalizan de manera diferente.
+
+
+#### L1 (Lasso): 
+Agrega la suma de los valores absolutos de los coeficientes multiplicados por un parámetro de regularización. L1 tiene la propiedad de realizar selección de características, es decir, puede llevar algunos coeficientes a cero, eliminando así esas características del modelo.
+
+#### L2 (Ridge): 
+Agrega la suma de los valores cuadrados de los coeficientes multiplicados por un parámetro de regularización. Ridge no lleva los coeficientes a cero, pero tiende a reducir su magnitud, evitando valores extremadamente altos.
