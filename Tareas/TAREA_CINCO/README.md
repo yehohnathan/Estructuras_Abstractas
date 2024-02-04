@@ -141,7 +141,7 @@ Los valores nulos o faltantes en un DataFrame se representan con el valor especi
 
 3. ¿Cuál es la diferencia entre loc y iloc en Pandas?
 
-Amvos métodos el`loc` e `iloc` tiene la función de seleccionar filas y columnas de un DataFrame. La diferencia entre ellos es que `loc` se basa en las etiquetas de los índices, mientras que `iloc` se basa en las posiciones de los índices [4].
+Ambos métodos el`loc` e `iloc` tiene la función de seleccionar filas y columnas de un DataFrame. La diferencia entre ellos es que `loc` se basa en las etiquetas de los índices, mientras que `iloc` se basa en las posiciones de los índices [4].
 
 ## Bibliografía:
 
