@@ -3,6 +3,65 @@
 
 ## Ejecución del programa:
 
+## Análisis de parte práctica I:
+> Para acceder al CSV utilizado en el análisis y codificación de la Parte Práctica I de la tarea, puedes visitar la siguiente página: [Air Carriers : T-100 International Market (All Carriers)](https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FJD&QO_fu146_anzr=Nv4%20Pn44vr45). Es importante seleccionar la opción "Select all fields" en la página antes de proceder con la descarga para asegurarse de obtener la misma cantidad de información que se utilizó en el análisis.
+
+### Información correspondiente a las columnas del CSV empleado:
+| Categoría          | Columna                   | Descripción                                                                                            |
+|--------------------|---------------------------|--------------------------------------------------------------------------------------------------------|
+| ***Summaries***          | **Passengers**            | Mercado a bordo Pasajeros embarcados                                                                  |
+|                    | **Freight**               | Mercado a bordo Carga embarcada (libras)                                                              |
+|                    | **Mail**                  | Correo del mercado a bordo embarcado (libras)                                                         |
+|                    | **Distance**              | Distancia entre aeropuertos (millas)                                                                  |
+| ***Carrier***      | **UniqueCarrier**         | Código de Transportista Único. Este campo se utiliza para análisis a lo largo de varios años.          |
+|                    | **AirlineID**             | Número de Identificación asignado por el Departamento de Transporte de EE. UU. para identificar una aerolínea única. |
+|                    | **UniqueCarrierName**     | Nombre de Transportista Único                                                                         |
+|                    | **UniqCarrierEntity**     | Entidad Única para la Región de Operación de un Transportista.                                         |
+|                    | **CarrierRegion**         | Región de Operación del Transportista.                                                                |
+|                    | **Carrier**               | Código asignado por IATA para identificar un transportista.                                            |
+|                    | **CarrierName**           | Nombre del Transportista                                                                              |
+|                    | **CarrierGroup**          | Código de Grupo de Transportista utilizado en análisis heredados.                                      |
+|                    | **CarrierGroupNew**       | Nuevo Grupo de Transportista. Análisis                                                                |
+| ***Origin***             | **OriginAirportID**       | ID del Aeropuerto de Origen                                                                           |
+|                    | **OriginAirportSeqID**    | ID de Secuencia del Aeropuerto de Origen                                                              |
+|                    | **OriginCityMarketID**    | ID del Mercado de la Ciudad de Origen del Aeropuerto                                                  |
+|                    | **Origin**                | Aeropuerto de Origen                                                                                  |
+|                    | **OriginCityName**        | Nombre de la Ciudad del Aeropuerto de Origen                                                          |
+|                    | **OriginCountry**         | País de Origen del Aeropuerto                                                                         |
+|                    | **OriginCountryName**     | Nombre del País de Origen del Aeropuerto                                                              |
+|                    | **OriginWac**             | Código de Área Mundial del Aeropuerto de Origen                                                       |
+| ***Destination***            | **DestAirportID**         | ID del Aeropuerto de Destino                                                                          |
+|                    | **DestAirportSeqID**      | ID de Secuencia del Aeropuerto de Destino                                                             |
+|                    | **DestCityMarketID**      | ID del Mercado de la Ciudad de Destino del Aeropuerto                                                 |
+|                    | **Dest**                  | Aeropuerto de Destino                                                                                 |
+|                    | **DestCityName**          | Nombre de la Ciudad del Aeropuerto de Destino                                                         |
+|                    | **DestCountry**           | País de Destino del Aeropuerto                                                                        |
+|                    | **DestCountryName**       | Nombre del País de Destino del Aeropuerto                                                             |
+|                    | **DestWac**               | Código de Área Mundial del Aeropuerto de Destino                                                      |
+| ***Time Period***  | **Year**                  | Año                                                                                                    |
+|                    | **Quarter**               | Trimestre                                                                                               |
+|                    | **Month**                 | Mes                                                                                                    |
+| ***Other***              | **DistanceGroup**         | Intervalos de Distancia, cada 500 Millas, para Segmentos de Vuelo                                      |
+|                    | **Class**                 | Clase de Servicio                                                                                      |
+
+
+#### Las clases de servicio existentes: 
+- **A**: "Servicio de Pasajeros de Primera Clase Programado/ Servicio de Carga A"
+- **C**: "Servicio de Pasajeros de Clase Económica Programado/ Servicio de Carga C"
+- **E**: "Servicio Programado de Pasajeros y Carga Mixta, de Primera Clase y Clase Económica E"
+- **F**: "Servicio Programado de Pasajeros y Carga F"
+- **G**: "Servicio Programado de Carga Únicamente G"
+- **H**: "Razón Humanitaria No Programada, No Generadora de Ingresos"
+- **K**: "Servicio Programado K (F+G)"
+- **L**: "Servicio No Programado Civil de Pasajeros y Carga L"
+- **N**: "Servicio No Programado Militar de Pasajeros y Carga N"
+- **P**: "Servicio No Programado Civil de Carga Únicamente P"
+- **Q**: "Servicios No Programados (Excepto Chárter) Q"
+- **R**: "Servicio No Programado Militar de Carga Únicamente R"
+- **V**: "Servicio No Programado V (L+N+P+R) para Transportista de EE. UU. y (L+P+Q) para Transportista Extranjero"
+- **Z**: "Todo Servicio Z (K+V)"
+
+
 ## Parte teórica:
 ### Iteradores
 1. ¿Qué es un iterador en Python y cuál es su propósito?
