@@ -88,3 +88,22 @@ print("\nGenerando gráfico de pastel... (Presione una tecla)")
 input()
 func_graph.graficoPastel_Dos_Columnas(clase_y_peso,
                                       "Distribución de peso por clase")
+
+
+# ----------- # Relación de la aerolinea y la cantidad de peso # ------------ #
+aerolinea_y_pajeros = mi_dataFrame.sumaColumnasAgrupadas("UNIQUE_CARRIER_NAME",
+                                                         "PASSENGERS")
+
+# Se muestra el gráfico tipo pastel de la tabla
+print("\nGenerando gráfico de puntos... (Presione una tecla)")
+input()
+func_graph.graficoPuntos_Dos_Columnas(
+                                    aerolinea_y_pajeros,
+                                    "Distribución de pasajeros por aerolinea",
+                                    "Aerolinea",
+                                    "Pasajeros")
+
+# ---------- # Relación de la areolina con la distancia y país # ------------ #
+print("\nGenerando dos gráficos de barra... (Presione una tecla)")
+archivo = mi_dataFrame.getCSV()
+func_graph.aerolineas_distancia(mi_dataFrame.getCSV())
