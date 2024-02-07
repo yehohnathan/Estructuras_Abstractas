@@ -1,11 +1,9 @@
 ### Resúmenes
-- **Passengers**: Pasajeros
-- **On-Flight Market Passengers Enplaned:**: Análisis
-- **Freight**: Carga
-- **On-Flight Market Freight Enplaned (pounds)**: Análisis
-- **Mail**: Correo
-- **On-Flight Market Mail Enplaned (pounds)**: Análisis
+- **Passengers**: Mercado a bordo Pasajeros embarcados
+- **Freight**: Mercado a bordo Carga embarcada (libras)
+- **Mail**: Correo del mercado a bordo embarcado (libras)
 - **Distance**: Distancia entre aeropuertos (millas)
+
 **Transportista**
 - **UniqueCarrier**: Código de Transportista Único. Este campo se utiliza para análisis a lo largo de varios años.
 - **AirlineID**: Número de Identificación asignado por el Departamento de Transporte de EE. UU. para identificar una aerolínea única.
