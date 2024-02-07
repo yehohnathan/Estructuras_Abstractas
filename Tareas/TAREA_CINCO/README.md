@@ -3,6 +3,14 @@
 
 ## Ejecución del programa:
 
+Para ejecutar el programa, asegúrese de estar en el directorio del repositorio en su computadora y escriba el comando `make`, como se muestra a continuación:
+
+```go
+...\ie0217\Tareas\TAREA_CINCO> make
+```
+
+A partir del make se le mostrarán las gráficas y datos del CSV de la parte práctica 1 y el manejo de las calificaciones de la parte práctica 2.
+
 
 ## Parte práctica I:
 > Para acceder al CSV utilizado en el análisis y codificación de la Parte Práctica I de la tarea, puedes visitar la siguiente página: [Air Carriers : T-100 International Market (All Carriers)](https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FJD&QO_fu146_anzr=Nv4%20Pn44vr45). Es importante seleccionar la opción "Select all fields" en la página antes de proceder con la descarga para asegurarse de obtener la misma cantidad de información que se utilizó en el análisis.
@@ -94,8 +102,7 @@ Como se puede observar en la sección anterior, el CSV tiene muchas columnas, si
 
 De esta forma se pasa de tener un DataFrame de 34 columnas a 11 columnas con datos verdaderamente relevantes para el análisis. Luego se estudia si dentro de las columnas restantes hay valores nulos, pero no se encontró ninguno, para ello hay un código que hace la verificación.
 
-### Análisis de datos:
-#### Comparación de cantidad de pajeros por clase de la aerolinea:
+### Comparación de cantidad de pajeros por clase de la aerolinea:
 La imagen titulada ***Distribución de pasajeros por clase***. Compara el número de pasajeros en diferentes clases, en este caso se puede observar que las unicas clases presentes en la gráfica son F, G, L y P. El análisis revela lo siguiente:: 
 
 - **Clase F**: Esta clase tiene un número significativamente mayor de pasajeros (194512934.0) en comparación con las demás, y esto representa el Servicio Programado de Pasajeros y Carga. Considerando que la mayoria de pasajeros en viajes largos llevan maletas tiene mucho sentido que la denominación F sea la más usada de las clases.
@@ -108,7 +115,7 @@ La clase que más destaca es la comparación de la clase F y Clase G, debido a q
 
 <img src="../TAREA_CINCO/Material_Practica/Pasajeros_x_clase.svg">
 
-#### Comparación de cantidad de peso por clase de la aerolinea:
+### Comparación de cantidad de peso por clase de la aerolinea:
 La imagen titulada ***Distribución de peso por clase***. Compara el la cantidad porcentual de peso en diferentes clases, en este caso se puede observar que las unicas clases presentes en la gráfica son F, G, L y P. El hecho que se repitan las clases en este gráfico tiene como motivo que son las únicas clases observadas por el CSV seleccionado.
 
 El análisis revela lo siguiente:
@@ -123,7 +130,64 @@ Se observa que todas las clases transportaron una cantidad porcentual de peso si
 Por otro lado, la clase G destaca por su elevado peso (la porción más grande), lo cual se atribuye a su servicio exclusivo de carga que se brinda. Similarmente, la clase P representa el peso en vuelos no programados, lo cual contribuye a su carga significativa.
 <img src="../TAREA_CINCO/Material_Practica/Peso_x_clase.svg">
 
+### Comparación de cantidad de pasajeros por aerolinea:
+> Se seleccionaron las primeras 10 aerolíneas y las últimas 10 aerolíneas del archivo CSV. Esta selección no siguió ningún criterio técnico específico, sino que se realizó con el fin de garantizar que el gráfico resultante fuera fácilmente observable y comprensible. Dada la gran cantidad de más de 300 aerolíneas presentes en el archivo CSV, utilizarlas todas no sería práctico y el análisis resultaría demasiado extenso.
 
+El análisis se enfoca en las aerolíneas con mayor y menor número de pasajeros durante el año 2023, a partir de la gráfica de puntos ***Distribución de pasajeros por aerolinea***, buscando entender por qué la gran diferencia en cantidad se realizó hacer una busqueda en páginas de web de forma superficial y justificar los datos.
+
+Entre las aerolíneas con más pasajeros se encuentran:
+
+- **Westjet:** Líder con casi 4 millones de pasajeros en 2023, destaca por su amplia red de más de 100 destinos en América, Europa y Asia, así como por su reputación de ofrecer tarifas competitivas y servicio al cliente de calidad.
+  
+- **Vistajet Limited:** Segunda en la lista con más de 2 millones de pasajeros en 2023, se especializa en vuelos chárter de lujo para clientes de alto perfil, respaldado por una flota extensa y una presencia global en más de 180 países.
+
+- **Vuela EL Salvador S.A. de C.V.:** Ocupando el tercer lugar con más de 167 mil pasajeros, se destaca como una subsidiaria de Volaris, centrada en vuelos de bajo costo desde y hacia El Salvador, conectando con diversos destinos en América del Norte y Centroamérica.
+
+- **Western Air Charter, Inc. d/b/a Jet Edge:** Con más de 306 mil pasajeros, esta aerolínea de aviación privada se especializa en vuelos corporativos y de lujo, con una amplia flota y presencia en más de 50 países.
+
+- **Xiamen Airlines Co., Ltd:** A pesar de registrar más de 59 mil pasajeros, es una de las aerolíneas más grandes de China, con una extensa red que abarca Asia, Europa, América y Oceanía, siendo parte de la alianza SkyTeam.
+
+Las aerolíneas con menos pasajeros presentan un conjunto diferente de características:
+
+- **ABSA-Aerolinhas Brasileiras, ABX Air Inc., ACM AIR CHARTER GmbH y Western Global:** Empresas de carga aérea sin servicios de pasajeros, lo que explica su ausencia de pasajeros registrados.
+
+- **ABS JETS A.S., AVCON JET MALTA LTD, AXIS Aviation Switzerland AG y Acropolis Aviation Ltd.:** Operan en el segmento de aviación privada, pero con flotas más pequeñas y operaciones limitadas principalmente a Europa, sirviendo a una clientela muy selecta.
+
+- **ADVANCED AIR, LLC, Aer Lingus Plc y Vuela Aviation, S.A.:** Aunque son aerolíneas de pasajeros, tienen una oferta limitada en términos de destinos y frecuencias, lo que reduce su atractivo para los viajeros.
+
+<img src="../TAREA_CINCO/Material_Practica/Pasajeros_x_aerolinea.svg">
+
+### Comparación de las 5 aerolineas con mayor distancia reccorida y las 5 aerolineas con menor distancia, dentro del CSV:
+
+El análisis se centra en la imágem de esta sección, la cual trata de la distancia recorrida por cada aerolínea, destacando aquellas con los trayectos más largos y más cortos durante el año 2023, además de el país de salida de cada aerolinea. Haciendo un poco de investigación en las primeras páginas que hablan sobre cada aerolinea se pudo determinar los motivos de por qué tuvieron esos resultados en el recorrido, ya que usualmente se asocia una mayor distancia a mayor tiempo de trabajo, aunque eso no representa que haya mayor o menor ganancia.
+
+El análisis se enfoca en la distancia recorrida por cada aerolínea, destacando aquellas con los trayectos más largos y más cortos durante el año 2023.
+
+Entre las aerolíneas con mayor recorrido se encuentran:
+
+1. **United Airlines Inc - United States:** Conocida como la mayor aerolínea del mundo en términos de pasajeros transportados y alcance global. Operando vuelos a más de 300 destinos en 60 países, su distancia recorrida es la más alta del gráfico, reflejando su amplia presencia y demanda global.
+
+2. **Delta Air Lines Inc. - México:** Como subsidiaria de Delta Air Lines, una de las principales aerolíneas de Estados Unidos, Delta Air Lines Inc. registra una distancia recorrida significativa, indicando una buena presencia en el mercado mexicano y regional, y sus vuelos interacionales.
+
+3. **American Airlines Inc - United States:** Como una de las aerolíneas más grandes y antiguas de Estados Unidos, American Airlines Inc. compite por el liderazgo en el mercado estadounidense e internacional con una distancia recorrida similar a Delta Air Lines.
+
+4. **Vistajet Limited - Canada:** Aunque de bajo costo, Vistajet Limited muestra una distancia recorrida moderada. Esto se puede deber que al ser su costo menor su oferta limitada de rutas y destinos en comparación con las principales aerolíneas, demostrando así que no se puede asociar distancias con una ganancia especifica para una aerolinea si es que no se cuentan todos los casos.
+
+5. **Korean Air Lines Co., Ltd - Dominican Republic:** Aunque es una de las aerolíneas más grandes de Asia, su distancia recorrida es la más baja del gráfico, esto se puede deber a que Republica Dominicana no genera muchas rutas de salida a otros paises y los viajes regionales serían poco comunes a comparación de Estados Unidos debido a una mucha menor extensión de territorio.
+
+Por otro lado, las aerolíneas con menor recorrido fueron:
+
+1. **Flighcreaft Air Charter aba KF Aeroflyer - The Bahamas:** Aunque ofrece servicios de transporte de pasajeros y carga entre las Bahamas y el Caribe, su distancia recorrida es baja, lo que sugiere un enfoque en vuelos regionales y locales, o que durante el 2023 la presencia de turismo a disminuido debido a la inflación y la todavía recuperación del Covid-19.
+
+2. **Western Air Ltd - United States:** Aunque ofrece vuelos diarios entre las principales rutas se encuentra las Bahamas y el Caribe, su distancia recorrida es baja, indicando así que el turismo de por parte de los americanos no esta especialmente enfocado en esos paises. Esto del turismo se podría deber un poco a las corrientes ideológicas que chocan fuertemente entre el Capitalismo de Estados Unidos y la presencia de Socialismo en los países del Caribe.
+
+3. **Talofa Airways Limited - United Stades:** Especializada en vuelos dentro de la región polinesia, y considerando que la isla de Hawai se encuentra en esa región y los viajes en si son cortos, podría tratase de una aerolinea de viajes de entrada y salida la isla hawaiana.
+
+4. **Golden Wings Charter Ltd - Canada:** Especializada en transporte aéreo ejecutivo unicamente, su distancia recorrida es baja, sugiriendo vuelos personalizados y flexibles según las necesidades de los clientes, aunque muy caros. Debido a la exclusividad no se puede decir que sus recorridos serán largos y repetidos.
+
+5. **HARBOUR AIR LTD DBA HARBOUR AIR SEAPLANES WHISTLER AIR AND SALTSPRING AIR - United Stades:** Como la mayor aerolínea de hidroaviones de América del Norte, su distancia recorrida es baja, dedicándose a vuelos locales y escénicos cerca de la costa oeste de Canadá.
+
+<img src="../TAREA_CINCO/Material_Practica/Aerolineas_x_distancia.svg">
 
 ## Parte teórica:
 ### Iteradores
