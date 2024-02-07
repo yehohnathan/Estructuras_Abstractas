@@ -105,5 +105,6 @@ func_graph.graficoPuntos_Dos_Columnas(
 
 # ---------- # Relación de la areolina con la distancia y país # ------------ #
 print("\nGenerando dos gráficos de barra... (Presione una tecla)")
+input()
 archivo = mi_dataFrame.getCSV()
 func_graph.aerolineas_distancia(mi_dataFrame.getCSV())

@@ -1,38 +1,35 @@
 # Makefile para la tarea 5
 
-# Detectar el sistema operativo
+# Se utiliza para detectar el sistema operativo
 ifeq ($(OS),Windows_NT)
-    # Comandos para Windows
-    PYTHON = python
+    # Establece los comandos para Windows
     RM = del /Q
-    RMDIR = rmdir /Q /S
+    EXE_EXTENSION = .exe
 else
-    # Comandos para Linux (ajustar según sea necesario)
-    PYTHON = python3
+    # Establece los comandos para Linux/Unix
     RM = rm -f
-    RMDIR = rm -rf
+    EXE_EXTENSION =
 endif
 
-# Directorios
-SRC_DIR = src
+# Compilador de C++
+CPP_COMPILER = g++
 
 # Archivos
-MAIN_FILE_CSV = Manejo_CSV.py
-MAIN_FILE_CALIFICACIONES = Calificaciones.py
+CPP_SOURCE = src/ejecutor.cpp
+EXE_FILE = ejecutor$(EXE_EXTENSION)
 
-# Objetivo por defecto
-all: run
+# Regla por defecto
+all: compile run
 
-# Compilar y ejecutar el programa
-run: run_csv run_calificaciones
+# Compilación del programa C++
+compile:
+	$(CPP_COMPILER) $(CPP_SOURCE) -o $(EXE_FILE)
 
-run_csv:
-	$(PYTHON) $(SRC_DIR)/$(MAIN_FILE_CSV)
+# Ejecución del programa
+run:
+	./$(EXE_FILE)
 
-run_calificaciones:
-	$(PYTHON) $(SRC_DIR)/$(MAIN_FILE_CALIFICACIONES)
-
-# Por algún motivo no logra limpiar __pycache__
+# Limpiar los archivos generados
 clean:
-	$(RM) $(SRC_DIR)/__pycache__/*.pyc
-	$(RMDIR) $(SRC_DIR)/__pycache__
+	$(RM) $(EXE_FILE)
+	$(RM) src/__pycache__/
