@@ -3,6 +3,7 @@ import pandas as pd     # Para crear el conjunto de datos
 import numpy as np      # Para el uso de funciones matemáticas
 np.random.seed(50)      # Se selecicona una seed para los números random
 # ------------------------- # Programa Principal # ------------------------- #
+print("\n=================== Parte Práctica 2 ===================")
 """
     Un diccionario con la información de los nombres de los estudiantes y su
     calificación (inicialmente en 0).
