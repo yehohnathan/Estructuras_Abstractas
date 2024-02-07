@@ -83,3 +83,10 @@ class DataFrame:
             print("Se actualizó el contenido del DataFrame.")
         else:
             print("No se encontraron valores nulos en el DataFrame.")
+
+    def crearCSV(self):
+        # Verifica que si haya un csv a manipular
+        if self.__contenidoCSV() is True:
+            return
+        else:
+            self.__archivo_df.to_csv("nuevo_archivo.csv")
