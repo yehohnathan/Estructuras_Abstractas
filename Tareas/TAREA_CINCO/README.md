@@ -3,10 +3,12 @@
 
 ## Ejecución del programa:
 
+
 ## Análisis de parte práctica I:
 > Para acceder al CSV utilizado en el análisis y codificación de la Parte Práctica I de la tarea, puedes visitar la siguiente página: [Air Carriers : T-100 International Market (All Carriers)](https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FJD&QO_fu146_anzr=Nv4%20Pn44vr45). Es importante seleccionar la opción "Select all fields" en la página antes de proceder con la descarga para asegurarse de obtener la misma cantidad de información que se utilizó en el análisis.
 
-### Información correspondiente a las columnas del CSV empleado:
+### Estudio del CSV, limpieza y preparación de datos:
+#### Información correspondiente a las columnas del CSV empleado:
 | Categoría          | Columna                   | Descripción                                                                                            |
 |--------------------|---------------------------|--------------------------------------------------------------------------------------------------------|
 | ***Summaries***          | **Passengers**            | Mercado a bordo Pasajeros embarcados                                                                  |
@@ -21,7 +23,7 @@
 |                    | **Carrier**               | Código asignado por IATA para identificar un transportista.                                            |
 |                    | **CarrierName**           | Nombre del Transportista                                                                              |
 |                    | **CarrierGroup**          | Código de Grupo de Transportista utilizado en análisis heredados.                                      |
-|                    | **CarrierGroupNew**       | Nuevo Grupo de Transportista. Análisis                                                                |
+|                    | **CarrierGroupNew**       | Nuevo Grupo de Transportista.                                                                |
 | ***Origin***             | **OriginAirportID**       | ID del Aeropuerto de Origen                                                                           |
 |                    | **OriginAirportSeqID**    | ID de Secuencia del Aeropuerto de Origen                                                              |
 |                    | **OriginCityMarketID**    | ID del Mercado de la Ciudad de Origen del Aeropuerto                                                  |
@@ -45,7 +47,7 @@
 |                    | **Class**                 | Clase de Servicio                                                                                      |
 
 
-#### Las clases de servicio existentes: 
+##### Las clases de servicio existentes: 
 - **A**: "Servicio de Pasajeros de Primera Clase Programado/ Servicio de Carga A"
 - **C**: "Servicio de Pasajeros de Clase Económica Programado/ Servicio de Carga C"
 - **E**: "Servicio Programado de Pasajeros y Carga Mixta, de Primera Clase y Clase Económica E"
@@ -60,6 +62,37 @@
 - **R**: "Servicio No Programado Militar de Carga Únicamente R"
 - **V**: "Servicio No Programado V (L+N+P+R) para Transportista de EE. UU. y (L+P+Q) para Transportista Extranjero"
 - **Z**: "Todo Servicio Z (K+V)"
+
+#### Limpieza y preparación de Datos:
+Como se puede observar en la sección anterior, el CSV tiene muchas columnas, sin embargo, algunas de ellas no resultan relevantes para el propósito de este trabajo. Por ejemplo, la columna `Carrier`, que contiene el código IATA que identifica a las aerolíneas, no aporta información significativa, ya que este análisis se centra en aspectos como pasajeros, vuelos y tiempos de vuelo, en lugar de datos institucionales específicos. De la misma forma hay varias columnas cuyo aporte es nulo, a continuación se va a mostrar una tabla con las columans eliminadas y su justificación:
+
+| Columna              | Motivo de eliminación                                                                                                                      |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| Mail                 | La mayoría de los datos en esta columna son ceros y no aportan información relevante sobre el peso del correo enviado en libras.           |
+| UniqueCarrier        | No es necesario conocer el código único del transportista; generalmente, los pasajeros prestan más atención al nombre de las aerolíneas.  |
+| AirlineID            | El identificador asignado por el Departamento de Transporte de EE.UU. para cada aerolínea no aporta información útil en este análisis.   |
+| UniqCarrierEntity    | La entidad única de operación de los transportistas se presenta con un ID que no ofrece información clara sobre la región de operación. |
+| CarrierRegion        | Los acrónimos en esta columna no especifican claramente la región de operación y pueden resultar confusos sin un contexto adicional.    |
+| Carrier              | El código asignado por IATA para identificar a los transportistas no es necesario para este análisis.                                    |
+| CarrierName          | Aunque el nombre del transportista es importante, esta información se comparte con la columna UniqueCarrierName.                        |
+| CarrierGroup         | El número que especifica el grupo de transportista puede prescindirse ya que otras columnas indican el país de origen y destino.         |
+| CarrierGroupNew      | Este campo representa lo mismo que CarrierGroup pero con identificadores más específicos, que tampoco son necesarios para este análisis. |
+| OriginAirportID      | El ID del aeropuerto no es necesario cuando se tiene el nombre del aeropuerto como identificador.                                       |
+| OriginAirportSeqID   | Similar a OriginAirportID, este identificador no es relevante para el análisis y puede omitirse.                                        |
+| OriginCityMarketID   | El identificador del mercado de la ciudad de origen del aeropuerto no aporta información significativa para este análisis.               |
+| Origin               | La representación del aeropuerto de origen en forma de acrónimos no es necesaria cuando se tiene la ciudad de origen del aeropuerto.     |
+| OriginCountry        | Los acrónimos de los países de origen pueden ser omitidos ya que hay una columna que proporciona el nombre completo del país.             |
+| OriginWac            | El código de área mundial del aeropuerto de origen puede omitirse ya que se puede obtener el país de origen del aeropuerto.             |
+| DestAirportID        | Al igual que con OriginAirportID, el ID del aeropuerto de destino no es necesario cuando se tiene el nombre del aeropuerto.             |
+| DestAirportSeqID     | Similar a DestAirportID, este identificador no es relevante para el análisis y puede ser omitido.                                        |
+| DestCityMarketID     | El identificador del mercado de la ciudad de destino del aeropuerto no aporta información significativa para este análisis.               |
+| Dest                 | La representación del aeropuerto de destino en forma de acrónimos no es necesaria cuando se tiene la ciudad de destino del aeropuerto. |
+| DestCountry          | Los acrónimos de los países de destino pueden ser omitidos ya que hay una columna que proporciona el nombre completo del país.           |
+| DestWac              | El código de área mundial del aeropuerto de destino puede omitirse ya que se puede obtener el país de destino del aeropuerto.           |
+| Quarter              | La información del trimestre no es necesaria cuando se tienen las columnas de año y mes.                                                  |
+| DistanceGroup        | No es necesario conocer los identificadores de grupos que representan la distancia en millas entre los aeropuertos, ya que esta información ya está disponible en otra columna. |
+
+De esta forma se pasa de tener un DataFrame de 34 columnas a 11 columnas con datos verdaderamente relevantes para el análisis. Luego se estudia si dentro de las columnas restantes hay valores nulos, pero no se encontró ninguno, para ello hay un código que hace la verificación.
 
 
 ## Parte teórica:
