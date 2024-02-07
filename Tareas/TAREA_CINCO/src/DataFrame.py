@@ -90,3 +90,37 @@ class DataFrame:
             return
         else:
             self.__archivo_df.to_csv("nuevo_archivo.csv")
+
+    def verificar_columnas(self, lista_columnas):
+        # Se encarga de verificar que la columna ingresada funciona en los
+        # métodos que la solicitan
+        # Verifica que si haya un csv a manipular
+        if self.__contenidoCSV() is True:
+            return
+
+        for columna in lista_columnas:
+            if columna not in self.__archivo_df:
+                print(f"La columna {columna} no existe en el DataFrame")
+                return False
+        return True
+
+    def sumaColumnasAgrupadas(self, column1, column2):
+        # Este se encarga de crear una tabla que relaciona todos los tipos de
+        # datos de columna 1 frente a columna 2 que contiene datos que se
+        # agruparan según columna 1
+        # Verificar la existencia de las columnas
+        if not self.verificar_columnas([column1, column2]):
+            return None
+
+        # Calcula la suma de la columna2 agrupada por la columna1 y luego
+        # resetea los índices del DataFrame resultante
+        # Primero verifica si columna2 tiene filas tipo numérico
+        if pd.api.types.is_numeric_dtype(self.__archivo_df[column2]):
+            # En el caso que si tenga numeros, se suma
+            tabla = (self.__archivo_df.groupby(column1)[column2]
+                     .sum().reset_index())
+        else:
+            # En el caso que no tenga numeros, se cuenta
+            tabla = (self.__archivo_df.groupby(column1)[column2]
+                     .nunique().reset_index())
+        return tabla
