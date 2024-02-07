@@ -4,7 +4,7 @@
 ## Ejecución del programa:
 
 
-## Análisis de parte práctica I:
+## Parte práctica I:
 > Para acceder al CSV utilizado en el análisis y codificación de la Parte Práctica I de la tarea, puedes visitar la siguiente página: [Air Carriers : T-100 International Market (All Carriers)](https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FJD&QO_fu146_anzr=Nv4%20Pn44vr45). Es importante seleccionar la opción "Select all fields" en la página antes de proceder con la descarga para asegurarse de obtener la misma cantidad de información que se utilizó en el análisis.
 
 ### Estudio del CSV, limpieza y preparación de datos:
@@ -93,6 +93,36 @@ Como se puede observar en la sección anterior, el CSV tiene muchas columnas, si
 | DistanceGroup        | No es necesario conocer los identificadores de grupos que representan la distancia en millas entre los aeropuertos, ya que esta información ya está disponible en otra columna. |
 
 De esta forma se pasa de tener un DataFrame de 34 columnas a 11 columnas con datos verdaderamente relevantes para el análisis. Luego se estudia si dentro de las columnas restantes hay valores nulos, pero no se encontró ninguno, para ello hay un código que hace la verificación.
+
+### Análisis de datos:
+#### Comparación de cantidad de pajeros por clase de la aerolinea:
+La imagen titulada ***Distribución de pasajeros por clase***. Compara el número de pasajeros en diferentes clases, en este caso se puede observar que las unicas clases presentes en la gráfica son F, G, L y P. El análisis revela lo siguiente:: 
+
+- **Clase F**: Esta clase tiene un número significativamente mayor de pasajeros (194512934.0) en comparación con las demás, y esto representa el Servicio Programado de Pasajeros y Carga. Considerando que la mayoria de pasajeros en viajes largos llevan maletas tiene mucho sentido que la denominación F sea la más usada de las clases.
+
+- **Clase G**: Esta clase no tiene pasajeros, porque esta solo brinda servicios de carga.
+- **Clase L**: Esta clase tiene un número moderado de pasajeros (1161470.0), esto se debe a que se trata de servicios no programados para pasajeros. Los servicios no programados se todos aquellos vuelos que por algun imprevisto, como problemas climáticos, tuvieron que salir sin un horario programado.
+- **Clase P**: Esta clase tiene un número muy pequeño de pasajeros (107.0), pero esto se debe a que son servicios de carga no programados. A pesar de que dicte que solo son servicios de carga hay un recuento de pasajeros por lo que se podría considerar el hecho que sean trabajadores de la misma aerolinea que no son pilotos.
+
+La clase que más destaca es la comparación de la clase F y Clase G, debido a que ambas representan lo mismo pero lo que cambia es si los viajes son programados o no. Comparando la cantidad de pasajeros, se puede considerar que la mayoría de aerolineas no presentan retrazos o problemas climáticos que haga que sea necesario crear vuelos no programados, y esto se debe un retraso de este serviso de transporta es el que genera más perdidas de todos los posibles por lo que considerar un vuelo no programado podría constar de muchas perdidas monetareas.
+
+<img src="../TAREA_CINCO/Material_Practica/Pasajeros_x_clase.svg">
+
+#### Comparación de cantidad de peso por clase de la aerolinea:
+La imagen titulada ***Distribución de peso por clase***. Compara el la cantidad porcentual de peso en diferentes clases, en este caso se puede observar que las unicas clases presentes en la gráfica son F, G, L y P. El hecho que se repitan las clases en este gráfico tiene como motivo que son las únicas clases observadas por el CSV seleccionado.
+
+El análisis revela lo siguiente:
+
+- **Clase F**: Transportó un total de 5,498,593,187.0 libras.
+- **Clase G**: Registró un peso de 8,363,143,404.0 libras.
+- **Clase L**: Transportó 19,946,616.0 libras.
+- **Clase P**: Registró un peso de 4,128,241,176.0 libras.
+
+Se observa que todas las clases transportaron una cantidad porcentual de peso significativa, reflejando la diversidad de cargas manejadas por cada una. La clase F, siendo la segunda porción más grande, se explica debido a su enfoque en el transporte de pasajeros que llevan equipaje (cada uno con su peso respectivo). Por otro lado, la clase L, que representa los vuelos no programados, exhibe la menor cantidad de peso, ya que estos son menos frecuentes.
+
+Por otro lado, la clase G destaca por su elevado peso (la porción más grande), lo cual se atribuye a su servicio exclusivo de carga que se brinda. Similarmente, la clase P representa el peso en vuelos no programados, lo cual contribuye a su carga significativa.
+<img src="../TAREA_CINCO/Material_Practica/Peso_x_clase.svg">
+
 
 
 ## Parte teórica:
