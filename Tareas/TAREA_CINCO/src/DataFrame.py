@@ -16,10 +16,24 @@ class DataFrame:
         # exista el csv
         try:
             self.__archivo_df = pd.read_csv(csv)
-        except FileNotFoundError as e:
-            print("No se encontró el .CSV que desea utilizar. \nError:", e)
+        except FileNotFoundError:
+            print("No se encontró el .CSV que desea utilizar.",
+                  f"Verificar: {csv}")
 
         return self.getCSV()
+
+    def ingresarDataFrame(self, df=pd.DataFrame()):
+        if not isinstance(df, pd.DataFrame):
+            print("Error: Lo ingresado no es un DataFrame.")
+        else:
+            print("Se ingreso un DataFrame.")
+            self.__archivo_df = df
+
+    def mostrarDataFrame(self):
+        if self.__archivo_df.empty:
+            print("El DataFrame está vacío, no hay nada que mostrar.")
+        else:
+            print(self.__archivo_df)
 
     def __contenidoCSV(self):
         # Verifica que el csv no este vacio
@@ -49,7 +63,7 @@ class DataFrame:
                 print(f"La columna \"{columna}\" no existe dentro del",
                       f"DataFrame.Error: {e}")
                 continue    # Sigue con el siguiente elemento.
-        print("Se eliminaron todas las columnas.")
+        print("Se eliminaron todas las columnas y se actualizo el DataFrame.")
 
     def eliminarValoresNulos(self):
         # Verifica que si haya un csv a manipular
@@ -66,5 +80,6 @@ class DataFrame:
             # Se muestra la cantidad de valores nulos por columna
             print(f"\nValores nulos por columna:\n{valores_nulos}")
             self.__archivo_df = self.__archivo_df.dropna()
+            print("Se actualizó el contenido del DataFrame.")
         else:
             print("No se encontraron valores nulos en el DataFrame.")
