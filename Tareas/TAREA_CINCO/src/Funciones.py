@@ -1,7 +1,7 @@
 # ----------- # Se cargan las librerías necesarias el programa # ------------ #
-# import pandas as pd                 # Para manejo de CSV
+import pandas as pd                 # Para manejo de CSV
 import matplotlib.pyplot as plt     # Para crear gráficar con la info del CSV
-# import seaborn as sns
+import seaborn as sns               # Más opciones de gráficas
 
 
 # ----- # Función para realizar gráficos de barras para dos columnas # ------ #
@@ -96,3 +96,114 @@ def generarRepeticion_Datos(dataframe, columna1, text1, text2):
 
         # Retorna el forma de generador
         yield informe
+
+
+# ---- # Función para realizar gráficos de puntos para dos columnas # ----- #
+# En el caso de esta función graficadora pasa que los puntos son un
+# complicados de observar. Por se limita la cantidad de datos de la columna1
+# a unicamente 20 (10 primeras y 20 ultimas filas).
+def graficoPuntos_Dos_Columnas(columna1_y_columna2, title, xlabel, ylabel):
+    # Extraer las etiquetas y los valores de la tabla columna1_y_columna2
+    columna1 = columna1_y_columna2.iloc[:, 0]
+    columna2 = columna1_y_columna2.iloc[:, 1]
+
+    # Seleccionar solo las primeras y últimas 10 filas de la columna 1
+    columna1 = pd.concat([columna1.head(10), columna1.tail(10)])
+
+    # Seleccionar los valores correspondientes a las filas seleccionadas
+    columna2 = columna2.iloc[columna1.index]
+
+    # Crear el gráfico de puntos con Seaborn
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x=columna1, y=columna2, hue=columna1, palette='Set2',
+                    data=columna1_y_columna2, s=50)
+
+    # Se nombra el gráfico
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+
+    # Se mueve la leyenda a la derecha y se elimina el eje x
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+    plt.xticks([])
+
+    # Se cambia el color del fondo a blanco
+    plt.gca().set_facecolor('white')
+
+    # Se agregan las etiquetas de texto sobre cada punto
+    for x, y in zip(columna1, columna2):
+        plt.annotate(f'{y:.0f}', xy=(x, y), xytext=(0, 5),
+                     textcoords='offset points', ha='center', va='bottom')
+
+    # Muestra el gráfico
+    plt.show()
+
+
+# --- # Función que relaciona a las aerolineas y la distancia recorrida # --- #
+def aerolineas_distancia(df):
+    # Agrupar por nombre de la aerolinea y sumar las distancias
+    distancia_vuelo = df.groupby('UNIQUE_CARRIER_NAME')['DISTANCE'].sum()
+
+    # Se obtienen las aerolineas con mayor distancia recorrieda
+    aerolineas_mas_distancia = distancia_vuelo.nlargest(5)
+
+    # Se obtienen las aerolineas con menor distancia recorrieda
+    aerolineas_menos_distancia = distancia_vuelo.nsmallest(5)
+
+    # Obtener los países de origen de las empresas
+    paises_origen_mas = (df[df['UNIQUE_CARRIER_NAME'].
+                            isin(aerolineas_mas_distancia.index)]
+                         ['ORIGIN_COUNTRY_NAME'])
+
+    paises_origen_menos = (df[df['UNIQUE_CARRIER_NAME'].
+                              isin(aerolineas_menos_distancia.index)]
+                           ['ORIGIN_COUNTRY_NAME'])
+
+    # Crear una sola figura con dos subgráficos
+    plt.figure(figsize=(14, 6))
+
+    # Subgráfico 1: Aerolineas con más distancia recorrida
+    plt.subplot(1, 2, 1)
+
+    # Se coloca los valores de los eje (x,y)
+    ax1 = sns.barplot(x=aerolineas_mas_distancia.index,
+                      y=aerolineas_mas_distancia.values)
+
+    # Nombre de del titulo, ejes, orientación del eje x y tamaño
+    plt.title('Aerolineas con Más Distancia Recorrida')
+    plt.xlabel('Aerolineas')
+    plt.ylabel('Distancia Total Recorrida')
+    plt.xticks(rotation=45, fontsize=8)
+
+    # Se coloca el nombre de los paises en cada respectiba barrar de los
+    # paises con mayor distancia
+    for i, p in enumerate(ax1.patches):
+        ax1.annotate(paises_origen_mas.iloc[i],
+                     (p.get_x() + p.get_width() / 2., p.get_height()),
+                     ha='center', va='center', xytext=(0, 10),
+                     textcoords='offset points')
+
+    # Subgráfico 2: Aerolineas con menos distancia recorrida
+    plt.subplot(1, 2, 2)
+
+    # Se coloca los valores de los eje (x,y)
+    ax2 = sns.barplot(x=aerolineas_menos_distancia.index,
+                      y=aerolineas_menos_distancia.values)
+
+    # Nombre de del titulo, ejes, orientación del eje x y tamaño
+    plt.title('Aerolineas con Menos Distancia Recorrida')
+    plt.xlabel('Aerolineas')
+    plt.ylabel('Distancia Total Recorrida')
+    plt.xticks(rotation=45, fontsize=8)
+
+    # Se coloca el nombre de los paises en cada respectiba barrar de los
+    # paises con menor distancia
+    for i, p in enumerate(ax2.patches):
+        ax2.annotate(paises_origen_menos.iloc[i],
+                     (p.get_x() + p.get_width() / 2., p.get_height()),
+                     ha='center', va='center', xytext=(0, 10),
+                     textcoords='offset points')
+
+    # Se muestra el gráfico
+    plt.tight_layout()
+    plt.show()
