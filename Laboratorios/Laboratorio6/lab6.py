@@ -13,7 +13,6 @@ from sklearn.metrics import mean_squared_error
 # Creación del csv:
 url = "https://raw.githubusercontent.com/ageron/handson-ml/master/datasets/housing/housing.csv"
 df = pd.read_csv(url)
-print(df)
 df.to_csv("dataset.csv", index=False)
 
 # Se leé el csv creado
