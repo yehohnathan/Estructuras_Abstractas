@@ -102,23 +102,57 @@ Al usar paquetes y módulos se puede dividir el código en unidades, facilitando
 
 ### Python HTTP y Servicios Web (API):
 1. ¿Qué es una API y cuál es su función en el contexto de los servicios web?
+
+Una API (Application Programming Interface) es un conjunto de reglas, protocolos y herramientas que permiten a diferentes aplicaciones comunicarse e intercambiar datos entre sí [8]. En el contexto de los servicios web, una API es una forma de acceder a los recursos y funcionalidades de un servidor web a través de una URL y un formato de datos estandarizado, como JSON.
+
 2. ¿Cuál es la diferencia entre una API RESTful y una API SOAP?
+
+Una API RESTful utiliza los verbos HTTP (GET, POST, PUT, DELETE) para definir las operaciones sobre los recursos, y suele usar JSON como formato de datos; siendo más simple, flexible y escalable que una API SOAP [9].
+
+Una API SOAP utiliza el formato XML para definir un lenguaje común (SOAP) y un contrato (WSDL) para describir los servicios web y sus mensajes; siendo más compleja, rígida y segura que una API RESTful, y suele usar el verbo HTTP POST para todas las operaciones [10].
+
 3. Describa los pasos básicos para consumir una API utilizando Python.
+    - Importar el módulo requests, que facilita el envío y la recepción de peticiones HTTP en Python.
+    - Construir la URL de la API, añadiendo los parámetros necesarios según la documentación de la API.
+    - Enviar la petición HTTP con el método adecuado (get, post, put, delete) y obtener la respuesta del servidor.
+    - Analizar la respuesta, que suele estar en formato JSON o XML, y extraer la información deseada.
+    - Manejar los posibles errores o excepciones que puedan ocurrir durante el proceso.
+
 4. ¿Qué es la autenticación de API y por qué es importante?
+
+La autenticación de API es el proceso de verificar la identidad y los permisos de un cliente que quiere acceder a una API. La autenticación es importante para proteger los datos y recursos del servidor web, evitar el acceso no autorizado o malicioso, y controlar el uso y el rendimiento de la API [11]. 
+
 5. ¿Cuál es el papel de los verbos HTTP (GET, POST, PUT, DELETE) en las solicitudes a una API y HTTP?
+
+Estos verbos son los métodos que se utilizan para indicar la acción que se desea realizar sobre un recurso en una API o en un servidor web [12]. Cada verbo HTTP tiene una semántica y unas implicaciones diferentes. Se pueden definir de la siguiente forma [12]:
+
+- ***GET:*** Se usa para solicitar una representación de un recurso, sin modificarlo ni afectarlo. Es un método seguro, idempotente y cacheable.
+- ***POST:*** Se usa para enviar datos a un recurso, creando o modificando una entidad. Es un método no seguro, no idempotente y no cacheable.
+- ***PUT:*** Se usa para reemplazar o actualizar un recurso con los datos enviados. Es un método no seguro, idempotente y no cacheable.
+- ***DELETE:*** Se usa para eliminar un recurso. Es un método no seguro, idempotente y no cacheable.
 
 ## Bibliografía
 
-[1] J. A. Rodrigo, “Regresión lineal con python,” Ciencia de datos, Oct. 2020. [En línea]. Disponible: https://cienciadedatos.net/documentos/py10-regresion-lineal-python.html. [Accedido: 11- Feb- 2024].
+[1] J. A. Rodrigo, “Regresión lineal con python,” Ciencia de datos, Oct. 2020. [En línea]. Disponible: https://cienciadedatos.net/documentos/py10-regresion-lineal-python.html. [Accedido: 11- Feb- 2024]
 
-[2] T. Sequeira, “Clustering en Python: Implementando K-means paso a paso,” Medium, 2024. [En línea]. Disponible: https://thiagosequeira.medium.com/clustering-en-python-implementando-k-means-paso-a-paso-9d19875dfabc. [Accedido: 11- Feb- 2024].
+[2] T. Sequeira, “Clustering en Python: Implementando K-means paso a paso,” Medium, 2024. [En línea]. Disponible: https://thiagosequeira.medium.com/clustering-en-python-implementando-k-means-paso-a-paso-9d19875dfabc. [Accedido: 11- Feb- 2024]
 
-[3] Exponentis, Ejemplo de uso de DBSCAN en Python para detección de outliers, Exponentis, 10 Mar. 2020. [En línea]. Disponible: http://exponentis.es/ejemplo-de-uso-de-dbscan-en-python-para-deteccion-de-outliers. [Accedido: 11- Feb- 2024].
+[3] Exponentis, Ejemplo de uso de DBSCAN en Python para detección de outliers, Exponentis, 10 Mar. 2020. [En línea]. Disponible: http://exponentis.es/ejemplo-de-uso-de-dbscan-en-python-para-deteccion-de-outliers. [Accedido: 11- Feb- 2024]
 
 [4] “Tipos de datos: datos estructurados, semiestructurados y no estructurados,” Blogs de IMF, Jun. 2020. [En línea]. Disponible: https://blogs.imf-formacion.com/blog/tecnologia/tipos-de-datos-datos-estructurados-semiestructurados-y-no-estructurados-202006/. [Accedido: 11- Feb- 2024]
 
 [5] PythonDiario, Módulos y Paquetes en Python, PythonDiario, 26 Jan. 2019. [En línea]. Disponible: https://pythondiario.com/2019/01/modulos-y-paquetes-en-python.html. [Accedido: 11- Feb- 2024]
 
-[6] PythonDiario, init.py en python - Que es y como funciona, PythonDiario, 22 Jun. 2013. [En línea]. Disponible: https://pythondiario.com/2013/06/initpy-en-python-que-es-y-como-funciona.html. [Accedido: 11- Feb- 2024].
+[6] PythonDiario, init.py en python - Que es y como funciona, PythonDiario, 22 Jun. 2013. [En línea]. Disponible: https://pythondiario.com/2013/06/initpy-en-python-que-es-y-como-funciona.html. [Accedido: 11- Feb- 2024]
 
-[7] DelftStack, init.py in Python, DelftStack, 2024. [En línea]. Disponible: https://www.delftstack.com/es/howto/python/init.py-in-python/. [Accedido: 11- Feb- 2024].
+[7] DelftStack, init.py in Python, DelftStack, 2024. [En línea]. Disponible: https://www.delftstack.com/es/howto/python/init.py-in-python/. [Accedido: 11- Feb- 2024]
+
+[8] J. Van Schooneveld, Python and REST APIs: Interacting With Web Services, Real Python, 2024. [En línea]. Disponible: https://realpython.com/api-integration-in-python/. [Accedido: 11- Feb- 2024]
+
+[9] “Cómo crear una API RESTful con Python y Flask,” imaginaformacion.com. [En línea]. Disponible: https://imaginaformacion.com/tutoriales/crear-api-restful-python-flask. [Accedido: 11- Feb- 2024]
+
+[10] “Trabajar con un servicio web basado en SOAP usando Python,” ICHI.PRO. [En línea]. Disponible: https://ichi.pro/es/trabajar-con-un-servicio-web-basado-en-soap-usando-python-157587208518764.[Accedido: 11- Feb- 2024]
+
+[11] Afilnet, API de Autenticación para Python, Afilnet, 2024. [En línea]. Disponible: https://www.afilnet.com/es/autenticacion/api/python/. [Accedido: 11- Feb- 2024]
+
+[12] “Métodos de petición HTTP - HTTP | MDN,” MDN Web Docs, 2023. [En línea]. Disponible: https://developer.mozilla.org/es/docs/Web/HTTP/Methods. [Accedido: 11- Feb- 2024]
