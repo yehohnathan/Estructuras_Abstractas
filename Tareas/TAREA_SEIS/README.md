@@ -77,10 +77,28 @@ Por otro lado, los datos no estructurados son aquellos que no tienen una estruct
 
 ### Paquetes en Python (`__init__.py`):
 1. ¿Qué es un paquete en Python y cómo se diferencia de un módulo?
+
+Un paquete es un directorio que contiene varios módulos relacionados que pueden ser: archivos con definiciones y declaraciones de objetos como funciones, clases, variables, etc [5]. 
+
+Un paquete se diferencia de un módulo en que este último es un archivo individual, mientras que el primero es una colección de archivos organizados jerárquicamente [5].
+
 2. ¿Cuál es la función del archivo `__init__.py` dentro de un paquete de Python?
+
+La función del archivo __init__.py dentro de un paquete es indicar al intérprete que el directorio es un paquete y no carpeta sin más. Además, este puede contener código de inicialización del paquete, como importar algunos módulos, definir algunas variables o funciones, o establecer la variable __all__ [6].
+
 3. ¿Cómo se importa un módulo o función desde un paquete en Python?
+
+Para importar un módulo o función desde un paquete en Python se utiliza la sintaxis `from paquete.modulo import funcion` o `import paquete.modulo.funcion`, donde paquete es el nombre del directorio que contiene el archivo `__init__.py`, modulo es el nombre del archivo de Python sin la extensión **.py**, y **funcion** es el nombre de la función definida en el módulo. Si el paquete tiene subpaquetes, se debe indicar la ruta completa separando los nombres con puntos [6].
+
 4. ¿Qué es la variable `__all__` en el archivo `__init__.py` y cuál es su propósito?
+
+La variable `__all__` en el archivo `__init__.py` es una lista de cadenas que define los nombres de los módulos que se deben importar cuando se usa la instrucción from paquete import *. Esta variable solo afecta a la instrucción `from paquete import *`, los demás nombres que no estén en `__all__` siguen siendo accesibles desde fuera del paquete y se pueden importar con from paquete import nombre [7].
+
 5. ¿Cuál es la ventaja de organizar el código en paquetes y módulos en Python?
+
+La ventaja de organizar el código en paquetes y módulos en Python es que permite modularizar, reutilizar y distribuir el código de forma más eficiente y sencilla. 
+
+Al usar paquetes y módulos se puede dividir el código en unidades, facilitando su mantenimiento y comprensión. También se puede aprovechar el código ya escrito en otros módulos o paquetes, evitando la repetición y el desperdicio de recursos.
 
 ### Python HTTP y Servicios Web (API):
 1. ¿Qué es una API y cuál es su función en el contexto de los servicios web?
@@ -98,3 +116,9 @@ Por otro lado, los datos no estructurados son aquellos que no tienen una estruct
 [3] Exponentis, Ejemplo de uso de DBSCAN en Python para detección de outliers, Exponentis, 10 Mar. 2020. [En línea]. Disponible: http://exponentis.es/ejemplo-de-uso-de-dbscan-en-python-para-deteccion-de-outliers. [Accedido: 11- Feb- 2024].
 
 [4] “Tipos de datos: datos estructurados, semiestructurados y no estructurados,” Blogs de IMF, Jun. 2020. [En línea]. Disponible: https://blogs.imf-formacion.com/blog/tecnologia/tipos-de-datos-datos-estructurados-semiestructurados-y-no-estructurados-202006/. [Accedido: 11- Feb- 2024]
+
+[5] PythonDiario, Módulos y Paquetes en Python, PythonDiario, 26 Jan. 2019. [En línea]. Disponible: https://pythondiario.com/2019/01/modulos-y-paquetes-en-python.html. [Accedido: 11- Feb- 2024]
+
+[6] PythonDiario, init.py en python - Que es y como funciona, PythonDiario, 22 Jun. 2013. [En línea]. Disponible: https://pythondiario.com/2013/06/initpy-en-python-que-es-y-como-funciona.html. [Accedido: 11- Feb- 2024].
+
+[7] DelftStack, init.py in Python, DelftStack, 2024. [En línea]. Disponible: https://www.delftstack.com/es/howto/python/init.py-in-python/. [Accedido: 11- Feb- 2024].
