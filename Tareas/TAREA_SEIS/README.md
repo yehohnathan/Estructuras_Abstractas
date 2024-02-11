@@ -46,10 +46,34 @@ La regresión simple se utiliza cuando se quiere estudiar la relación entre una
 
 ### Clustering:
 1. ¿Qué es el clustering y cuál es su objetivo principal en el análisis de datos?
+
+Es una técnica de aprendizaje no supervisado que cuya función es agrupar en clusters (grupos) un conjunto de datos, de forma que los datos dentro de cada grupo sean similares entre si y diferentes a otros grupos.
+
+Su objetico principal es encontrar patrones mediante el análisis de estos datos, estructuras o segmentos ocultos en los datos, que pueden ser usados en diferentes campos como el Marketing, Medicina, Internet, etc.
+
 2. Describa brevemente los algoritmos K-Means y DBSCAN y cómo funcionan.
+
+Algoritmo **K-Means**: requiere que el usuario especifique el número de clusters (k) e inicializar k puntos aleatorios como centrodes, luego, itera los siguientes pasos hasta que los centroides converjan o se alcance un número máximo de iteraciones: asignar cada observación al centroide más cercano, y recalcular los centroides como el promedio de las observaciones asignadas a cada grupo [2].
+
+Algoritmo **K-DBSCAN**: no requiere que el usuario especifique el número de grupos, sino que los detecta automáticamente en función de la densidad de los datos. 
+
+Se necesita dos parámetros: el radio (eps) y el número mínimo de puntos (minPts) para considerar una zona como densa. Luego, clasifica cada observación en uno de los siguientes tipos: punto núcleo (core point), si tiene al menos minPts puntos dentro de su radio; punto frontera (border point), si no es un punto núcleo pero tiene al menos un punto núcleo dentro de su radio; y punto ruido (noise point), si no es ni núcleo ni frontera. Finalmente, se asigna cada punto núcleo y sus puntos frontera alcanzables al mismo grupo, y deja los puntos ruido sin asignar [3].
+
 3. ¿Qué es la inercia en el contexto del clustering y cómo se utiliza para evaluar la calidad de un agrupamiento?
+
+La inercia es una medida de la dispersión de los datos dentro de los grupos, que se calcula como la suma de las distancias al cuadrado de cada observación a su centroide asignado. Se utiliza para evaluar la calidad de un agrupamiento, de forma que cuanto menor sea la inercia, mejor será el ajuste de los datos a los grupos, ya que indica que las observaciones están más cerca de sus centroides. 
+
+Sin embargo, la inercia no es una medida absoluta, sino que depende del número de grupos, la escala de los datos y la medida de distancia utilizada.
+
 4. ¿Qué son los centroides y cómo se utilizan en el algoritmo K-Means?
+
+Los centroides son los puntos centrales de cada grupo, que representan el promedio o la posición media de las observaciones asignadas a ese grupo. Se utilizan en el algoritmo K-Means para definir y actualizar los grupos, de forma que cada observación se asigna al centroide más cercano según alguna medida de distancia, y cada centroide se recalcula como el promedio de las observaciones asignadas a su grupo.
+
 5. Escriba la diferencia entre datos estructurados y no estructurados para análisis de datos.
+
+Los datos estructurados son aquellos que tienen una estructura predefinida y esperada, que se almacenan en tablas, filas y columnas, y que se pueden consultar y analizar fácilmente. Los datos estructurados suelen provenir de fuentes como bases de datos relacionales, hojas de cálculo, formularios o transacciones [4]. 
+
+Por otro lado, los datos no estructurados son aquellos que no tienen una estructura definida ni un formato específico, que se almacenan en formatos diversos y muy diferentes, y que requieren de procesos complejos para poder analizar su contenido y extraer información valiosa de ellos [4].
 
 ### Paquetes en Python (`__init__.py`):
 1. ¿Qué es un paquete en Python y cómo se diferencia de un módulo?
@@ -68,3 +92,9 @@ La regresión simple se utiliza cuando se quiere estudiar la relación entre una
 ## Bibliografía
 
 [1] J. A. Rodrigo, “Regresión lineal con python,” Ciencia de datos, Oct. 2020. [En línea]. Disponible: https://cienciadedatos.net/documentos/py10-regresion-lineal-python.html. [Accedido: 11- Feb- 2024].
+
+[2] T. Sequeira, “Clustering en Python: Implementando K-means paso a paso,” Medium, 2024. [En línea]. Disponible: https://thiagosequeira.medium.com/clustering-en-python-implementando-k-means-paso-a-paso-9d19875dfabc. [Accedido: 11- Feb- 2024].
+
+[3] Exponentis, Ejemplo de uso de DBSCAN en Python para detección de outliers, Exponentis, 10 Mar. 2020. [En línea]. Disponible: http://exponentis.es/ejemplo-de-uso-de-dbscan-en-python-para-deteccion-de-outliers. [Accedido: 11- Feb- 2024].
+
+[4] “Tipos de datos: datos estructurados, semiestructurados y no estructurados,” Blogs de IMF, Jun. 2020. [En línea]. Disponible: https://blogs.imf-formacion.com/blog/tecnologia/tipos-de-datos-datos-estructurados-semiestructurados-y-no-estructurados-202006/. [Accedido: 11- Feb- 2024]
