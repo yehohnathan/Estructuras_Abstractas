@@ -1,8 +1,43 @@
 # Tarea 6: Regresiones, clustering y servicios web
 
 ## Ejecución del programa:
+### Guía para Instalar el Módulo Kaggle y Descargar el esperado CSV desde la Plataforma:
+> La utilización del módulo Kaggle se debe a la imposibilidad de emplear el módulo Request. Esto se debe a que el CSV deseado proviene de la plataforma de Kaggle, que requiere credenciales de usuario para acceder a la información mediante código, necesitando así un archivo JSON de autenticación. Request no admite esta funcionalidad.
 
-Para ejecutar el programa, asegúrese de estar en el directorio del repositorio en su computadora y escriba el comando `make`, como se muestra a continuación:
+1. Registrarse en la plataforma ***Kaggle***: [https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2Fdatasets%2Fakshaydattatraykhare%2Fcar-details-dataset%3Fresource%3Ddownload](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2Fdatasets%2Fakshaydattatraykhare%2Fcar-details-dataset%3Fresource%3Ddownload)
+
+2. Después de registrarse en la página, diríjase a la sección de Account > Settings, ubique la opción denominada API y haga clic en el botón Create New Token.
+
+3. Se le descargará un archivo llamado `kaggle.json`:
+
+```json
+{"username":"yehoh04","key":"69ceef2a00ddf62b207243e30d4947c1"}
+```
+
+> Tiene la libertad de utilizar el `kaggle.json` mostrado si lo desea.
+
+4. Alguna terminal de su computadora ejecute el siguiente comando (asegurese de tener python instalado):
+
+```go
+...\ie0217\Tareas\TAREA_SEIS> pip install kaggle
+```
+
+5. Una vez instalado el modulo Kaggle de python, se le generará una carpeta con el nombre de `.kaggle`. Ahí es donde se debe ubicar el `kaggle.json`.
+
+
+```go
+C:\Users\user_example\.kaggle
+```
+
+En este caso `user_example` sería el nombre de usuario de su computadora.
+
+6. Continue con lo solicitado en la siguiente sección de este documento.
+
+
+### Ejecución de los archivos del programa: 
+Para ejecutar los archivos del programa, asegúrese de estar en el directorio del repositorio en su computadora y escriba el comando `make`, como se muestra a continuación:
+
+```
 
 ```go
 ...\ie0217\Tareas\TAREA_SEIS> make
