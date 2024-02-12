@@ -1,35 +1,32 @@
-# Makefile para la tarea 5
+# Makefile para la tarea 4
 
-# Se utiliza para detectar el sistema operativo
+# Detectar el sistema operativo
 ifeq ($(OS),Windows_NT)
-    # Establece los comandos para Windows
+    # Comandos para Windows
+    PYTHON = python
     RM = del /Q
-    EXE_EXTENSION = .exe
+    RMDIR = rmdir /Q /S
 else
-    # Establece los comandos para Linux/Unix
+    # Comandos para Linux (ajustar según sea necesario)
+    PYTHON = python3
     RM = rm -f
-    EXE_EXTENSION =
+    RMDIR = rm -rf
 endif
 
-# Compilador de C++
-CPP_COMPILER = g++
+# Directorios
+SRC_DIR = src
 
 # Archivos
-CPP_SOURCE = src/ejecutor.cpp
-EXE_FILE = ejecutor$(EXE_EXTENSION)
+MAIN_FILE = main.py
 
-# Regla por defecto
-all: compile run
+# Objetivo por defecto
+all: run
 
-# Compilación del programa C++
-compile:
-	$(CPP_COMPILER) $(CPP_SOURCE) -o $(EXE_FILE)
-
-# Ejecución del programa
+# Compilar y ejecutar el programa
 run:
-	./$(EXE_FILE)
+	$(PYTHON) $(SRC_DIR)/$(MAIN_FILE)
 
-# Limpiar los archivos generados
+# Por algunon motivo no logra limpiar __pycache__
 clean:
-	$(RM) $(EXE_FILE)
-	$(RM) src/__pycache__/
+	$(RM) $(SRC_DIR)/__pycache__/*.pyc
+	$(RMDIR) $(SRC_DIR)/__pycache__
