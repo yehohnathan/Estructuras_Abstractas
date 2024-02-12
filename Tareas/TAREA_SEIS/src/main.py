@@ -18,10 +18,12 @@ try:
     # Descargar el archivo CSV "CAR DETAILS FROM CAR DEKHO.csv", del conjunto
     # de datos de car-details-dataset del usuario akshaydattatraykhare3.
     api.dataset_download_file('akshaydattatraykhare/car-details-dataset',
-                              file_name='CAR DETAILS FROM CAR DEKHO.csv')
+                              file_name='CAR DETAILS FROM CAR DEKHO.csv',
+                              path="../TAREA_SEIS/CSV_KAGGLE")
 
     # Se instancia el nombre del csv:
-    name_csv = "../TAREA_SEIS/CAR%20DETAILS%20FROM%20CAR%20DEKHO.csv"
+    name_csv = ("../TAREA_SEIS/CSV_KAGGLE/" +
+                "CAR%20DETAILS%20FROM%20CAR%20DEKHO.csv")
 except Exception as e:
     print("Ha ocurrido un error. Posiblemente el kaggle.json no se encuentre",
           "en el directorio esperado **LEE EL README**.")
