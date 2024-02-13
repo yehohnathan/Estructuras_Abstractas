@@ -53,6 +53,8 @@ class RegresionLineal():
         # Se realizan predicciones sobre los datos de prueba
         y_pred_simple = model_simple.predict(X_test)
 
+        # Mensaje al usuario:
+
         # Métricas de rendimiento de la regresión lineal
         mse_simple = mean_squared_error(y_test, y_pred_simple)
         print("Error cuadrático medio (MSE) en regresión lineal simple:",
