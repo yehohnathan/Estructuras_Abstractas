@@ -1,5 +1,8 @@
-# ------------- # Importar módulos utilizados en el programa # -------------- #
-import pandas as pd
+# ------------------------- # Librerías auxiliares # ------------------------ #
+import pandas as pd     # Para uso de DataFrame con CSV
+
+# ------------------------ # Se importa el paquete # ------------------------ #
+from car_analysis.regression import RegresionLineal
 
 # -------------- # Importar CSV desde la plataforma de Kaggle # ------------- #
 # Bloque de excepción si no esta el kaggle.json
@@ -71,3 +74,12 @@ else:
 # Se muestra la información del DataFrame al usuario:
 print("\n========== Datos del DataFrame posterior a la limpieza: ==========")
 print(vehiculos_df)
+
+# =========================================================================== #
+"""                       ESPACIO PARA REGRESSION.PY                        """
+# =========================================================================== #
+print(type(vehiculos_df))
+# Sea crea un objeto del paquete car_analysis
+regresion_lineal = RegresionLineal()
+
+# Ingreso el
