@@ -14,7 +14,7 @@ else
 endif
 
 # Directorios
-SRC_DIR = src
+SRC_DIR = src/car_analysis
 
 # Archivos
 MAIN_FILE = main.py
