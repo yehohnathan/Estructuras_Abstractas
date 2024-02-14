@@ -2,7 +2,7 @@
 import pandas as pd     # Para uso de DataFrame con CSV
 
 # ------------------------ # Se importa el paquete # ------------------------ #
-from regression import RegresionLineal
+from regression import Regresiones
 
 # -------------- # Importar CSV desde la plataforma de Kaggle # ------------- #
 # Bloque de excepción si no esta el kaggle.json
@@ -79,10 +79,36 @@ print(vehiculos_df)
 """                       ESPACIO PARA REGRESSION.PY                        """
 # =========================================================================== #
 # Sea crea un objeto del paquete car_analysis
-regresion_lineal = RegresionLineal()
+regresion_lineal = Regresiones()
 
 # Se ingresa el DataFrame al objeto
 regresion_lineal.setDataFrame(vehiculos_df)
 
+# Se utiliza el método para observar una regresión simple
+print("\n========== Regresion lineal simple: Año de venta vs Precio de venta",
+      "==========")
 regresion_lineal.regresion_lineal_simple("year", "selling_price",
                                          "Año de venta", "Precio de venta")
+
+# Se utiliza el método para observar una regresión no lineal
+print("\n========== Regresion no lineal polinómica (Grado 2): Año de venta vs",
+      "Precio de venta ==========")
+regresion_lineal.regresion_no_lineal_2_grados("year", "selling_price",
+                                              "Año de venta",
+                                              "Precio de venta")
+
+# Se utiliza el método para observar una regresión simple
+print("\n========== Regresion lineal simple: Kilómetros Recorridos vs Precio",
+      "de venta ==========")
+regresion_lineal.regresion_lineal_simple("km_driven", "selling_price",
+                                         "Kilómetros Recorridos",
+                                         "Precio de venta")
+
+# Se utiliza el método para observar una regresión no lineal
+print("\n========== Regresion no lineal polinómica (Grado 2): Kilómetros",
+      "Recorridos vs Precio de venta ==========")
+regresion_lineal.regresion_no_lineal_2_grados("km_driven", "selling_price",
+                                              "Kilómetros Recorridos",
+                                              "Precio de venta")
+
+print("\n========== FIN DEL PROGRAMA==========\n")
