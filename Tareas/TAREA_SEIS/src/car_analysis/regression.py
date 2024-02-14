@@ -81,7 +81,8 @@ class Regresiones():
         plt.legend()
         plt.show()
 
-    def regresion_no_lineal_2_grados(self, colum1, colum2, xlabel, ylabel):
+    def regresion_no_lineal_polinomica(self, colum1, colum2, xlabel, ylabel,
+                                       grado=2):
         # Verifica que colum1, colum2, xlabel y ylabel sean tipo string
         var_list = [colum1, colum2, xlabel, ylabel]
         for var in var_list:
@@ -89,6 +90,13 @@ class Regresiones():
                 raise ValueError("Se ingreso un dato que no es una cadena de",
                                  " texto.")
 
+        # Verifica si el grado es un número entero mayor que 2, para que
+        # funcione la regresion no lineal
+        if not isinstance(grado, int):
+            raise ValueError("No se ingreso un número entero al grado.")
+        elif grado < 2:
+            raise ValueError("El valor del grado polinómico debe ser mayor",
+                             "a 2")
         # Verificar que colum1 y colum2 sean nombres de columnas válidos dentro
         # del DataFrame
         if colum1 not in self.__dataframe.columns:
@@ -107,7 +115,8 @@ class Regresiones():
                                                             random_state=42)
 
         # Se crea el modelo de regresión polinómica
-        model_poly = make_pipeline(PolynomialFeatures(2), LinearRegression())
+        model_poly = make_pipeline(PolynomialFeatures(grado),
+                                   LinearRegression())
 
         # Se entrenan los datos con el método fit
         model_poly.fit(X_train, y_train)
@@ -138,8 +147,8 @@ class Regresiones():
         plt.scatter(X_test, y_test, label="Datos de prueba", color="green")
         plt.plot(X_range, y_pred_range,  # Sobre el rango para una sola recta
                  label=f"Regresion no lineal (R^2={r2_poly:.2f})",
-                 color='purple', linewidth=3)
-        plt.title('Regresion No Lineal Polinómica (Grado 2)')
+                 color="purple", linewidth=3)
+        plt.title(f"Regresion No Lineal Polinómica (Grado {grado})")
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         plt.legend()
