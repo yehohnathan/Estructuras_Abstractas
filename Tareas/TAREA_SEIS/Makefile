@@ -1,4 +1,4 @@
-# Makefile para la tarea 4
+# Makefile para la tarea 6
 
 # Detectar el sistema operativo
 ifeq ($(OS),Windows_NT)
