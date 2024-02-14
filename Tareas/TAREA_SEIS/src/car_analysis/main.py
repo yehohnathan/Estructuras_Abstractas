@@ -3,6 +3,7 @@ import pandas as pd     # Para uso de DataFrame con CSV
 
 # ---------------------- # Se importan los paquetes # ----------------------- #
 from regression import Regresiones
+from clustering import Clusters
 
 # -------------- # Importar CSV desde la plataforma de Kaggle # ------------- #
 # Bloque de excepción si no esta el kaggle.json
@@ -78,35 +79,37 @@ print(vehiculos_df)
 # =========================================================================== #
 """                       ESPACIO PARA REGRESSION.PY                        """
 # =========================================================================== #
-# Sea crea un objeto del paquete car_analysis
+# Sea crea un objeto del paquete car_analysis/regression.py
 regresion_lineal = Regresiones()
 
 # Se ingresa el DataFrame al objeto
 regresion_lineal.setDataFrame(vehiculos_df)
 
+# ------------------------------ Regresion 1 -------------------------------- #
+print("\n********** Regresion 1: Año de venta y Precio de venta",
+      "**********")
 # Se utiliza el método para observar una regresión simple
-print("\n========== Regresion lineal simple: Año de venta vs Precio de venta",
-      "==========")
+print("1. Regresion lineal simple:")
 regresion_lineal.regresion_lineal_simple("year", "selling_price",
                                          "Año de venta", "Precio de venta")
 
 # Se utiliza el método para observar una regresión no lineal
-print("\n========== Regresion no lineal polinómica (Grado 2): Año de venta vs",
-      "Precio de venta ==========")
+print("\n2. Regresion no lineal polinómica (Grado 2):")
 regresion_lineal.regresion_no_lineal_polinomica("year", "selling_price",
                                                 "Año de venta",
                                                 "Precio de venta", grado=2)
 
+# ------------------------------ Regresion 2 -------------------------------- #
+print("\n========== Regresion 2: Kilómetros Recorridos vs Precio de venta",
+      "==========")
 # Se utiliza el método para observar una regresión simple
-print("\n========== Regresion lineal simple: Kilómetros Recorridos vs Precio",
-      "de venta ==========")
+print("1. Regresion lineal simple:")
 regresion_lineal.regresion_lineal_simple("km_driven", "selling_price",
                                          "Kilómetros Recorridos",
                                          "Precio de venta")
 
 # Se utiliza el método para observar una regresión no lineal
-print("\n========== Regresion no lineal polinómica (Grado 2): Kilómetros",
-      "Recorridos vs Precio de venta ==========")
+print("\n2. Regresion no lineal polinómica (Grado 2):")
 regresion_lineal.regresion_no_lineal_polinomica("km_driven", "selling_price",
                                                 "Kilómetros Recorridos",
                                                 "Precio de venta", grado=2)
@@ -114,8 +117,49 @@ regresion_lineal.regresion_no_lineal_polinomica("km_driven", "selling_price",
 # =========================================================================== #
 """                        ESPACIO PARA CLUSTERING.PY                       """
 # =========================================================================== #
+# Sea crea un objeto del paquete car_analysis/clustering.py
+cluster_vehiculos = Clusters()
+
+# Se ingresa el DataFrame al objeto
+cluster_vehiculos.setDataFrame(vehiculos_df)
+
+# ----------------------------- Clustering 1 -------------------------------- #
+print("\n********** Clustering 1: Año de venta y Precio de venta",
+      "**********")
+# Se utiliza el método del códo para verificar cuantos clusters usar en Kmeans
+print("Método del codo...")
+cluster_vehiculos.metodo_elbow("year", "selling_price")
+
+# Se utiliza el método del Silhouette
+print("Método de la Silueta...")
+n_clusters = cluster_vehiculos.metodo_silhouette("year", "selling_price")
+
+# Grafica Kmeans
+print("Gráfica de KMeans...")
+cluster_vehiculos.grafica_KMeans("year", "selling_price",
+                                 xlabel="Año de venta",
+                                 ylabel="Precio de venta",
+                                 k_clusters=n_clusters)
+
+# ----------------------------- Clustering 2 -------------------------------- #
+print("\n========== Clustering 2: Kilómetros Recorridos vs Precio de venta",
+      "==========")
+# Se utiliza el método del códo para verificar cuantos clusters usar en Kmeans
+print("Método del codo...")
+cluster_vehiculos.metodo_elbow("km_driven", "selling_price")
+
+# Se utiliza el método del Silhouette
+print("Método de la Silueta...")
+n_clusters = cluster_vehiculos.metodo_silhouette("km_driven", "selling_price")
+
+# Grafica Kmeans
+print("Gráfica de KMeans...")
+cluster_vehiculos.grafica_KMeans("km_driven", "selling_price",
+                                 xlabel="Kilómetros Recorridos",
+                                 ylabel="Precio de venta",
+                                 k_clusters=n_clusters)
 
 # =========================================================================== #
 """                            FIN DEL PROGRAMA                             """
-print("\n========== FIN DEL PROGRAMA==========\n")
 # =========================================================================== #
+print("\nFIN DEL PROGRAMA...\n")
