@@ -7,10 +7,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # ------------------------- # Librerías auxiliares # ------------------------ #
 import matplotlib.pyplot as plt     # Realiza gráficas
+import numpy as np
 import pandas as pd                 # Para uso de csv
 
 
-# --------------------- # Clase para Regresion Lineal # --------------------- #
+# ------------------------ # Clase para Regresiones # ----------------------- #
 class Regresiones():
     def __init__(self) -> None:
         self.__dataframe = pd.DataFrame()
@@ -111,26 +112,31 @@ class Regresiones():
         # Se entrenan los datos con el método fit
         model_poly.fit(X_train, y_train)
 
-        # Se realizan predicciones sobre los datos de prueba
-        y_pred_poly = model_poly.predict(X_test)
+        # Se genera un rango continuo de valores de X_test para predecir
+        X_range = np.linspace(X_test.min(),
+                              X_test.max(),
+                              len(self.__dataframe)).reshape(-1, 1)
+
+        # Se realizan predicciones sobre el rango X_range
+        y_pred_range = model_poly.predict(X_range)
 
         # Mensaje al usuario:
         # Métricas de rendimiento de la regresión lineal
-        mse_poly = mean_squared_error(y_test, y_pred_poly)
+        mse_poly = mean_squared_error(y_test, model_poly.predict(X_test))
         print("Error cuadrático medio (MSE) en regresión no lineal:",
               mse_poly)
 
-        r2_poly = r2_score(y_test, y_pred_poly)
+        r2_poly = r2_score(y_test, model_poly.predict(X_test))
         print("Coeficiente de determinación (R^2) en regresión no lineal:",
               r2_poly)
 
-        mae_poly = mean_absolute_error(y_test, y_pred_poly)
+        mae_poly = mean_absolute_error(y_test, model_poly.predict(X_test))
         print("Error absoluto medio (MAE) en regresión no lineal:",
               mae_poly)
 
         # Gráfica de la regresión no lineal con una gráfica de dispersión
         plt.scatter(X_test, y_test, label="Datos de prueba", color="green")
-        plt.plot(X_test, y_pred_poly,
+        plt.plot(X_range, y_pred_range,  # Sobre el rango para una sola recta
                  label=f"Regresion no lineal (R^2={r2_poly:.2f})",
                  color='purple', linewidth=3)
         plt.title('Regresion No Lineal Polinómica (Grado 2)')
