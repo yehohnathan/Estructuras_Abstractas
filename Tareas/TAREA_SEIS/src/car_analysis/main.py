@@ -1,7 +1,7 @@
-# ------------------------- # Librerías auxiliares # ------------------------ #
+# ------------------------ # Librerías auxiliares # ------------------------- #
 import pandas as pd     # Para uso de DataFrame con CSV
 
-# ------------------------ # Se importa el paquete # ------------------------ #
+# ---------------------- # Se importan los paquetes # ----------------------- #
 from regression import Regresiones
 
 # -------------- # Importar CSV desde la plataforma de Kaggle # ------------- #
@@ -93,9 +93,9 @@ regresion_lineal.regresion_lineal_simple("year", "selling_price",
 # Se utiliza el método para observar una regresión no lineal
 print("\n========== Regresion no lineal polinómica (Grado 2): Año de venta vs",
       "Precio de venta ==========")
-regresion_lineal.regresion_no_lineal_2_grados("year", "selling_price",
-                                              "Año de venta",
-                                              "Precio de venta")
+regresion_lineal.regresion_no_lineal_polinomica("year", "selling_price",
+                                                "Año de venta",
+                                                "Precio de venta", grado=2)
 
 # Se utiliza el método para observar una regresión simple
 print("\n========== Regresion lineal simple: Kilómetros Recorridos vs Precio",
@@ -107,8 +107,15 @@ regresion_lineal.regresion_lineal_simple("km_driven", "selling_price",
 # Se utiliza el método para observar una regresión no lineal
 print("\n========== Regresion no lineal polinómica (Grado 2): Kilómetros",
       "Recorridos vs Precio de venta ==========")
-regresion_lineal.regresion_no_lineal_2_grados("km_driven", "selling_price",
-                                              "Kilómetros Recorridos",
-                                              "Precio de venta")
+regresion_lineal.regresion_no_lineal_polinomica("km_driven", "selling_price",
+                                                "Kilómetros Recorridos",
+                                                "Precio de venta", grado=2)
 
+# =========================================================================== #
+"""                        ESPACIO PARA CLUSTERING.PY                       """
+# =========================================================================== #
+
+# =========================================================================== #
+"""                            FIN DEL PROGRAMA                             """
 print("\n========== FIN DEL PROGRAMA==========\n")
+# =========================================================================== #
