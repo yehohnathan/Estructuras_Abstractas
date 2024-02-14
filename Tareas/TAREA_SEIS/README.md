@@ -37,11 +37,122 @@ En este caso `user_example` sería el nombre de usuario de su computadora.
 ### Ejecución de los archivos del programa: 
 Para ejecutar los archivos del programa, asegúrese de estar en el directorio del repositorio en su computadora y escriba el comando `make`, como se muestra a continuación:
 
-```
-
 ```go
 ...\ie0217\Tareas\TAREA_SEIS> make
 ```
+
+## Análisis de los resultados obtenidos:
+> - Las gráficas generadas durante la ejecución del código están disponibles para su visualización.
+> - Los datos utilizados para el análisis se han obtenido de [https://www.kaggle.com/datasets/akshaydattatraykhare/car-details-dataset?resource=download](https://www.kaggle.com/datasets/akshaydattatraykhare/car-details-dataset?resource=download).
+> - Estos datos han sido sometidos a un proceso de limpieza para eliminar duplicados y valores faltantes.
+
+
+### Análisis del año de venta en relación con el precio de los vehículos:
+Como se apreciará en los gráficos de regresión, el año de fabricación del vehículo puede tener un impacto notable en su precio. Sin embargo, este efecto tiende a ser más relevante en vehículos considerados raros o de colección, dependiendo del modelo.
+
+#### Regresión lineal simple:
+
+
+<img src="../TAREA_SEIS/Imagenes/RL1_precio_anio.png">
+
+```go
+Error cuadrático medio (MSE) en regresión lineal simple: 267737137875.10327
+Coeficiente de determinación (R^2) en regresión lineal simple: 0.16886241633651733
+Error absoluto medio (MAE) en regresión lineal simple: 236626.94069403742
+```
+
+Observando tanto la recta de regresión lineal como las métricas asociadas, es evidente que el modelo de regresión presenta un rendimiento deficiente para los datos analizados. Esto se refleja en el valor elevado del Error Cuadrático Medio (MSE), indicando una gran discrepancia entre las predicciones del modelo y los valores reales. Además, el coeficiente de determinación \(R^2\) sugiere un ajuste muy limitado.
+
+Este desempeño deficiente puede atribuirse a la naturaleza de los datos utilizados, que abarcan vehículos de colección junto con vehículos estándar. Como resultado, la gráfica de dispersión exhibe puntos dispersos en un mismo año, lo que dificulta la capacidad del modelo para capturar una tendencia lineal coherente.
+
+Otro factor a considerar es que el análisis solo se centra en el año de venta del vehículo, sin tener en cuenta el año de fabricación. La inclusión del año de fabricación permitiría explorar cómo la antigüedad del vehículo puede influir de manera más directa en su precio.
+
+#### Regresión no lineal polinómica (Grado 2):
+<img src="../TAREA_SEIS/Imagenes/RNL1_precio_anio.png">
+
+```go
+Error cuadrático medio (MSE) en regresión no lineal: 262241713485.8416
+Coeficiente de determinación (R^2) en regresión no lineal: 0.18592188662273124
+Error absoluto medio (MAE) en regresión no lineal: 224614.88677245678
+```
+
+Los resultados obtenidos mediante la regresión no lineal revelan las mismas limitaciones del modelo con respecto a estos datos específicos. Aunque se observa una ligera mejora en cada métrica, el coeficiente de determinación \(R^2\) aumenta marginalmente de 0.17 a 0.19.
+
+El código implementado tiene la capacidad de realizar regresiones no lineales con distintos grados para intentar generar ecuaciones polinómicas con un coeficiente de determinación (\(R^2\)) más alto. Sin embargo, se optó por limitar el grado a 2 debido a que no se observó una mejora significativa incluso al aumentar el grado a 5. De hecho, el rendimiento del modelo comenzó a deteriorarse con grados superiores.
+
+#### Obtención de la cantidad de clusters:
+<img src="../TAREA_SEIS/Imagenes/MC_precio_anio.png">
+<img src="../TAREA_SEIS/Imagenes/MS_precio_anio.png">
+
+Se determinó el número óptimo de clusters utilizando tanto el Método del Codo como el Método de la Silueta.
+
+En el Método del Codo, la gráfica exhibe el mayor cambio en \(K = 3\), lo que sugiere que esta cantidad de clusters podría ser la más adecuada para el modelo. Este hallazgo se ve respaldado por el Método de la Silueta, que indica que con \(K = 3\) se obtiene el coeficiente más alto, superando significativamente a las otras opciones. Por lo tanto, ambos métodos llegan a la misma conclusión: \(K = 3\) clusters es la mejor elección.
+
+Es importante destacar que, aunque el Método de la Silueta suele ser más efectivo y claro para determinar el número óptimo de clusters, requiere un tiempo de ejecución considerablemente mayor en el código.
+
+#### Gráfica de KMeans:
+<img src="../TAREA_SEIS/Imagenes/Kmeans_precio_anio.png">
+
+En esta gráfica se muestran los 3 clusters, cada uno representado con un color distinto, que el algoritmo KMeans decidió separar.
+
+Al observar la distribución de los grupos de clusters, podemos determinar lo siguiente:
+
+1. Cluster morado: incluye vehículos cuyo año de venta se correlaciona con un precio bajo.
+2. Cluster amarillo: comprende vehículos cuyo año de venta se correlaciona con un precio medio.
+3. Cluster turquesa: engloba vehículos cuyo año de venta se correlaciona con un precio alto o muy alto.
+
+Por lo tanto, este método de agrupación ha dividido el conjunto en función del monto del precio y el año de venta.
+
+### Análisis de los kilómetros recorridos en relación con el precio de los vehículos:
+De igual manera, como se muestra en los gráficos de regresión, se observa que un mayor kilometraje en un vehículo tiende a devaluar su precio.
+
+#### Regresión lineal simple:
+<img src="../TAREA_SEIS/Imagenes/RL2_kilometro_precio.png">
+
+```go
+Error cuadrático medio (MSE) en regresión lineal simple: 307988220482.47314
+Coeficiente de determinación (R^2) en regresión lineal simple: 0.043910802213658284
+Error absoluto medio (MAE) en regresión lineal simple: 292401.46063219226
+```
+
+En este caso, las métricas y la recta de regresión muestran un desempeño aún más deficiente que en la sección de Análisis anterior. Se observa un MSE y un MAE significativamente grandes, lo que indica una discrepancia considerable entre las predicciones del modelo y los datos reales. Además, el coeficiente de determinación (\(R^2\)) se aproxima a 0, lo que sugiere que el modelo tiene una capacidad predictiva muy limitada.
+
+A pesar de esto, la tendencia decreciente en la recta de predicciones ofrece un atisbo de cómo el valor de los vehículos (precio de venta) tiende a disminuir levemente con un mayor kilometraje. Sin embargo, el principal desafío radica en la diversidad de modelos y marcas de vehículos en el conjunto de datos, lo que dificulta determinar si el kilometraje es el único factor influyente en la disminución del precio de venta. Por ejemplo, la historia de cada vehículo puede variar considerablemente: incluso si tiene un alto kilometraje, el hecho de que haya sido propiedad de una celebridad podría aumentar su valor independientemente de la distancia recorrida. 
+
+Esta variedad de circunstancias individuales contribuye a la irregularidad en los datos y complica la creación de un modelo predictivo preciso.
+
+#### Regresión no lineal polinómica (Grado 2):
+<img src="../TAREA_SEIS/Imagenes/RNL2_kilometro_precio.png">
+
+```go
+Error cuadrático medio (MSE) en regresión no lineal: 303669170312.9427
+Coeficiente de determinación (R^2) en regresión no lineal: 0.057318448796103705
+Error absoluto medio (MAE) en regresión no lineal: 289585.5996081953
+```
+
+De manera similar, como era de esperar, el empleo de una regresión no lineal con datos dispersos conlleva una mejora, aunque mínima. Sin embargo, incluso con esta mejora, el modelo sigue sin ofrecer una utilidad significativa para un análisis fiable. El coeficiente de determinación (\(R^2\)) solo experimenta un leve incremento, pasando de 0.04 a 0.06, mientras que los errores MSE y MAE disminuyen ligeramente.
+
+#### Obtención de la cantidad de clusters:
+<img src="../TAREA_SEIS/Imagenes/MC_kilometro_precio.png">
+<img src="../TAREA_SEIS/Imagenes/MS_kilometro_precio.png">
+
+Se determinó el número óptimo de clusters utilizando tanto el Método del Codo como el Método de la Silueta.
+
+Ambos métodos llegan a la misma conclusión: \(K = 3\) clusters es la mejor elección. Esto refleja una consistencia con los hallazgos anteriores en los cuales se analizó el año de venta de los vehículos, incluso en la misma forma de mostrar que esta cantidad de clusters es significativamente mejor.
+
+
+#### Gráfica de KMeans:
+<img src="../TAREA_SEIS/Imagenes/Kmeans_kilometro_precio.png">
+
+Se muestra la gráfica con los 3 clusters, cada uno representado con un color distinto, que el algoritmo KMeans decidió separar.
+
+Al observar la distribución de los grupos de clusters, podemos determinar lo siguiente:
+
+1. Cluster morado: los vehiculos con menor precio de venta.
+2. Cluster amarillo: los vehiculos con un medio precio de venta.
+3. Cluster turquesa: los vehiculos con un alto precio de venta.
+
+Por lo que se puede determinar, que el kilometraje no parece ser tan relevante para la agrupación.
 
 ## Parte teórica:
 ### Regresión:
